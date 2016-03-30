@@ -26,5 +26,8 @@ class Welcome extends CI_Controller {
 	public function test()
 	{
 		$this->load->database('auth');
+		var_dump($this->db);
+		$this->load->database('master');
+		var_dump($this->db);
 	}
 }
