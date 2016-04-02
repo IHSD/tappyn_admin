@@ -183,6 +183,7 @@ class Home extends MY_Controller
     {
         foreach($data as $value)
         {
+            echo json_encode($value);
             if(!is_null($value->age_range) && !is_null($value->gender))
             {
                 $gender = 'unspecified';
