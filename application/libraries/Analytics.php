@@ -94,6 +94,14 @@ class Analytics
                             GROUP BY created");
     }
 
+    public function users_by_gender()
+    {
+        return $this->exec("SELECT COUNT(*) as count, gender
+                                FROM profiles
+                                JOIN users_groups ON users_groups.user_id = profiles.id WHERE users_groups.group_id = 2
+                                GROUP BY gender");
+    }
+
     public function users_by_age_gender()
     {
         return $this->exec("SELECT COUNT(*) as count, age_range, gender

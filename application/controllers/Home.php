@@ -102,6 +102,19 @@ class Home extends MY_Controller
         echo json_encode($this->results);
     }
 
+    public function users_by_gender()
+    {
+
+        if($data = $this->analytics->users_by_gender())
+        {
+            $this->results['data'] = $data;
+        } else {
+            $this->results['error'] = $this->analytics->error();
+            $this->results['success'] = false;
+        }
+        echo json_encode($this->results);
+    }
+
     public function users_by_age_gender_date()
     {
 
