@@ -248,7 +248,7 @@
                   </tr>
                   <tr>
                     <td>
-                      <canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                      <canvas id="male_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
                     </td>
                     <td>
                       <table class="tile_info">
@@ -290,6 +290,86 @@
             </div>
           </div>
 
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="x_panel tile fixed_height_320 overflow_hidden">
+              <div class="x_title">
+                <h2>Females</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Settings 1</a>
+                      </li>
+                      <li><a href="#">Settings 2</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
+                <table class="" style="width:100%">
+                  <tr>
+                    <th style="width:37%;">
+
+                    </th>
+                    <th>
+                      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                        <p class="">Range</p>
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                        <p class="">Percent</p>
+                      </div>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <canvas id="female_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                    </td>
+                    <td>
+                      <table class="tile_info">
+                        <tr>
+                          <td>
+                            <p><i class="fa fa-square blue"></i>18-24 </p>
+                          </td>
+                          <td id='female_18_24'></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p><i class="fa fa-square green"></i>25-34 </p>
+                          </td>
+                          <td id='female_25_34'></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p><i class="fa fa-square purple"></i>35-44 </p>
+                          </td>
+                          <td id='female_35_44'></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p><i class="fa fa-square aero"></i>45-54 </p>
+                          </td>
+                          <td id='female_45_54'></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p><i class="fa fa-square red"></i>55+ </p>
+                          </td>
+                          <td id='female_55'></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
 
       </div>
     </div>
@@ -360,19 +440,34 @@ Chart.defaults.global.legend = {
   enabled: false
 };
 
-var chart_data = [];
+var total_users = "<?php echo $user_count; ?>";
+console.log(total_users);
+var graph_data = {
+    'males' : [],
+    'females' : [],
+};
 $.ajax({
     method: 'get',
     url : "<?php echo base_url('home/users_by_age_gender');  ?>",
     dataType: 'json',
     success: function(response) {
         if(!response.success) return;
-        console.log(response);
-        for(var i = 0; i < response.data.length; i++)
+
+        for(var key in response.data.male)
         {
-            
+            graph_data.males.push(response.data.male[key]);
+            var id = '#male_'+key.replace('-','_').replace('+','');
+            console.log(id);
+            $(id).text(response.data.male[key]);
         }
-        var data = {
+        for(var key in response.data.female)
+        {
+            graph_data.females.push(response.data.female[key]);
+            var id = '#female_'+key.replace('-','_').replace('+','');
+            $(id).text(response.data.female[key]);
+        }
+
+        var male_data = {
           labels: [
             "18-24",
             "25-34",
@@ -381,7 +476,7 @@ $.ajax({
             "55+"
           ],
           datasets: [{
-            data: [15, 20, 30, 10, 30],
+            data: graph_data.males,
             backgroundColor: [
               "#BDC3C7",
               "#9B59B6",
@@ -400,10 +495,44 @@ $.ajax({
           }]
         };
 
-        var canvasDoughnut = new Chart(document.getElementById("canvas1"), {
+        var female_data = {
+          labels: [
+            "18-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55+"
+          ],
+          datasets: [{
+            data: graph_data.females,
+            backgroundColor: [
+              "#BDC3C7",
+              "#9B59B6",
+              "#455C73",
+              "#26B99A",
+              "#3498DB"
+            ],
+            hoverBackgroundColor: [
+              "#CFD4D8",
+              "#B370CF",
+              "#34495E",
+              "#36CAAB",
+              "#49A9EA"
+            ]
+
+          }]
+        };
+
+        var maleCanvasDoughnut = new Chart(document.getElementById("male_breakdown"), {
           type: 'doughnut',
           tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-          data: data
+          data: male_data
+        });
+
+        var femaleCanvasDoughnut = new Chart(document.getElementById("female_breakdown"), {
+          type: 'doughnut',
+          tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+          data: female_data
         });
     }
 })

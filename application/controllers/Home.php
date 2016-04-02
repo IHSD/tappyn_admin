@@ -93,7 +93,8 @@ class Home extends MY_Controller
 
         if($data = $this->analytics->users_by_age_gender())
         {
-            $this->results['data'] = $data;
+            $this->fill_breakdown($data);
+            $this->results['data'] = $this->breakdown;
         } else {
             $this->results['error'] = $this->analytics->error();
             $this->results['success'] = false;

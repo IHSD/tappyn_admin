@@ -37,7 +37,7 @@
   <script src="<?php echo base_url(); ?>assets/js/custom.js" type='text/javascript'></script>
   <!-- pace -->
   <script src="<?php echo base_url(); ?>assets/js/pace/pace.min.js" type='text/javascript'></script>
-
+  <script type="text/javascript" src="<?php echo base_url('assets/js/moment/moment.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/js/echart/echarts-all.js'); ?>"></script>
   <script src="<?php echo base_url('assets/js/echart/green.js'); ?>"></script>
    <script src="<?php echo base_url('assets/js/input_mask/jquery.inputmask.js'); ?>"></script>
