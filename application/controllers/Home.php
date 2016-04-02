@@ -187,11 +187,11 @@ class Home extends MY_Controller
             if(!is_null($value->age_range) && !is_null($value->gender))
             {
                 $gender = 'unspecified';
-                if($value->gender === 1)
+                if((int)$value->gender === 1)
                 {
                     $gender = 'female';
                 }
-                else if($value->gender === 2)
+                else if((int)$value->gender === 2)
                 {
                     $gender = 'female';
                 }
