@@ -127,7 +127,7 @@ class Home extends MY_Controller
 
     public function submissions_by_date()
     {
-        if($data = $this->analytics->submissions_by_date())
+        if($data = array_reverse($this->analytics->submissions_by_date()))
         {
             $this->results['data'] = $data;
         } else {
