@@ -10,6 +10,22 @@ class Home extends MY_Controller
         $this->results = array(
             'success' => true
         );
+        $this->breakdown = array(
+            'male' => array(
+                '18-24' => 0,
+                '25-34' => 0,
+                '35-44' => 0,
+                '45-54' => 0,
+                '55+' => 0
+            ),
+            'female' => array(
+                '18-24' => 0,
+                '25-34' => 0,
+                '35-44' => 0,
+                '45-54' => 0,
+                '55+' => 0
+            )
+        );
     }
 
     public function dashboard()
@@ -36,7 +52,6 @@ class Home extends MY_Controller
 
     public function unique_submissions_by_age_gender()
     {
-
         if($data = $this->analytics->unique_submissions_by_age_gender())
         {
             $this->results['data'] = $data;
@@ -104,7 +119,8 @@ class Home extends MY_Controller
 
         if($data = $this->analytics->submissions_by_age_gender())
         {
-            $this->results['data'] = $data;
+            $this->fill_breakdown($data);
+            $this->results['data'] = $this->breakdown;
         } else {
             $this->results['error'] = $this->analytics->error();
             $this->results['success'] = false;
@@ -147,5 +163,25 @@ class Home extends MY_Controller
             $this->results['success'] = false;
         }
         echo json_encode($this->results);
+    }
+
+    public function fill_breakdown($data)
+    {
+        foreach($data as $value)
+        {
+            if(!is_null($value->age_range) && !is_null($value->gender))
+            {
+                $gender = 'unspecified';
+                if($value->gender == 1)
+                {
+                    $gender = 'female';
+                }
+                else if($value->gender == 2)
+                {
+                    $gender = 'female';
+                }
+                $this->breakdown[$gender][$value->age_range] = $value->count;
+            }
+        }
     }
 }
