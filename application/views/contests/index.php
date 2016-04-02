@@ -47,7 +47,7 @@
                                     <?php
                                     if($key == 'company')
                                     {
-                                        var_dump($value);
+                                        echo $value->name;
                                     } else {
                                         echo $value;
                                     }
