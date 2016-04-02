@@ -65,7 +65,7 @@ class Contests extends MY_Controller
         }
         echo json_encode(array(
             'success' => true,
-            'data' => $results
+            'data' => array_reverse($results)
         ));
     }
 }
