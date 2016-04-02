@@ -254,31 +254,31 @@
                       <table class="tile_info">
                         <tr>
                           <td>
-                            <p><i class="fa fa-square blue"></i>18-24 </p>
+                            <p><i class="fa fa-square aero"></i>18-24 </p>
                           </td>
                           <td id='male_18_24'></td>
                         </tr>
                         <tr>
                           <td>
-                            <p><i class="fa fa-square green"></i>25-34 </p>
+                            <p><i class="fa fa-square purple"></i>25-34 </p>
                           </td>
                           <td id='male_25_34'></td>
                         </tr>
                         <tr>
                           <td>
-                            <p><i class="fa fa-square purple"></i>35-44 </p>
+                            <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
                           </td>
                           <td id='male_35_44'></td>
                         </tr>
                         <tr>
                           <td>
-                            <p><i class="fa fa-square aero"></i>45-54 </p>
+                            <p><i class="fa fa-square green"></i>45-54 </p>
                           </td>
                           <td id='male_45_54'></td>
                         </tr>
                         <tr>
                           <td>
-                            <p><i class="fa fa-square red"></i>55+ </p>
+                            <p><i class="fa fa-square blue"></i>55+ </p>
                           </td>
                           <td id='male_55'></td>
                         </tr>
@@ -335,31 +335,31 @@
                       <table class="tile_info">
                         <tr>
                           <td>
-                            <p><i class="fa fa-square blue"></i>18-24 </p>
+                            <p><i class="fa fa-square aero"></i>18-24 </p>
                           </td>
                           <td id='female_18_24'></td>
                         </tr>
                         <tr>
                           <td>
-                            <p><i class="fa fa-square green"></i>25-34 </p>
+                            <p><i class="fa fa-square purple"></i>25-34 </p>
                           </td>
                           <td id='female_25_34'></td>
                         </tr>
                         <tr>
                           <td>
-                            <p><i class="fa fa-square purple"></i>35-44 </p>
+                            <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
                           </td>
                           <td id='female_35_44'></td>
                         </tr>
                         <tr>
                           <td>
-                            <p><i class="fa fa-square aero"></i>45-54 </p>
+                            <p><i class="fa fa-square green"></i>45-54 </p>
                           </td>
                           <td id='female_45_54'></td>
                         </tr>
                         <tr>
                           <td>
-                            <p><i class="fa fa-square red"></i>55+ </p>
+                            <p><i class="fa fa-square blue"></i>55+ </p>
                           </td>
                           <td id='female_55'></td>
                         </tr>
@@ -467,6 +467,7 @@ $.ajax({
             $(id).text(response.data.female[key]);
         }
 
+        console.log(graph_data);
         var male_data = {
           labels: [
             "18-24",
