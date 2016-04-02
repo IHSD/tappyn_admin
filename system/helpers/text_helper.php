@@ -123,6 +123,17 @@ if ( ! function_exists('character_limiter'))
 	}
 }
 
+if( ! function_exists('snake_to_string'))
+{
+	function snake_to_string($snake)
+	{
+		$chunks = array();
+		$pieces = explode('_', $snake);
+		foreach($pieces as $piece) $chunks[] = ucfirst($piece);
+		return implode(' ', $chunks);
+	}
+}
+
 // ------------------------------------------------------------------------
 
 if ( ! function_exists('ascii_to_entities'))

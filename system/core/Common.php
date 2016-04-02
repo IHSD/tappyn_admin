@@ -73,6 +73,13 @@ if ( ! function_exists('is_php'))
 	}
 }
 
+if( ! function_exists('is_ajax'))
+{
+	function is_ajax()
+	{
+		return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+	}
+}
 // ------------------------------------------------------------------------
 
 if ( ! function_exists('is_really_writable'))

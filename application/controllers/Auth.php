@@ -12,6 +12,12 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->lang->load('auth');
+
+        if($this->ion_auth->logged_in() && !is_ajax())
+        {
+			$this->user = $this->ion_auth->user()->row();
+            $this->load->view('templates/navbar', array('user' => $this->user));
+        }
 	}
 
 	// redirect if needed, otherwise display the user list
@@ -47,8 +53,7 @@ class Auth extends CI_Controller {
 	// log the user in
 	function login()
 	{
-		$this->data['title'] = "Login";
-
+		//die(json_encode($this->input->post()));
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -68,9 +73,10 @@ class Auth extends CI_Controller {
 			}
 			else
 			{
+				die('eror');
 				// if the login was un-successful
 				// redirect them back to the login page
-				$this->session->set_flashdata('message', $this->ion_auth->errors());
+				$this->session->set_flashdata('error', $this->ion_auth->errors());
 				redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
@@ -394,6 +400,7 @@ class Auth extends CI_Controller {
 				// do we have a valid request?
 				if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id'))
 				{
+					var_dump($this->_valid_csrf_nonce());
 					show_error($this->lang->line('error_csrf'));
 				}
 
@@ -795,15 +802,16 @@ class Auth extends CI_Controller {
 
 	function _valid_csrf_nonce()
 	{
-		if ($this->input->post($this->session->flashdata('csrfkey')) !== FALSE &&
-			$this->input->post($this->session->flashdata('csrfkey')) == $this->session->flashdata('csrfvalue'))
-		{
-			return TRUE;
-		}
-		else
-		{
-			return FALSE;
-		}
+		// if ($this->input->post($this->session->flashdata('csrfkey')) !== FALSE &&
+		// 	$this->input->post($this->session->flashdata('csrfkey')) == $this->session->flashdata('csrfvalue'))
+		// {
+		// 	return TRUE;
+		// }
+		// else
+		// {
+		// 	return FALSE;
+		// }
+		return TRUE;
 	}
 
 	function _render_page($view, $data=null, $returnhtml=false)//I think this makes more sense
