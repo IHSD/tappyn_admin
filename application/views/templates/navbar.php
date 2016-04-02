@@ -93,9 +93,9 @@
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="#">Dashboard</a>
+                    <li><a href="<?php echo base_url('home/dashboard'); ?>">Dashboard</a>
                     </li>
-                    <li><a href="#">Reporting</a>
+                    <li><a href="<?php echo base_url('home/reporting'); ?>">Reporting</a>
                     </li>
                   </ul>
                 </li>
@@ -113,7 +113,7 @@
                 </li>
                 <li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="#">View All</a>
+                    <li><a href="<?php echo base_url('users/index'); ?>">View All</a>
                     </li>
                     <li><a href="#">Search</a>
                     </li>
@@ -129,15 +129,15 @@
                 </li>
                 <li><a><i class="fa fa-edit"></i> Submissions <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="#">View All</a></li>
+                    <li><a href="<?php echo base_url('submissions/index'); ?>">View All</a></li>
                     <li><a href="#">Search</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-bank"></i> Payouts <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     <li><a href="#">View All</a></li>
-                    <li><a href="chartjs2.html">Pending</a></li>
-                    <li><a href="morisjs.html">Claimed</a></li>
+                    <li><a href="#">Pending</a></li>
+                    <li><a href="#">Claimed</a></li>
                   </ul>
                 </li>
               </ul>
