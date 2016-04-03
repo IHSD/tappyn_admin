@@ -76,6 +76,28 @@
 
 
             </div>
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id='myModal'>
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                  </div>
+                  <div class="modal-body">
+                    <h4>API Response</h4>
+                    <pre id='api_response'>
+
+                    </pre>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- start skills -->
             <!-- <h4>Skills</h4>
             <ul class="list-unstyled user_data">
@@ -279,4 +301,21 @@
       }
   })
 
+</script>
+
+<script>
+$('#myModal').on('show.bs.modal', function(event) {
+  var button = $(event.relatedTarget);
+  var account_id = button.data('account_id');
+  $('#myModalLabel').text(account_id);
+  //
+  // $.ajax({
+  //     method: 'GET',
+  //     url : "<?php echo base_url('payouts/review'); ?>/"+transfer_id,
+  //     dataType: 'json',
+  //     success : function(response) {
+  //         $('#api_response').text(JSON.stringify(response, null, 4));
+  //     }
+  // })
+})
 </script>
