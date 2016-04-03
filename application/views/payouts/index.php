@@ -83,7 +83,7 @@
   </div>
 
   <script>
-$('#myModal')on('show.bs.modal', function(event) {
+$('#myModal').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget);
     var transfer = button.data('transfer_id');
     $('#myModalLabel').text(transfer_id);
