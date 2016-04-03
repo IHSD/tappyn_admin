@@ -122,88 +122,42 @@
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
-                <h4>App Usage across versions</h4>
-                <div class="widget_summary">
-                  <div class="w_left w_25">
-                    <span>0.1.5.2</span>
-                  </div>
-                  <div class="w_center w_55">
-                    <div class="progress">
-                      <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                        <span class="sr-only">60% Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="w_right w_20">
-                    <span>123k</span>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
+                  <table class="" style="width:100%">
+                    <tr>
+                      <th style="width:37%;">
 
-                <div class="widget_summary">
-                  <div class="w_left w_25">
-                    <span>0.1.5.3</span>
-                  </div>
-                  <div class="w_center w_55">
-                    <div class="progress">
-                      <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                        <span class="sr-only">60% Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="w_right w_20">
-                    <span>53k</span>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="widget_summary">
-                  <div class="w_left w_25">
-                    <span>0.1.5.4</span>
-                  </div>
-                  <div class="w_center w_55">
-                    <div class="progress">
-                      <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
-                        <span class="sr-only">60% Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="w_right w_20">
-                    <span>23k</span>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="widget_summary">
-                  <div class="w_left w_25">
-                    <span>0.1.5.5</span>
-                  </div>
-                  <div class="w_center w_55">
-                    <div class="progress">
-                      <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                        <span class="sr-only">60% Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="w_right w_20">
-                    <span>3k</span>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="widget_summary">
-                  <div class="w_left w_25">
-                    <span>0.1.5.6</span>
-                  </div>
-                  <div class="w_center w_55">
-                    <div class="progress">
-                      <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                        <span class="sr-only">60% Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="w_right w_20">
-                    <span>1k</span>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
+                      </th>
+                      <th>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                          <p class="">Range</p>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                          <p class="">Percent</p>
+                        </div>
+                      </th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <canvas id="gender_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                      </td>
+                      <td>
+                        <table class="tile_info">
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square aero"></i>Male </p>
+                            </td>
+                            <td id='male_total'></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square purple"></i>Female </p>
+                            </td>
+                            <td id='female_total'></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
 
               </div>
             </div>
@@ -212,7 +166,7 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320 overflow_hidden">
               <div class="x_title">
-                <h2>Males</h2>
+                <h2>Males by Age Range</h2>
                 <ul class="nav navbar-right panel_toolbox">
                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li>
@@ -293,7 +247,7 @@
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320 overflow_hidden">
               <div class="x_title">
-                <h2>Females</h2>
+                <h2>Females by Age Range</h2>
                 <ul class="nav navbar-right panel_toolbox">
                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li>
@@ -446,6 +400,8 @@ var graph_data = {
     'males' : [],
     'females' : [],
 };
+var male_count = 0;
+var female_count = 0;
 $.ajax({
     method: 'get',
     url : "<?php echo base_url('home/users_by_age_gender');  ?>",
@@ -459,14 +415,19 @@ $.ajax({
             var id = '#male_'+key.replace('-','_').replace('+','');
             console.log(id);
             $(id).text(response.data.male[key]);
+            male_data = male_count + response.data.male[key];
         }
         for(var key in response.data.female)
         {
             graph_data.females.push(response.data.female[key]);
             var id = '#female_'+key.replace('-','_').replace('+','');
             $(id).text(response.data.female[key]);
+            female_count = female_count + response.data.female[key];
         }
-
+        $('#male_total').text(male_count);
+        $('#female_total').text(female_count);
+        console.log(male_count);
+        console.log(female_count);
         console.log(graph_data);
         var male_data = {
           labels: [
@@ -523,6 +484,30 @@ $.ajax({
 
           }]
         };
+        var total_data = {
+            labels : [
+                "Male",
+                "Female"
+            ],
+            datasets: [{
+                data: [male_count, female_count],
+
+                backgroundColor: [
+                  "#BDC3C7",
+                  "#9B59B6",
+                  "#455C73",
+                  "#26B99A",
+                  "#3498DB"
+                ],
+                hoverBackgroundColor: [
+                  "#CFD4D8",
+                  "#B370CF",
+                  "#34495E",
+                  "#36CAAB",
+                  "#49A9EA"
+                ]
+            }]
+        }
 
         var maleCanvasDoughnut = new Chart(document.getElementById("male_breakdown"), {
           type: 'doughnut',
@@ -534,6 +519,12 @@ $.ajax({
           type: 'doughnut',
           tooltipFillColor: "rgba(51, 51, 51, 0.55)",
           data: female_data
+        });
+
+        var totalAgeDoughnut = new Chart(document.getElementById("gender_breakdown"), {
+            type: 'doughnut',
+            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+            data : total_data
         });
     }
 })

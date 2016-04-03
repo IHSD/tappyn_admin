@@ -119,14 +119,14 @@
                     </li>
                   </ul>
                 </li>
-                <li><a><i class="fa fa-building-o"></i> Companies <span class="fa fa-chevron-down"></span></a>
+                <!-- <li><a><i class="fa fa-building-o"></i> Companies <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     <li><a href="#">View All</a>
                     </li>
                     <li><a href="#">Search</a>
                     </li>
                   </ul>
-                </li>
+                </li> -->
                 <li><a><i class="fa fa-edit"></i> Submissions <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     <li><a href="<?php echo base_url('submissions/index'); ?>">View All</a></li>

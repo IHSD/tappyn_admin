@@ -194,7 +194,7 @@ class Home extends MY_Controller
                 {
                     $gender = 'male';
                 }
-                $this->breakdown[$gender][$value->age_range] = $value->count;
+                $this->breakdown[$gender][$value->age_range] = (int)$value->count;
             }
         }
     }
