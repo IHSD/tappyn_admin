@@ -23,10 +23,12 @@ class Payouts extends MY_Controller
         $this->load->view('payouts/index', $data);
     }
 
-    public function show()
+    public function show($pid = NULL)
     {
-        $payout = $this->payout_library->get($pid);
-        
+        $this->payout->registerPostSelectCallback(array('format_callback'));
+        if(is_null($pid)) redirect("contests/index", 'refresh');
+        $payout = $this->payout_library->select('*')->where('id', $cid)->fetch()->row();
+        $this->load->view('payouts/show', array('payout' => $payout));
     }
 
     public function update()

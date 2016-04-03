@@ -1,4 +1,3 @@
-<?php var_dump($payouts); ?>
 
     <div class="page-title">
       <div class="title_left">
