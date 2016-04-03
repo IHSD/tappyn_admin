@@ -29,9 +29,13 @@
                   <thead>
                     <tr class="headings">
                         <td></td>
-                        <?php foreach(get_object_vars($contests[0]) as $key => $val): ?>
-                        <th><?php echo $key; ?>
-                        <?php endforeach; ?>
+                        <td>ID</td>
+                        <td>Company</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Submissons</td>
+                        <td>Platform</td>
+                        <td>Objective</td>
                     </tr>
                   </thead>
 
@@ -42,18 +46,13 @@
                                     <a href="<?php echo base_url().'contests/show/'.$contest->id; ?>"><span class='fa fa-edit'></span></a>
                                     <a href="https://tappyn.com/#/contest/<?php echo $contest->id; ?>" target="_blank"><span class='fa fa-eye'></span></a>
                                 </td>
-                                <?php foreach(get_object_vars($contest) as $key => $value): ?>
-                                    <td style='white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;'>
-                                    <?php
-                                    if($key == 'company')
-                                    {
-                                        echo $value->name;
-                                    } else {
-                                        echo $value;
-                                    }
-                                    ?>
-                                    </td>
-                                <?php endforeach; ?>
+                                <td><?php echo $contest->id; ?></td>
+                                <td><?php echo $contest->company->name; ?></td>
+                                <td><?php echo date('M d', strtotime($contest->start_time)); ?></td>
+                                <td><?php echo date('M d', strtotime($contest->stop_time)); ?></td>
+                                <td><?php echo $contest->submission_count; ?></td>
+                                <td><?php echo $contest->platform; ?></td>
+                                <td><?php echo snake_to_string($contest->objective); ?></td>
                             </tr>
                         <?php endforeach; ?>
                   </tbody>
