@@ -188,11 +188,11 @@ class Home extends MY_Controller
                 $gender = 'unspecified';
                 if((int)$value->gender === 1)
                 {
-                    $gender = 'female';
+                    $gender = 'male';
                 }
                 else if((int)$value->gender === 2)
                 {
-                    $gender = 'male';
+                    $gender = 'female';
                 }
                 $this->breakdown[$gender][$value->age_range] = (int)$value->count;
             }
