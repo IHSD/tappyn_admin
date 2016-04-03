@@ -37,6 +37,7 @@ class Home extends MY_Controller
             'active_contests' => $this->analytics->exec('SELECT COUNT(*) as count FROM contests WHERE start_time > "'.$date.'" AND stop_time < "'.$date.'" AND paid = 1')[0]->count,
             'submission_count' => $this->analytics->exec('SELECT COUNT(*) as count FROM submissions')[0]->count
         );
+        $data['user_breakdown'] = $this->analytics->user_summary();
         $this->load->view('home/dashboard', $data);
     }
 
@@ -78,7 +79,7 @@ class Home extends MY_Controller
     public function users_by_date()
     {
 
-        if($data = $this->analytics->users_by_date())
+        if(($data = $this->analytics->users_by_date()) !== FALSE)
         {
             $this->results['data'] = $data;
         } else {

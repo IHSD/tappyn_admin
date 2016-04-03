@@ -25,7 +25,8 @@ class Payouts extends MY_Controller
 
     public function show()
     {
-
+        $payout = $this->payout_library->get($pid);
+        
     }
 
     public function update()

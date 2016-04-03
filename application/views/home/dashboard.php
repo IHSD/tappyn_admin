@@ -1,4 +1,4 @@
-
+<?php echo json_encode($user_breakdown); ?>
 <!-- <?php var_dump($contest); ?> -->
 <div class="row">
 
@@ -44,7 +44,7 @@
 
               <div class="row x_title">
                 <div class="col-md-6">
-                  <h3>Network Activities <small>Graph title sub-title</small></h3>
+                  <h3>Users <small>Signups over time</small></h3>
                 </div>
                 <div class="col-md-6">
                   <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
@@ -61,50 +61,33 @@
                 </div>
               </div>
               <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                <div class="x_title">
-                  <h2>Top Campaign Performance</h2>
-                  <div class="clearfix"></div>
-                </div>
-
-                <div class="col-md-12 col-sm-12 col-xs-6">
-                  <div>
-                    <p>Facebook Campaign</p>
-                    <div class="">
-                      <div class="progress progress_sm" style="width: 76%;">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                      </div>
-                    </div>
+                  <div class="x_title">
+                    <h2>Summary </h2>
+                    <div class="clearfix"></div>
                   </div>
-                  <div>
-                    <p>Twitter Campaign</p>
-                    <div class="">
-                      <div class="progress progress_sm" style="width: 76%;">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                      </div>
-                    </div>
+                  <div class="x_content">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td>Today</td>
+                          <td><?php echo $user_breakdown['today']; ?></td>
+                        </tr>
+                        <tr>
+                          <td>Yesterday</td>
+                          <td><?php echo $user_breakdown['yesterday']; ?></td>
+                        </tr>
+                        <tr>
+                          <td>This Week</td>
+                          <td><?php echo $user_breakdown['this_week']; ?></td>
+                        </tr>
+                        <tr>
+                          <td>This Month</td>
+                          <td><?php echo $user_breakdown['this_month']; ?></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                </div>
-                <div class="col-md-12 col-sm-12 col-xs-6">
-                  <div>
-                    <p>Conventional Media</p>
-                    <div class="">
-                      <div class="progress progress_sm" style="width: 76%;">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <p>Bill boards</p>
-                    <div class="">
-                      <div class="progress progress_sm" style="width: 76%;">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
               </div>
-
               <div class="clearfix"></div>
             </div>
           </div>

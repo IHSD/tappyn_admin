@@ -31,6 +31,11 @@ class Payout_library
         );
     }
 
+    public function get($pid)
+    {
+
+    }
+    
     public function processReportQueryString()
     {
         if($this->input->get('fields')) $this->payout->select($this->input->get('fields'));
