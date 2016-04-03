@@ -31,6 +31,12 @@ class Payouts extends MY_Controller
         $this->load->view('payouts/show', array('payout' => $payout));
     }
 
+    public function review($transfer_id)
+    {
+        $this->load->library('stripe_transfer_library');
+        echo json_encode($this->stripe_transfer_library->retrieve($transfer_id));
+    }
+
     public function update()
     {
 

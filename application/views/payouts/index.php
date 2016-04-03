@@ -59,12 +59,13 @@
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                   </button>
-                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                  <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
-                  <h4>Text in a modal</h4>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                  <h4>API Response</h4>
+                  <pre id='api_response'>
+
+                  </pre>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -80,3 +81,20 @@
     </div>
 
   </div>
+
+  <script>
+$('#myModal')on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget);
+    var transfer = button.data('transfer_id');
+    $('#myModalLabel').text(transfer_id);
+
+    $.ajax({
+        method: 'GET',
+        url : "<?php echo base_url('payouts/review/'); ?>"+transfer_id,
+        dataType: 'json',
+        success : function(response) {
+            $('#api_response').text(response);
+        }
+    })
+})
+  </script>
