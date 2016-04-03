@@ -307,7 +307,7 @@
 $('#myModal').on('show.bs.modal', function(event) {
   var button = $(event.relatedTarget);
   var account_id = button.data('account_id');
-  var account = "<?php echo json_encode($user->account); ?>";
+  var account = <?php echo json_encode($user->account); ?>;
   console.log(account);
   console.log(JSON.parse(account));
   $('#myModalLabel').text(account_id);
