@@ -25,12 +25,10 @@ class Payout_library
     public function getAll()
     {
         $this->processReportQueryString();
-        return $this->payout->fetch()->result();
-    }
-
-    public function inContest($cid)
-    {
-        return $this->payout->where('contest_id', $cid)->fetch()->result();
+        return array(
+            'count' => $this->payout->count(),
+            'payouts' => $this->payout->fetch()->result()
+        );
     }
 
     public function processReportQueryString()

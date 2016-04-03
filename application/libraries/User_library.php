@@ -28,7 +28,7 @@ class User_library
     public function getAll()
     {
         $this->processReportQueryString();
-        $this->user_model->join('profiles', 'users.id = profiles.id', 'left')->join('users_groups', 'users.id = users_groups.user_id', 'left')->where('users_groups.group_id', 2);
+        $this->user_model->select('users.*, profiles.age, profiles.gender,profiles.state,users_groups.user_id,users_groups.group_id')->join('profiles', 'users.id = profiles.id', 'left')->join('users_groups', 'users.id = users_groups.user_id', 'left')->where('users_groups.group_id', 2);
         $count = $this->user_model->count();
         $users = $this->user_model->fetch()->result();
         return array(

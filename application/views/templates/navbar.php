@@ -107,8 +107,8 @@
                     </li>
                     <li><a href="<?php echo base_url('contests/index?status=completed'); ?>">Completed</a>
                     </li>
-                    <li><a href="#">Create</a>
-                    </li>
+                    <!-- <li><a href="#">Create</a>
+                    </li> -->
                   </ul>
                 </li>
                 <li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>

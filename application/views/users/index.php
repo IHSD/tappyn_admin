@@ -32,7 +32,7 @@
             </div>
             <div class='title-right'><?php echo $pagination; ?></div>
           </div>
-          <div class="x_content">
+          <div class="x_content" style='overflow:auto'>
             <?php if(empty($users)): ?>
                 <div class='text-center alert alert-warning col-sm-12'><strong>Sorry, there are no users to show! </strong><a href="<?php echo base_url('users/index'); ?>" ?>Try clearing your filters?</a></div>
             <?php else: ?>
@@ -51,10 +51,9 @@
                             <tr class="even pointer">
                                 <td>
                                     <a href="<?php echo base_url().'users/show/'.$user->id; ?>"><span class='fa fa-edit'></span></a>
-                                    <a href="https://tappyn.com/#/user/<?php echo $user->id; ?>" target="_blank"><span class='fa fa-eye'></span></a>
                                 </td>
                                 <?php foreach(get_object_vars($user) as $key => $value): ?>
-                                    <td>
+                                    <td style='white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;'>
                                     <?php
                                     if($key == 'company')
                                     {
