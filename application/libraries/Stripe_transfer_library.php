@@ -8,21 +8,11 @@ class Stripe_transfer_library
         $this->config->load('secrets');
         $this->api_key = $this->config->item('stripe_api_key');
         \Stripe\Stripe::setApiKey($this->api_key);
-        $this->load->model('stripe/stripe_transfer');
     }
 
     public function __get($var)
     {
         return get_instance()->$var;
-    }
-
-    public function __call($method, $arguments)
-    {
-        if(!method_exists($this->stripe_transfer, $method))
-        {
-            throw new Exception("Call to undefined method Stripe_transfer::{$method}()");
-        }
-        return call_user_func_array( array($this->stripe_account, $method), $arguments);
     }
 
     public function setApiKey($api_key)
