@@ -57,5 +57,6 @@ class Payout_library
         {
             $this->payout->order_by($this->input->get('sort_by'), 'desc');
         }
+        if($this->input->get('claimed')) $this->payout->where('claimed', $this->input->get('claimed'));;
     }
 }

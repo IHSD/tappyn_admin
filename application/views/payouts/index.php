@@ -32,7 +32,6 @@
                         <td>ID</td>
                         <td>Status</td>
                         <td>Created</td>
-                        <td>Claimed</td>
                         <td>Contest ID</td>
                         <td>User ID</td>
                     </tr>
@@ -47,7 +46,6 @@
                                 <td><?php echo $payout->id; ?></td>
                                 <td><?php echo $payout->claimed == 1 ? 'Claimed' : 'Pending'; ?></td>
                                 <td><?php echo date('M d', $payout->created_at); ?></td>
-                                <td><?php echo $payout->claimed == 1 ? date('M d', $payout->claimed_at) : '------'; ?></td>
                                 <td><a href="<?php echo base_url('payouts/show/'.$payout->id); ?>"><?php echo $payout->id; ?></a></td>
                                 <td><?php echo $payout->user_id; ?></td>
                             </tr>
