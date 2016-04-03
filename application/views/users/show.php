@@ -307,18 +307,15 @@
 $('#myModal').on('show.bs.modal', function(event) {
   var button = $(event.relatedTarget);
   var account_id = button.data('account_id');
-  var account = <?php echo json_encode($user->account); ?>;
-  console.log(account);
-  console.log(JSON.parse(account));
   $('#myModalLabel').text(account_id);
   //
-  // $.ajax({
-  //     method: 'GET',
-  //     url : "<?php echo base_url('payouts/review'); ?>/"+transfer_id,
-  //     dataType: 'json',
-  //     success : function(response) {
-  //         $('#api_response').text(JSON.stringify(response, null, 4));
-  //     }
-  // })
+  $.ajax({
+      method: 'GET',
+      url : "<?php echo base_url('users/accounts'); ?>/"+account_id,
+      dataType: 'json',
+      success : function(response) {
+          $('#api_response').text(JSON.stringify(response, null, 4));
+      }
+  })
 })
 </script>
