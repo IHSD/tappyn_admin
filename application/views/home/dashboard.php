@@ -415,7 +415,7 @@ $.ajax({
             var id = '#male_'+key.replace('-','_').replace('+','');
             console.log(id);
             $(id).text(response.data.male[key]);
-            male_data = male_count + response.data.male[key];
+            male_count = male_count + response.data.male[key];
         }
         for(var key in response.data.female)
         {
