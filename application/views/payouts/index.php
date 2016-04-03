@@ -26,7 +26,7 @@
             <?php else: ?>
                 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                   <thead>
-                    <tr class="headings"
+                    <tr class="headings">
                         <td>ID</td>
                         <td>Status</td>
                         <td>Created</td>
@@ -42,8 +42,8 @@
                                 <td><?php echo $payout->id; ?></td>
                                 <td><?php echo $payout->claimed == 1 ? 'Claimed' : 'Pending'; ?></td>
                                 <td><?php echo date('M d', $payout->created_at); ?></td>
-                                <td><?php echo $payout->claimed == 1 ? $payout->transfer_id : '---------'; ?></td>
-                                <td><a href="<?php echo base_url('payouts/show/'.$payout->id); ?>"><?php echo $payout->id; ?></a></td>
+                                <td><?php echo $payout->claimed == 1 ? '<a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">'.$payout->transfer_id.'</a>' : '---------'; ?></td>
+                                <td><?php echo $payout->contest_id; ?>
                                 <td><?php echo $payout->user_id; ?></td>
                             </tr>
                         <?php endforeach; ?>
