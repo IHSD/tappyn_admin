@@ -52,7 +52,7 @@
                 </table>
             <?php endif; ?>
           </div>
-          <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id='myModal'>
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
 
