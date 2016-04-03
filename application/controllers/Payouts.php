@@ -25,9 +25,9 @@ class Payouts extends MY_Controller
 
     public function show($pid = NULL)
     {
-        $this->payout->registerPostSelectCallback(array('format_callback'));
+        //$this->payout->registerPostSelectCallback(array('format_callback'));
         if(is_null($pid)) redirect("contests/index", 'refresh');
-        $payout = $this->payout_library->select('*')->where('id', $cid)->fetch()->row();
+        $payout = $this->payout_library->select('*')->where('id', $pid)->fetch()->row();
         $this->load->view('payouts/show', array('payout' => $payout));
     }
 
