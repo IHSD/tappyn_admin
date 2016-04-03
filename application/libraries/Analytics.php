@@ -3,7 +3,7 @@
 class Analytics
 {
     protected $db;
-
+    protected $error;
     public function __construct()
     {
 
@@ -134,7 +134,8 @@ class Analytics
 
     public function users_by_date()
     {
-        return $this->exec('SELECT COUNT(*) as count, DATE(FROM_UNIXTIME(created_on)) as created FROM users JOIN users_groups ON users_groups.user_id = users.id WHERE users_groups.group_id = 2 GROUP BY created');
+        $start = strtotime('2016-03-17');
+        return $this->exec('SELECT COUNT(*) as count, DATE(FROM_UNIXTIME(created_on)) as created, created_on FROM users JOIN users_groups ON users_groups.user_id = users.id WHERE users_groups.group_id = 2 AND users.created_on > '.$start.' GROUP BY created');
 
     }
 
@@ -148,9 +149,13 @@ class Analytics
         else
         {
             $this->error = $this->db->error()['message'];
-            die($this->db->error()['message']);
         }
         return FALSE;
+    }
+
+    public function error()
+    {
+        return $this->error;
     }
 
     public function submissions_by_time_range()
