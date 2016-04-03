@@ -311,7 +311,7 @@ $('#myModal').on('show.bs.modal', function(event) {
   //
   $.ajax({
       method: 'GET',
-      url : "<?php echo base_url('users/accounts'); ?>/"+account_id,
+      url : "<?php echo base_url('users/account'); ?>/"+account_id,
       dataType: 'json',
       success : function(response) {
           $('#api_response').text(JSON.stringify(response, null, 4));
