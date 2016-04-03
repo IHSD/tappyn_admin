@@ -135,9 +135,9 @@
                 </li>
                 <li><a><i class="fa fa-bank"></i> Payouts <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="#">View All</a></li>
-                    <li><a href="#">Pending</a></li>
-                    <li><a href="#">Claimed</a></li>
+                    <li><a href="<?php echo base_url('payouts/index'); ?>">View All</a></li>
+                    <li><a href="<?php echo base_url('payouts/index?claimed=0'); ?>">Pending</a></li>
+                    <li><a href="<?php echo base_url('payouts/index?claimed=1'); ?>">Claimed</a></li>
                   </ul>
                 </li>
               </ul>
