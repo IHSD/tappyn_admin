@@ -96,6 +96,12 @@ class Users extends MY_Controller
         ));
     }
 
+    public function account($account_id)
+    {
+        $this->load->library('stripe_account_library');
+        echo json_encode($this->stripe_account_library->get($account_id));
+    }
+
     public function votes_by_date()
     {
 

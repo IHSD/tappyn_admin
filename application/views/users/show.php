@@ -44,7 +44,7 @@
           <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
 
             <h3><?php echo $user->first_name.' '.$user->last_name; ?></h3>
-            <?php if($user->active == 0): ?>
+            <?php if($user->active == 1): ?>
                     <i class='fa fa-warning'></i> This user's email has not been verified yet!
             <?php endif; ?>
             <div class='clearfix'></div>
@@ -72,7 +72,7 @@
               <p class='title'>Stripe Customer ID</p>
               <p><?php echo is_null($user->stripe_customer_id) ? 'Not Setup' : $user->stripe_customer_id; ?></p>
               <p class='title'>Stripe Account ID</p>
-              <p><?php echo is_null($user->account) ? 'Not Setup' : $user->account->account_id; ?></p>
+              <p><?php echo is_null($user->account) ? 'Not Setup' : '<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" data-transfer_id="'.$payout->transfer_id.'">'.$user->account->account_id."</a>"; ?></p>
 
 
             </div>
