@@ -72,7 +72,7 @@
               <p class='title'>Stripe Customer ID</p>
               <p><?php echo is_null($user->stripe_customer_id) ? 'Not Setup' : $user->stripe_customer_id; ?></p>
               <p class='title'>Stripe Account ID</p>
-              <p><?php echo is_null($user->account) ? 'Not Setup' : '<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" data-transfer_id="'.$user->account.'">'.$user->account->account_id."</a>"; ?></p>
+              <p><?php echo is_null($user->account) ? 'Not Setup' : '<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" data-account_id="'.$user->account->account_id.'">'.$user->account->account_id."</a>"; ?></p>
 
 
             </div>
