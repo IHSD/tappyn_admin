@@ -11,6 +11,12 @@ class Payout_library
     {
         if(! method_exists($this->payout, $method))
         {
+            throw new Exception("Undefined method Payout_library::{$method}()");
+        }
+        return call_user_func_array(array($this->payout, $method), $args);
+    }
+
+    public function __get($var)
     {
         return get_instance()->$var;
     }
@@ -51,6 +57,6 @@ class Payout_library
         {
             $this->payout->order_by($this->input->get('sort_by'), 'desc');
         }
-        if($this->input->get('claimed') !+= FALSE) $this->payout->where('claimed', $this->input->get('claimed'));;
+        if($this->input->get('claimed') !== FALSE) $this->payout->where('claimed', $this->input->get('claimed'));;
     }
 }
