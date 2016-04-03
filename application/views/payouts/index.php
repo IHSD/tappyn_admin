@@ -93,7 +93,7 @@ $('#myModal').on('show.bs.modal', function(event) {
         url : "<?php echo base_url('payouts/review'); ?>/"+transfer_id,
         dataType: 'json',
         success : function(response) {
-            $('#api_response').text(response);
+            $('#api_response').text(JSON.stringify(response));
         }
     })
 })
