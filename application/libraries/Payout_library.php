@@ -65,8 +65,8 @@ class Payout_library
         {
             $this->payout->order_by($this->input->get('sort_by'), 'desc');
         }
-        if($this->input->get('claimed') !== FALSE) {
-            if((int)$this->input->get('claimed') === 1 || (int)$this->input->get('claimed') === 0) $this->payout->where('claimed', $this->input->get('claimed'));
+        if($this->input->get('claimed') !== FALSE && !is_null($this->input->get('claimed'))) {
+            $this->payout->where('claimed', $this->input->get('claimed'));
         }
     }
 }
