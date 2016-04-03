@@ -33,9 +33,12 @@ class Payout_library
 
     public function get($pid)
     {
+        $this->registerPostSelectCallback(array(
+            'user_callback'
+        ));
 
     }
-    
+
     public function processReportQueryString()
     {
         if($this->input->get('fields')) $this->payout->select($this->input->get('fields'));
@@ -62,6 +65,8 @@ class Payout_library
         {
             $this->payout->order_by($this->input->get('sort_by'), 'desc');
         }
-        if($this->input->get('claimed') !== FALSE) $this->payout->where('claimed', $this->input->get('claimed'));;
+        if($this->input->get('claimed') !== FALSE) {
+            if($this->input->get('claimed') == 1 || $this->input->get('claimed') == 0) $this->payout->where('claimed', $this->input->get('claimed'));
+        }
     }
 }
