@@ -90,7 +90,7 @@ $('#myModal').on('show.bs.modal', function(event) {
 
     $.ajax({
         method: 'GET',
-        url : "<?php echo base_url('payouts/review/'); ?>"+transfer_id,
+        url : "<?php echo base_url('payouts/review'); ?>/"+transfer_id,
         dataType: 'json',
         success : function(response) {
             $('#api_response').text(response);
