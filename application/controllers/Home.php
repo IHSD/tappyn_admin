@@ -26,6 +26,18 @@ class Home extends MY_Controller
                 '55+' => 0
             )
         );
+        $this->days = array(
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        );
+        $this->hours = array();
+        for($i = 0; $i < 24; $i++) $this->hours[] = $i;
     }
 
     public function dashboard()
@@ -45,6 +57,11 @@ class Home extends MY_Controller
     public function users()
     {
         $this->load->view('home/users');
+    }
+
+    public function users_by_day()
+    {
+
     }
 
     public function submissions()
@@ -89,6 +106,9 @@ class Home extends MY_Controller
         }
         echo json_encode($this->results);
     }
+
+
+
 
     public function users_by_age_gender()
     {
@@ -159,7 +179,7 @@ class Home extends MY_Controller
 
     public function submissions_by_date()
     {
-        if($data = array_reverse($this->analytics->submissions_by_date()))
+        if($data = ($this->analytics->submissions_by_date()))
         {
             $this->results['data'] = $data;
         } else {
