@@ -122,6 +122,9 @@
               <button type="submit" class="btn btn-primary">Update</button>
             </div>
           </div>
+          <?php echo form_hidden('id', $user->id);?>
+          <?php echo form_hidden($csrf); ?>
+
         <?php echo form_close(); ?>
       </div>
     </div>
