@@ -174,7 +174,7 @@ class Analytics
 
     public function users_by_hour()
     {
-        return $this->exec('SELECT COUNT(*) as count, HOUR(FROM_UNIXTIME(created_on)) as hour FROM users GROUP BY hour');
+        return $this->exec('SELECT COUNT(*) as count, HOUR(FROM_UNIXTIME(created_on)) as hour FROM users WHERE DATE(FROM_UNIXTIME(created_on)) > "2016-03-16" GROUP BY hour');
     }
 
     public function submissions_by_day()
