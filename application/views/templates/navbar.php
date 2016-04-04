@@ -42,6 +42,7 @@
   <script src="<?php echo base_url('assets/js/echart/green.js'); ?>"></script>
    <script src="<?php echo base_url('assets/js/input_mask/jquery.inputmask.js'); ?>"></script>
    <script src="<?php echo base_url('assets/js/chartjs/chart.min.js'); ?>"></script>
+   <script src="<?php echo base_url('assets/js/datepicker/bootstrap-datepicker.js'); ?>"></script>
   <!--[if lt IE 9]>
             <script src="../<?php echo base_url(); ?>'assets/js/ie8-responsive-file-warning.js"></script>
             <![endif]-->
@@ -140,6 +141,12 @@
                     <li><a href="<?php echo base_url('payouts/index?claimed=1'); ?>">Claimed</a></li>
                   </ul>
                 </li>
+                <li><a><i class="fa fa-bank"></i> Vouchers <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="<?php echo base_url('vouchers/index'); ?>">View All</a></li>
+                    <li><a href="<?php echo base_url('vouchers/create'); ?>">Create</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
             <div class="menu_section">
@@ -235,3 +242,4 @@
 
       <div class="right_col" role="main">
         <div class="">
+            

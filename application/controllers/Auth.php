@@ -544,11 +544,9 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'required');
 		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'required');
 		$this->form_validation->set_rules('phone', $this->lang->line('edit_user_validation_phone_label'), 'required');
-		$this->form_validation->set_rules('company', $this->lang->line('edit_user_validation_company_label'), 'required');
 
 		if (isset($_POST) && !empty($_POST))
 		{
-			var_dump($this->input->post());
 			// do we have a valid request?
 			if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id'))
 			{
@@ -603,11 +601,11 @@ class Auth extends CI_Controller {
 				    $this->session->set_flashdata('message', $this->ion_auth->messages() );
 				    if ($this->ion_auth->is_admin())
 					{
-						redirect('auth', 'refresh');
+						redirect('auth/edit_user/'.$id, 'refresh');
 					}
 					else
 					{
-						redirect('/', 'refresh');
+						redirect('auth/edit_user/'.$id, 'refresh');
 					}
 
 			    }
@@ -680,7 +678,6 @@ class Auth extends CI_Controller {
 			'type' => 'password',
 			'class' => 'form-control'
 		);
-
 		$this->_render_page('auth/edit_user', $this->data);
 	}
 

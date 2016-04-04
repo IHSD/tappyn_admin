@@ -281,7 +281,6 @@ class MY_Model extends CI_Model
       {
           die($this->db->error()['message']);
       }
-      error_log($this->db->last_query());
       return $this;
   }
 
@@ -367,7 +366,7 @@ class MY_Model extends CI_Model
      }
      return TRUE;
   }
-  
+
   public function clearCallbacks()
   {
       $this->post_select = array();
