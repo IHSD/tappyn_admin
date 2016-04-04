@@ -75,7 +75,7 @@
           <!-- menu prile quick info -->
           <div class="profile">
             <div class="profile_pic">
-              <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              <img src="<?php echo base_url('assets/images/tappyn_logo.png'); ?>" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
@@ -242,4 +242,3 @@
 
       <div class="right_col" role="main">
         <div class="">
-            
