@@ -327,7 +327,7 @@
                   <div class="col-md-9 col-sm-9 col-xs-12">
                     <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
                     <div style="width: 100%;">
-                      <div id="submissions-a" class="demo-placeholder" style="width: 100%; height:270px;"></div>
+                      <div id="sub_mainb" class="demo-placeholder" style="width: 100%; height:270px;"></div>
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
@@ -640,6 +640,60 @@
       }
   })
 
+  var submyChart9 = echarts.init(document.getElementById('sub_mainb'), theme);
+  var sub_chart_data = {
+      dates : [],
+      amounts : []
+  };
+  $.ajax({
+      url : "<?php echo base_url('home/submissions_by_date'); ?>",
+      dataType: 'json',
+      success: function(response)
+      {
+          if(response.success)
+          {
+              for(var i = 0; i < response.data.length; i++)
+              {
+                 sub_chart_data.dates.push(response.data[i].created);
+                 sub_chart_data.amounts.push(response.data[i].count);
+              }
+              myChart9.setOption({
+                title: {
+                  x: 'center',
+                  y: 'top',
+                  padding: [0, 0, 20, 0],
+                  text: 'Submissions Over Time',
+                  textStyle: {
+                    fontSize: 15,
+                    fontWeight: 'normal'
+                  }
+                },
+                tooltip: {
+                  trigger: 'axis'
+                },
+                calculable: true,
+                xAxis: [{
+                  type: 'category',
+                  data: sub_chart_data.dates
+                }],
+                yAxis: [{
+                  type: 'value',
+                  name: 'Amount',
+                  axisLabel: {
+                    formatter: '{value}'
+                  }
+                }],
+                series: [{
+                  name: 'Submissions',
+                  type: 'line',
+                  data: sub_chart_data.amounts
+                }]
+              });
+          } else {
+              alert('error fetching data from contest url');
+          }
+      }
+  })
 </script>
 
 
