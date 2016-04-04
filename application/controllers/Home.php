@@ -38,6 +38,7 @@ class Home extends MY_Controller
             'submission_count' => $this->analytics->exec('SELECT COUNT(*) as count FROM submissions')[0]->count
         );
         $data['user_breakdown'] = $this->analytics->user_summary();
+        $data['submission_breakdown'] = $this->analytics->submission_summary();
         $this->load->view('home/dashboard', $data);
     }
 

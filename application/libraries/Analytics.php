@@ -153,6 +153,20 @@ class Analytics
         );
     }
 
+    public function submission_summary()
+    {
+        $today = date('Y-m-d');
+        $yesterday = date('Y-m-d', strtotime('-1 day'));
+        $this_week = date('Y-m-d', strtotime('last Monday'));
+        $this_month = date('Y-m-d', strtotime(date('Y-m-01')));
+        return array(
+            'today' => $this->exec('SELECT COUNT(*) as count FROM submissions WHERE DATE(created_at) >= "'.$today.'"')[0]->count,
+            'yesterday' => $this->exec('SELECT COUNT(*) as count FROM submissions WHERE DATE(created_at) >= "'.$yesterday.'"')[0]->count,
+            'this_week' => $this->exec('SELECT COUNT(*) as count FROM submissions WHERE DATE(created_at) >= "'.$this_week.'"')[0]->count,
+            'this_month' => $this->exec('SELECT COUNT(*) as count FROM submissions WHERE DATE(created_at) >= "'.$this_month.'"')[0]->count,
+        );
+    }
+
     public function exec($query)
     {
         $data = $this->db->query($query);
