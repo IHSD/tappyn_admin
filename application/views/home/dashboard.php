@@ -1,96 +1,424 @@
 
-<!-- <?php var_dump($contest); ?> -->
 <div class="row">
 
-  <div class="clearfix"></div>
+    <div class="clearfix"></div>
 
-          <div class="row tile_count">
-            <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-              <div class="left"></div>
-              <div class="right_test">
+    <div class="row tile_count">
+        <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right_test">
                 <span class="count_top"><i class="fa fa-user"></i> Users</span>
                 <div class="count"><?php echo $user_count; ?></div>
-              </div>
             </div>
-            <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-              <div class="left"></div>
-              <div class="right_test">
+        </div>
+        <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right_test">
                 <span class="count_top"><i class="fa fa-clock-o"></i> Companies</span>
                 <div class="count green"><?php echo $company_count; ?></div>
-              </div>
             </div>
-            <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-              <div class="left"></div>
-              <div class="right_test">
+        </div>
+        <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right_test">
                 <span class="count_top"><i class="fa fa-clock-o"></i> Active Contests</span>
                 <div class="count"><?php echo $active_contests; ?></div>
-              </div>
             </div>
-            <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-              <div class="left"></div>
-              <div class="right_test">
+        </div>
+        <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right_test">
                 <span class="count_top"><i class="fa fa-clock-o"></i> Submissions</span>
                 <div class="count green"><?php echo $submission_count; ?></div>
-              </div>
             </div>
-
-
         </div>
-        <div class='clearfix'></div>
 
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
+
+    </div>
+    <div class='clearfix'></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="dashboard_graph">
 
-              <div class="row x_title">
-                <div class="col-md-6">
-                  <h3>Users <small>Signups over time</small></h3>
+                <div class="row x_title">
+                    <div class="col-md-6">
+                        <h3>Users <small>Signups over time</small></h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                  <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                  </div>
-                </div>
-              </div>
 
-              <div class="col-md-9 col-sm-9 col-xs-12">
-                <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
-                <div style="width: 100%;">
-                  <div id="mainb" class="demo-placeholder" style="width: 100%; height:270px;"></div>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
+                    <div style="width: 100%;">
+                        <div id="mainb" class="demo-placeholder" style="width: 100%; height:270px;"></div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                  <div class="x_title">
-                    <h2>Summary </h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <table class="table">
-                      <tbody>
-                        <tr>
-                          <td>Today</td>
-                          <td><?php echo $user_breakdown['today']; ?></td>
-                        </tr>
-                        <tr>
-                          <td>Yesterday</td>
-                          <td><?php echo $user_breakdown['yesterday']; ?></td>
-                        </tr>
-                        <tr>
-                          <td>This Week</td>
-                          <td><?php echo $user_breakdown['this_week']; ?></td>
-                        </tr>
-                        <tr>
-                          <td>This Month</td>
-                          <td><?php echo $user_breakdown['this_month']; ?></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-              </div>
-              <div class="clearfix"></div>
+                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                    <div class="x_title">
+                        <h2>Summary </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Today</td>
+                                    <td><?php echo $user_breakdown['today']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Yesterday</td>
+                                    <td><?php echo $user_breakdown['yesterday']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>This Week</td>
+                                    <td><?php echo $user_breakdown['this_week']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>This Month</td>
+                                    <td><?php echo $user_breakdown['this_month']; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
             </div>
-          </div>
+        </div>
+
+    </div>
+    <br />
+
+    <div class="row">
+
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                    <h2>Genders</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="" style="width:100%">
+                        <tr>
+                            <th style="width:37%;">
+
+                            </th>
+                            <th>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                    <p class="">Range</p>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <p class="">Percent</p>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <canvas id="gender_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                            </td>
+                            <td>
+                                <table class="tile_info">
+                                    <tr>
+                                        <td>
+                                            <p><i class="fa fa-square aero"></i>Male </p>
+                                        </td>
+                                        <td id='male_total'></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p><i class="fa fa-square purple"></i>Female </p>
+                                        </td>
+                                        <td id='female_total'></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title">
+                    <h2>Males by Age Range</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings 1</a>
+                                </li>
+                                <li><a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <table class="" style="width:100%">
+                        <tr>
+                            <th style="width:37%;">
+
+                            </th>
+                            <th>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                    <p class="">Range</p>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <p class="">Percent</p>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <canvas id="male_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                            </td>
+                            <td>
+                                <table class="tile_info">
+                                    <tr>
+                                        <td>
+                                            <p><i class="fa fa-square aero"></i>18-24 </p>
+                                        </td>
+                                        <td id='male_18_24'></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p><i class="fa fa-square purple"></i>25-34 </p>
+                                        </td>
+                                        <td id='male_25_34'></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
+                                        </td>
+                                        <td id='male_35_44'></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p><i class="fa fa-square green"></i>45-54 </p>
+                                        </td>
+                                        <td id='male_45_54'></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p><i class="fa fa-square blue"></i>55+ </p>
+                                        </td>
+                                        <td id='male_55'></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel tile fixed_height_320 overflow_hidden">
+                    <div class="x_title">
+                        <h2>Females by Age Range</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <table class="" style="width:100%">
+                            <tr>
+                                <th style="width:37%;">
+
+                                </th>
+                                <th>
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                        <p class="">Range</p>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                        <p class="">Percent</p>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <canvas id="female_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                                </td>
+                                <td>
+                                    <table class="tile_info">
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square aero"></i>18-24 </p>
+                                            </td>
+                                            <td id='female_18_24'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square purple"></i>25-34 </p>
+                                            </td>
+                                            <td id='female_25_34'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
+                                            </td>
+                                            <td id='female_35_44'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square green"></i>45-54 </p>
+                                            </td>
+                                            <td id='female_45_54'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square blue"></i>55+ </p>
+                                            </td>
+                                            <td id='female_55'></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Users By Day</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a href="#"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="users_by_day" style="height:350px;"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Users By Hour</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a href="#"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="users_by_hour" style="height:350px;"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="dashboard_graph">
+
+                    <div class="row x_title">
+                        <div class="col-md-6">
+                            <h3>Submissions <small> over time</small></h3>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
+                        <div style="width: 100%;">
+                            <div id="sub_mainb" class="demo-placeholder" style="width: 100%; height:270px;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                        <div class="x_title">
+                            <h2>Summary </h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Today</td>
+                                        <td><?php echo $submission_breakdown['today']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yesterday</td>
+                                        <td><?php echo $submission_breakdown['yesterday']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>This Week</td>
+                                        <td><?php echo $submission_breakdown['this_week']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>This Month</td>
+                                        <td><?php echo $submission_breakdown['this_month']; ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
 
         </div>
         <br />
@@ -98,608 +426,571 @@
         <div class="row">
 
 
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="x_panel tile fixed_height_320">
-              <div class="x_title">
-                <h2>Genders</h2>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-                  <table class="" style="width:100%">
-                    <tr>
-                      <th style="width:37%;">
-
-                      </th>
-                      <th>
-                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                          <p class="">Range</p>
-                        </div>
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                          <p class="">Percent</p>
-                        </div>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>
-                        <canvas id="gender_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                      </td>
-                      <td>
-                        <table class="tile_info">
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square aero"></i>Male </p>
-                            </td>
-                            <td id='male_total'></td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square purple"></i>Female </p>
-                            </td>
-                            <td id='female_total'></td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="x_panel tile fixed_height_320 overflow_hidden">
-              <div class="x_title">
-                <h2>Males by Age Range</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <table class="" style="width:100%">
-                  <tr>
-                    <th style="width:37%;">
-
-                    </th>
-                    <th>
-                      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                        <p class="">Range</p>
-                      </div>
-                      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                        <p class="">Percent</p>
-                      </div>
-                    </th>
-                  </tr>
-                  <tr>
-                    <td>
-                      <canvas id="male_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                    </td>
-                    <td>
-                      <table class="tile_info">
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square aero"></i>18-24 </p>
-                          </td>
-                          <td id='male_18_24'></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square purple"></i>25-34 </p>
-                          </td>
-                          <td id='male_25_34'></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
-                          </td>
-                          <td id='male_35_44'></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square green"></i>45-54 </p>
-                          </td>
-                          <td id='male_45_54'></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square blue"></i>55+ </p>
-                          </td>
-                          <td id='male_55'></td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="x_panel tile fixed_height_320 overflow_hidden">
-              <div class="x_title">
-                <h2>Females by Age Range</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <table class="" style="width:100%">
-                  <tr>
-                    <th style="width:37%;">
-
-                    </th>
-                    <th>
-                      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                        <p class="">Range</p>
-                      </div>
-                      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                        <p class="">Percent</p>
-                      </div>
-                    </th>
-                  </tr>
-                  <tr>
-                    <td>
-                      <canvas id="female_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                    </td>
-                    <td>
-                      <table class="tile_info">
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square aero"></i>18-24 </p>
-                          </td>
-                          <td id='female_18_24'></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square purple"></i>25-34 </p>
-                          </td>
-                          <td id='female_25_34'></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
-                          </td>
-                          <td id='female_35_44'></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square green"></i>45-54 </p>
-                          </td>
-                          <td id='female_45_54'></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <p><i class="fa fa-square blue"></i>55+ </p>
-                          </td>
-                          <td id='female_55'></td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class='clearfix'></div>
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="dashboard_graph">
-
-                  <div class="row x_title">
-                    <div class="col-md-6">
-                      <h3>Submissions <small> over time</small></h3>
-                    </div>
-                    <div class="col-md-6">
-                      <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                        <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
-                    <div style="width: 100%;">
-                      <div id="sub_mainb" class="demo-placeholder" style="width: 100%; height:270px;"></div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                      <div class="x_title">
-                        <h2>Summary </h2>
-                        <div class="clearfix"></div>
-                      </div>
-                      <div class="x_content">
-                        <table class="table">
-                          <tbody>
-                            <tr>
-                              <td>Today</td>
-                              <td><?php echo $submission_breakdown['today']; ?></td>
-                            </tr>
-                            <tr>
-                              <td>Yesterday</td>
-                              <td><?php echo $submission_breakdown['yesterday']; ?></td>
-                            </tr>
-                            <tr>
-                              <td>This Week</td>
-                              <td><?php echo $submission_breakdown['this_week']; ?></td>
-                            </tr>
-                            <tr>
-                              <td>This Month</td>
-                              <td><?php echo $submission_breakdown['this_month']; ?></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-
-            </div>
-            <br />
-
-            <div class="row">
-
-
-              <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel tile fixed_height_320">
-                  <div class="x_title">
-                    <h2>Genders</h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                      <table class="" style="width:100%">
-                        <tr>
-                          <th style="width:37%;">
+                    <div class="x_title">
+                        <h2>Genders</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table class="" style="width:100%">
+                            <tr>
+                                <th style="width:37%;">
 
-                          </th>
-                          <th>
-                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                              <p class="">Range</p>
-                            </div>
-                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                              <p class="">Percent</p>
-                            </div>
-                          </th>
-                        </tr>
-                        <tr>
-                          <td>
-                            <canvas id="sub_gender_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                          </td>
-                          <td>
-                            <table class="tile_info">
-                              <tr>
+                                </th>
+                                <th>
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                        <p class="">Range</p>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                        <p class="">Percent</p>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
                                 <td>
-                                  <p><i class="fa fa-square aero"></i>Male </p>
+                                    <canvas id="sub_gender_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
                                 </td>
-                                <td id='sub_male_total'></td>
-                              </tr>
-                              <tr>
                                 <td>
-                                  <p><i class="fa fa-square purple"></i>Female </p>
+                                    <table class="tile_info">
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square aero"></i>Male </p>
+                                            </td>
+                                            <td id='sub_male_total'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square purple"></i>Female </p>
+                                            </td>
+                                            <td id='sub_female_total'></td>
+                                        </tr>
+                                    </table>
                                 </td>
-                                <td id='sub_female_total'></td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
+                            </tr>
+                        </table>
 
-                  </div>
+                    </div>
                 </div>
-              </div>
+            </div>
 
-              <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel tile fixed_height_320 overflow_hidden">
-                  <div class="x_title">
-                    <h2>Males by Age Range</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
+                    <div class="x_title">
+                        <h2>Males by Age Range</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
                         </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
 
-                    <table class="" style="width:100%">
-                      <tr>
-                        <th style="width:37%;">
+                        <table class="" style="width:100%">
+                            <tr>
+                                <th style="width:37%;">
 
-                        </th>
-                        <th>
-                          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                            <p class="">Range</p>
-                          </div>
-                          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                            <p class="">Percent</p>
-                          </div>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td>
-                          <canvas id="sub_male_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                        </td>
-                        <td>
-                          <table class="tile_info">
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square aero"></i>18-24 </p>
-                              </td>
-                              <td id='sub_male_18_24'></td>
+                                </th>
+                                <th>
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                        <p class="">Range</p>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                        <p class="">Percent</p>
+                                    </div>
+                                </th>
                             </tr>
                             <tr>
-                              <td>
-                                <p><i class="fa fa-square purple"></i>25-34 </p>
-                              </td>
-                              <td id='sub_male_25_34'></td>
+                                <td>
+                                    <canvas id="sub_male_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                                </td>
+                                <td>
+                                    <table class="tile_info">
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square aero"></i>18-24 </p>
+                                            </td>
+                                            <td id='sub_male_18_24'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square purple"></i>25-34 </p>
+                                            </td>
+                                            <td id='sub_male_25_34'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
+                                            </td>
+                                            <td id='sub_male_35_44'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square green"></i>45-54 </p>
+                                            </td>
+                                            <td id='sub_male_45_54'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square blue"></i>55+ </p>
+                                            </td>
+                                            <td id='sub_male_55'></td>
+                                        </tr>
+                                    </table>
+                                </td>
                             </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
-                              </td>
-                              <td id='sub_male_35_44'></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square green"></i>45-54 </p>
-                              </td>
-                              <td id='sub_male_45_54'></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square blue"></i>55+ </p>
-                              </td>
-                              <td id='sub_male_55'></td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
+                        </table>
+                    </div>
                 </div>
-              </div>
+            </div>
 
-              <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel tile fixed_height_320 overflow_hidden">
-                  <div class="x_title">
-                    <h2>Females by Age Range</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
+                    <div class="x_title">
+                        <h2>Females by Age Range</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
                         </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
 
-                    <table class="" style="width:100%">
-                      <tr>
-                        <th style="width:37%;">
+                        <table class="" style="width:100%">
+                            <tr>
+                                <th style="width:37%;">
 
-                        </th>
-                        <th>
-                          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                            <p class="">Range</p>
-                          </div>
-                          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                            <p class="">Percent</p>
-                          </div>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td>
-                          <canvas id="sub_female_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                        </td>
-                        <td>
-                          <table class="tile_info">
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square aero"></i>18-24 </p>
-                              </td>
-                              <td id='sub_female_18_24'></td>
+                                </th>
+                                <th>
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                        <p class="">Range</p>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                        <p class="">Percent</p>
+                                    </div>
+                                </th>
                             </tr>
                             <tr>
-                              <td>
-                                <p><i class="fa fa-square purple"></i>25-34 </p>
-                              </td>
-                              <td id='sub_female_25_34'></td>
+                                <td>
+                                    <canvas id="sub_female_breakdown" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                                </td>
+                                <td>
+                                    <table class="tile_info">
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square aero"></i>18-24 </p>
+                                            </td>
+                                            <td id='sub_female_18_24'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square purple"></i>25-34 </p>
+                                            </td>
+                                            <td id='sub_female_25_34'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
+                                            </td>
+                                            <td id='sub_female_35_44'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square green"></i>45-54 </p>
+                                            </td>
+                                            <td id='sub_female_45_54'></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square blue"></i>55+ </p>
+                                            </td>
+                                            <td id='sub_female_55'></td>
+                                        </tr>
+                                    </table>
+                                </td>
                             </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square" style="color:5B5D6E"></i>35-44 </p>
-                              </td>
-                              <td id='sub_female_35_44'></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square green"></i>45-54 </p>
-                              </td>
-                              <td id='sub_female_45_54'></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square blue"></i>55+ </p>
-                              </td>
-                              <td id='sub_female_55'></td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
+                        </table>
+                    </div>
                 </div>
-              </div> --> -->
+            </div>
 
+            <div class='row'>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Submissions By Day</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a href="#"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Settings 1</a>
+                                        </li>
+                                        <li><a href="#">Settings 2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
 
-          </div>
+                            <div id="submissions_by_day" style="height:350px;"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Submissions By Hour</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a href="#"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Settings 1</a>
+                                        </li>
+                                        <li><a href="#">Settings 2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <div id="submissions_by_hour" style="height:350px;"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
     </div>
+</div>
+</div>
 
 <script>
-  var myChart9 = echarts.init(document.getElementById('mainb'), theme);
-  var chart_data = {
-      dates : [],
-      amounts : []
-  };
-  $.ajax({
-      url : "<?php echo base_url('home/users_by_date'); ?>",
-      dataType: 'json',
-      success: function(response)
-      {
-          if(response.success)
-          {
-              for(var i = 0; i < response.data.length; i++)
-              {
-                 chart_data.dates.push(response.data[i].created);
-                 chart_data.amounts.push(response.data[i].count);
-              }
-              myChart9.setOption({
-                title: {
-                  x: 'center',
-                  y: 'top',
-                  padding: [0, 0, 20, 0],
-                  text: 'User Signups',
-                  textStyle: {
+var users_by_day = echarts.init(document.getElementById('users_by_day'), theme);
+$.ajax({
+    url : "<?php echo base_url('home/users_by_day'); ?>",
+    dataType: "json",
+    success:function(response) {
+        if(!response.success)
+        {
+            return;
+        }
+        users_by_day.setOption({
+            title: {
+                x: 'center',
+                y: 'top',
+                padding: [0, 0, 20, 0],
+                text: 'User Signups By Day',
+                textStyle: {
                     fontSize: 15,
                     fontWeight: 'normal'
-                  }
-                },
-                tooltip: {
-                  trigger: 'axis'
-                },
-                calculable: true,
-                xAxis: [{
-                  type: 'category',
-                  data: chart_data.dates
-                }],
-                yAxis: [{
-                  type: 'value',
-                  name: 'Amount',
-                  axisLabel: {
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                data: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            }],
+            yAxis: [{
+                type: 'value',
+                name: 'Amount',
+                axisLabel: {
                     formatter: '{value}'
-                  }
-                }],
-                series: [{
-                  name: 'SignUps',
-                  type: 'line',
-                  data: chart_data.amounts
-                }]
-              });
-          } else {
-              alert('error fetching data from contest url');
-          }
-      }
-  })
+                }
+            }],
+            series: [{
+                name: 'SignUps',
+                type: 'bar',
+                data: response.data
+            }]
+        });
+    }
+});
+var users_by_hour = echarts.init(document.getElementById('users_by_hour'), theme);
+$.ajax({
+    url : "<?php echo base_url('home/users_by_hour'); ?>",
+    dataType: "json",
+    success:function(response) {
+        if(!response.success)
+        {
+            return;
+        }
 
-  var submyChart9 = echarts.init(document.getElementById('sub_mainb'), theme);
-  var sub_chart_data = {
-      dates : [],
-      amounts : []
-  };
-  $.ajax({
-      url : "<?php echo base_url('home/submissions_by_date'); ?>",
-      dataType: 'json',
-      success: function(response)
-      {
-          if(response.success)
-          {
-              for(var i = 0; i < response.data.length; i++)
-              {
-                 sub_chart_data.dates.push(response.data[i].created);
-                 sub_chart_data.amounts.push(response.data[i].count);
-              }
-              submyChart9.setOption({
-                title: {
-                  x: 'center',
-                  y: 'top',
-                  padding: [0, 0, 20, 0],
-                  text: 'Submissions Over Time',
-                  textStyle: {
+        users_by_hour.setOption({
+            title: {
+                x: 'center',
+                y: 'top',
+                padding: [0, 0, 20, 0],
+                text: 'User Signups By Hour',
+                textStyle: {
                     fontSize: 15,
                     fontWeight: 'normal'
-                  }
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                data: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+            }],
+            yAxis: [{
+                type: 'value',
+                name: 'Amount',
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            }],
+            series: [{
+                name: 'SignUps',
+                type: 'bar',
+                data: response.data
+            }]
+        });
+    }
+});
+var submissions_by_day = echarts.init(document.getElementById('submissions_by_day'), theme);
+$.ajax({
+    url : "<?php echo base_url('home/submissions_by_day'); ?>",
+    dataType: "json",
+    success:function(response) {
+        if(!response.success)
+        {
+            return;
+        }
+        submissions_by_day.setOption({
+            title: {
+                x: 'center',
+                y: 'top',
+                padding: [0, 0, 20, 0],
+                text: 'Submissions By Day',
+                textStyle: {
+                    fontSize: 15,
+                    fontWeight: 'normal'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                data: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            }],
+            yAxis: [{
+                type: 'value',
+                name: 'Amount',
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            }],
+            series: [{
+                name: 'SignUps',
+                type: 'bar',
+                data: response.data
+            }]
+        });
+    }
+});
+var submissions_by_hour = echarts.init(document.getElementById('submissions_by_hour'), theme);
+$.ajax({
+    url : "<?php echo base_url('home/submissions_by_hour'); ?>",
+    dataType: "json",
+    success:function(response) {
+        if(!response.success)
+        {
+            return;
+        }
+        submissions_by_hour.setOption({
+            title: {
+                x: 'center',
+                y: 'top',
+                padding: [0, 0, 20, 0],
+                text: 'Submissions By Hour',
+                textStyle: {
+                    fontSize: 15,
+                    fontWeight: 'normal'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                data: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+            }],
+            yAxis: [{
+                type: 'value',
+                name: 'Amount',
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            }],
+            series: [{
+                name: 'Submissions',
+                type: 'bar',
+                data: response.data
+            }]
+        });
+    }
+});
+</script>
+<script>
+var myChart9 = echarts.init(document.getElementById('mainb'), theme);
+var chart_data = {
+    dates : [],
+    amounts : []
+};
+$.ajax({
+    url : "<?php echo base_url('home/users_by_date'); ?>",
+    dataType: 'json',
+    success: function(response)
+    {
+        if(response.success)
+        {
+            for(var i = 0; i < response.data.length; i++)
+            {
+                chart_data.dates.push(response.data[i].created);
+                chart_data.amounts.push(response.data[i].count);
+            }
+            myChart9.setOption({
+                title: {
+                    x: 'center',
+                    y: 'top',
+                    padding: [0, 0, 20, 0],
+                    text: 'User Signups',
+                    textStyle: {
+                        fontSize: 15,
+                        fontWeight: 'normal'
+                    }
                 },
                 tooltip: {
-                  trigger: 'axis'
+                    trigger: 'axis'
                 },
                 calculable: true,
                 xAxis: [{
-                  type: 'category',
-                  data: sub_chart_data.dates
+                    type: 'category',
+                    data: chart_data.dates
                 }],
                 yAxis: [{
-                  type: 'value',
-                  name: 'Amount',
-                  axisLabel: {
-                    formatter: '{value}'
-                  }
+                    type: 'value',
+                    name: 'Amount',
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
                 }],
                 series: [{
-                  name: 'Submissions',
-                  type: 'line',
-                  data: sub_chart_data.amounts
+                    name: 'SignUps',
+                    type: 'line',
+                    data: chart_data.amounts
                 }]
-              });
-          } else {
-              alert('error fetching data from contest url');
-          }
-      }
-  })
+            });
+        } else {
+            alert('error fetching data from contest url');
+        }
+    }
+})
+
+var submyChart9 = echarts.init(document.getElementById('sub_mainb'), theme);
+var sub_chart_data = {
+    dates : [],
+    amounts : []
+};
+$.ajax({
+    url : "<?php echo base_url('home/submissions_by_date'); ?>",
+    dataType: 'json',
+    success: function(response)
+    {
+        if(response.success)
+        {
+            for(var i = 0; i < response.data.length; i++)
+            {
+                sub_chart_data.dates.push(response.data[i].created);
+                sub_chart_data.amounts.push(response.data[i].count);
+            }
+            submyChart9.setOption({
+                title: {
+                    x: 'center',
+                    y: 'top',
+                    padding: [0, 0, 20, 0],
+                    text: 'Submissions Over Time',
+                    textStyle: {
+                        fontSize: 15,
+                        fontWeight: 'normal'
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                calculable: true,
+                xAxis: [{
+                    type: 'category',
+                    data: sub_chart_data.dates
+                }],
+                yAxis: [{
+                    type: 'value',
+                    name: 'Amount',
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
+                }],
+                series: [{
+                    name: 'Submissions',
+                    type: 'line',
+                    data: sub_chart_data.amounts
+                }]
+            });
+        } else {
+            alert('error fetching data from contest url');
+        }
+    }
+})
 </script>
 
 
 <script>
 Chart.defaults.global.legend = {
-  enabled: false
+    enabled: false
 };
 
 var total_users = "<?php echo $user_count; ?>";
@@ -738,59 +1029,59 @@ $.ajax({
         console.log(female_count);
         console.log(graph_data);
         var male_data = {
-          labels: [
-            "18-24",
-            "25-34",
-            "35-44",
-            "45-54",
-            "55+"
-          ],
-          datasets: [{
-            data: graph_data.males,
-            backgroundColor: [
-              "#BDC3C7",
-              "#9B59B6",
-              "#455C73",
-              "#26B99A",
-              "#3498DB"
+            labels: [
+                "18-24",
+                "25-34",
+                "35-44",
+                "45-54",
+                "55+"
             ],
-            hoverBackgroundColor: [
-              "#CFD4D8",
-              "#B370CF",
-              "#34495E",
-              "#36CAAB",
-              "#49A9EA"
-            ]
+            datasets: [{
+                data: graph_data.males,
+                backgroundColor: [
+                    "#BDC3C7",
+                    "#9B59B6",
+                    "#455C73",
+                    "#26B99A",
+                    "#3498DB"
+                ],
+                hoverBackgroundColor: [
+                    "#CFD4D8",
+                    "#B370CF",
+                    "#34495E",
+                    "#36CAAB",
+                    "#49A9EA"
+                ]
 
-          }]
+            }]
         };
 
         var female_data = {
-          labels: [
-            "18-24",
-            "25-34",
-            "35-44",
-            "45-54",
-            "55+"
-          ],
-          datasets: [{
-            data: graph_data.females,
-            backgroundColor: [
-              "#BDC3C7",
-              "#9B59B6",
-              "#455C73",
-              "#26B99A",
-              "#3498DB"
+            labels: [
+                "18-24",
+                "25-34",
+                "35-44",
+                "45-54",
+                "55+"
             ],
-            hoverBackgroundColor: [
-              "#CFD4D8",
-              "#B370CF",
-              "#34495E",
-              "#36CAAB",
-              "#49A9EA"
-            ]
+            datasets: [{
+                data: graph_data.females,
+                backgroundColor: [
+                    "#BDC3C7",
+                    "#9B59B6",
+                    "#455C73",
+                    "#26B99A",
+                    "#3498DB"
+                ],
+                hoverBackgroundColor: [
+                    "#CFD4D8",
+                    "#B370CF",
+                    "#34495E",
+                    "#36CAAB",
+                    "#49A9EA"
+                ]
 
-          }]
+            }]
         };
         var total_data = {
             labels : [
@@ -801,32 +1092,32 @@ $.ajax({
                 data: [male_count, female_count],
 
                 backgroundColor: [
-                  "#BDC3C7",
-                  "#9B59B6",
-                  "#455C73",
-                  "#26B99A",
-                  "#3498DB"
+                    "#BDC3C7",
+                    "#9B59B6",
+                    "#455C73",
+                    "#26B99A",
+                    "#3498DB"
                 ],
                 hoverBackgroundColor: [
-                  "#CFD4D8",
-                  "#B370CF",
-                  "#34495E",
-                  "#36CAAB",
-                  "#49A9EA"
+                    "#CFD4D8",
+                    "#B370CF",
+                    "#34495E",
+                    "#36CAAB",
+                    "#49A9EA"
                 ]
             }]
         }
 
         var maleCanvasDoughnut = new Chart(document.getElementById("male_breakdown"), {
-          type: 'doughnut',
-          tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-          data: male_data
+            type: 'doughnut',
+            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+            data: male_data
         });
 
         var femaleCanvasDoughnut = new Chart(document.getElementById("female_breakdown"), {
-          type: 'doughnut',
-          tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-          data: female_data
+            type: 'doughnut',
+            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+            data: female_data
         });
 
         var totalAgeDoughnut = new Chart(document.getElementById("gender_breakdown"), {
@@ -873,59 +1164,59 @@ $.ajax({
         console.log(sub_female_count);
         console.log(sub_graph_data);
         var sub_male_data = {
-          labels: [
-            "18-24",
-            "25-34",
-            "35-44",
-            "45-54",
-            "55+"
-          ],
-          datasets: [{
-            data: sub_graph_data.males,
-            backgroundColor: [
-              "#BDC3C7",
-              "#9B59B6",
-              "#455C73",
-              "#26B99A",
-              "#3498DB"
+            labels: [
+                "18-24",
+                "25-34",
+                "35-44",
+                "45-54",
+                "55+"
             ],
-            hoverBackgroundColor: [
-              "#CFD4D8",
-              "#B370CF",
-              "#34495E",
-              "#36CAAB",
-              "#49A9EA"
-            ]
+            datasets: [{
+                data: sub_graph_data.males,
+                backgroundColor: [
+                    "#BDC3C7",
+                    "#9B59B6",
+                    "#455C73",
+                    "#26B99A",
+                    "#3498DB"
+                ],
+                hoverBackgroundColor: [
+                    "#CFD4D8",
+                    "#B370CF",
+                    "#34495E",
+                    "#36CAAB",
+                    "#49A9EA"
+                ]
 
-          }]
+            }]
         };
 
         var sub_female_data = {
-          labels: [
-            "18-24",
-            "25-34",
-            "35-44",
-            "45-54",
-            "55+"
-          ],
-          datasets: [{
-            data: sub_graph_data.females,
-            backgroundColor: [
-              "#BDC3C7",
-              "#9B59B6",
-              "#455C73",
-              "#26B99A",
-              "#3498DB"
+            labels: [
+                "18-24",
+                "25-34",
+                "35-44",
+                "45-54",
+                "55+"
             ],
-            hoverBackgroundColor: [
-              "#CFD4D8",
-              "#B370CF",
-              "#34495E",
-              "#36CAAB",
-              "#49A9EA"
-            ]
+            datasets: [{
+                data: sub_graph_data.females,
+                backgroundColor: [
+                    "#BDC3C7",
+                    "#9B59B6",
+                    "#455C73",
+                    "#26B99A",
+                    "#3498DB"
+                ],
+                hoverBackgroundColor: [
+                    "#CFD4D8",
+                    "#B370CF",
+                    "#34495E",
+                    "#36CAAB",
+                    "#49A9EA"
+                ]
 
-          }]
+            }]
         };
         var sub_total_data = {
             labels : [
@@ -936,32 +1227,32 @@ $.ajax({
                 data: [sub_male_count,sub_female_count],
 
                 backgroundColor: [
-                  "#BDC3C7",
-                  "#9B59B6",
-                  "#455C73",
-                  "#26B99A",
-                  "#3498DB"
+                    "#BDC3C7",
+                    "#9B59B6",
+                    "#455C73",
+                    "#26B99A",
+                    "#3498DB"
                 ],
                 hoverBackgroundColor: [
-                  "#CFD4D8",
-                  "#B370CF",
-                  "#34495E",
-                  "#36CAAB",
-                  "#49A9EA"
+                    "#CFD4D8",
+                    "#B370CF",
+                    "#34495E",
+                    "#36CAAB",
+                    "#49A9EA"
                 ]
             }]
         }
 
         var subMaleCanvasDoughnut = new Chart(document.getElementById("sub_male_breakdown"), {
-          type: 'doughnut',
-          tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-          data: sub_male_data
+            type: 'doughnut',
+            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+            data: sub_male_data
         });
 
         var subFemaleCanvasDoughnut = new Chart(document.getElementById("sub_female_breakdown"), {
-          type: 'doughnut',
-          tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-          data: sub_female_data
+            type: 'doughnut',
+            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+            data: sub_female_data
         });
 
         var subTotalAgeDoughnut = new Chart(document.getElementById("sub_gender_breakdown"), {

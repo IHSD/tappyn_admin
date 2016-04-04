@@ -27,17 +27,16 @@ class Home extends MY_Controller
             )
         );
         $this->days = array(
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
+            "0" => 0,
+            "1" => 0,
+            "2" => 0,
+            "3" => 0,
+            "4" => 0,
+            "5" => 0,
+            "6" => 0
         );
         $this->hours = array();
-        for($i = 0; $i < 24; $i++) $this->hours[] = $i;
+        for($i = 0; $i < 24; $i++) $this->hours[$i] = 0;
     }
 
     public function dashboard()
@@ -61,7 +60,66 @@ class Home extends MY_Controller
 
     public function users_by_day()
     {
+        if($data = $this->analytics->users_by_day())
+        {
+            foreach($data as $datum)
+            {
+                $this->days[$datum->weekday] = $datum->count;
+            }
+            $this->results['data'] = $this->days;
+        } else {
+            $this->results['error'] = $this->analytics->error();
+            $this->results['success'] = false;
+        }
+        echo json_encode($this->results);
+    }
 
+    public function users_by_hour()
+    {
+        if($data = $this->analytics->users_by_hour())
+        {
+            foreach($data as $datum)
+            {
+                $this->hours[$datum->hour] = $datum->count;
+            }
+            $this->results['data'] = $this->hours;
+        } else {
+            $this->results['error'] = $this->analytics->error();
+            $this->results['success'] = false;
+        }
+        echo json_encode($this->results);
+    }
+
+    public function submissions_by_day()
+    {
+        if($data = $this->analytics->submissions_by_day())
+        {
+            foreach($data as $datum)
+            {
+                $this->days[$datum->weekday] = $datum->count;
+            }
+            $this->results['data'] = $this->days;
+        } else {
+            $this->results['error'] = $this->analytics->error();
+            $this->results['success'] = false;
+        }
+        echo json_encode($this->results);
+    }
+
+    public function submissions_by_hour()
+    {
+        if($data = $this->analytics->submissions_by_hour())
+        {
+            foreach($data as $datum)
+            {
+                $this->hours[$datum->hour] = $datum->count;
+            }
+            $this->results['data'] = $this->hours;
+        } else {
+            $this->results['error'] = $this->analytics->error();
+            $this->results['success'] = false;
+        }
+        echo json_encode($this->results);
     }
 
     public function submissions()

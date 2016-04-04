@@ -167,6 +167,26 @@ class Analytics
         );
     }
 
+    public function users_by_day()
+    {
+        return $this->exec('SELECT COUNT(*) as count, WEEKDAY(FROM_UNIXTIME(created_on)) as weekday FROM users WHERE DATE(FROM_UNIXTIME(created_on)) > "2016-03-16" GROUP BY weekday');
+    }
+
+    public function users_by_hour()
+    {
+        return $this->exec('SELECT COUNT(*) as count, HOUR(FROM_UNIXTIME(created_on)) as hour FROM users GROUP BY hour');
+    }
+
+    public function submissions_by_day()
+    {
+        return $this->exec('SELECT COUNT(*) as count, WEEKDAY(created_at) as weekday FROM submissions GROUP BY weekday');
+    }
+
+    public function submissions_by_hour()
+    {
+        return $this->exec('SELECT COUNT(*) as count, HOUR(created_at) as hour FROM submissions GROUP BY hour');
+    }
+
     public function exec($query)
     {
         $data = $this->db->query($query);
