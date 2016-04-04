@@ -657,7 +657,7 @@
                  sub_chart_data.dates.push(response.data[i].created);
                  sub_chart_data.amounts.push(response.data[i].count);
               }
-              myChart9.setOption({
+              submyChart9.setOption({
                 title: {
                   x: 'center',
                   y: 'top',
