@@ -27,7 +27,7 @@ class Voucher extends BaseModel
 
     public function voucher($params)
     {
-        $check = $this->db->where($params)->limit(1)->get();
+        $check = $this->db->select('*')->from($this->table)->where($params)->limit(1)->get();
         if(!$check || $check->num_rows() == 0)
         {
             return FALSE;
