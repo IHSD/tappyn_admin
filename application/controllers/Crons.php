@@ -25,8 +25,10 @@ class Crons extends CI_Controller
         {
             $user->submissions = $this->db->select('COUNT(*) as count')->from('submissions')->where('owner', $user->id)->get()->row()->count;
             echo "|  {$user->id}       |  {$user->submissions}                |\n";
-            $uniques++;
-            $totals = $totals + $user->submissions;
+            if($user->submissions > 0) {
+                $uniques++;
+                $totals = $totals + $user->submissions;
+            }
         }
         echo "|--------------------------------|\n\n\n";
         echo "==============================\n";
