@@ -16,4 +16,16 @@ class Errors extends CI_Controller
     {
         $this->load->view('errors/500');
     }
+
+    public function unauthorized()
+    {
+        $this->load->library('ion_auth');
+        if(!$this->ion_auth->logged_in())
+        {
+            redirect('auth/login', 'refresh');
+        }
+        $user = $this->ion_auth->user()->row();
+        $this->load->view('templates/navbar', array('user' => $user));
+        $this->load->view('errors/unauthorized');
+    }
 }

@@ -16,7 +16,7 @@ class Crons extends CI_Controller
     {
         $uniques = 0;
         $totals = 0;
-        $users = $this->db->select('id')->from('users')->join('users_groups', 'users.id = users_groups.user_id', 'left')->where(array('DATE(FROM_UNIXTIME(created_on))', date('Y-m-d', strtotime('-1 day')), 'users_groups.group_id' => '2'))->get()->result();
+        $users = $this->db->select('users.id, users_groups.group_id')->from('users')->join('users_groups', 'users.id = users_groups.user_id', 'left')->where(array('DATE(FROM_UNIXTIME(created_on))', date('Y-m-d', strtotime('-1 day')), 'users_groups.group_id' => '2'))->get()->result();
         echo "----------------------------------\n";
         echo "|  UID       |  Submissions      |\n";
         echo "|------------|-------------------|\n";
