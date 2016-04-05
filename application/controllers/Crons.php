@@ -24,9 +24,9 @@ class Crons extends CI_Controller
         foreach($users as $user)
         {
             $user->submissions = $this->db->select('COUNT(*) as count')->from('submissions')->where('owner', $user->id)->get()->row()->count;
-            echo "|  {$user->id}        |  {$user->submissions}                   |\n";
-            $uniques += 1;
-            $totals += $user->submissions;
+            echo "|  {$user->id}       |  {$user->submissions}                |\n";
+            $uniques++;
+            $totals = $totals + $user->submissions;
         }
         echo "|--------------------------------|\n\n\n";
         echo "==============================\n";
@@ -34,6 +34,7 @@ class Crons extends CI_Controller
         echo "==============================\n";
         echo "Signups : ".count($users)."\n";
         echo "Total Subs : ".$totals."\n";
-        echo "Unique Subs : ".$uniques."\n";
+        echo "Unique Subs : ".$uniques."\n\n\n";
+        echo "This report provided by your fuckin motha!!\n\n\n\n";
     }
 }
