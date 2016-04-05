@@ -14,11 +14,24 @@ class Crons extends CI_Controller
 
     public function unique_submitters_from_yesterday()
     {
-        $users = $this->db->select('*')->from('users')->where('DATE(FROM_UNIXTIME(created_on))', date('Y-m-d', strtotime('-1 day')))->get()->result();
+        $uniques = 0;
+        $totals = 0;
+        $users = $this->db->select('id')->from('users')->where('DATE(FROM_UNIXTIME(created_on))', date('Y-m-d', strtotime('-1 day')))->get()->result();
+        echo "----------------------------------\n";
+        echo "|  UID       |  Submissions      |\n";
+        echo "|------------|-------------------|\n";
+
         foreach($users as $user)
         {
             $user->submissions = $this->db->select('COUNT(*) as count')->from('submissions')->where('owner', $user->id)->get()->row()->count;
+            echo "|  {$user->id}        |  {$user->submissions}                   |\n";
         }
-        echo json_encode($users);
+        echo "|--------------------------------|\n\n\n";
+        echo "==============================\n";
+        echo "|| Totals!!!!               ||\n";
+        echo "==============================\n";
+        echo "Signups : ".count($users)."\n";
+        echo "Total Subs : ".$totals."\n";
+        echo "Unique Subs : ".$uniques."\n";
     }
 }
