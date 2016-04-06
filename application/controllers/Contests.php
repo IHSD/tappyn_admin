@@ -5,7 +5,7 @@ class Contests extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library(array('contest_library', 'submission_library', 'pagination'));
+        $this->load->library(array('contest_library', 'submission_library', 'pagination', 'payout_library'));
     }
 
     public function index()
