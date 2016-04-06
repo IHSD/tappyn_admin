@@ -124,7 +124,9 @@
                     <div>
 
                       <h4>Submissions</h4>
-                      <?php var_dump($contest->payout); ?>
+                      <?php if(is_null($contest->payout)): ?>
+                          <div class='alert alert-info'>
+                      <?php endif; ?>
                       <!-- end of user messages -->
                       <ul class="messages" style='list-style-type:none'>
                          <?php foreach($contest->submissions as $submission): ?>
