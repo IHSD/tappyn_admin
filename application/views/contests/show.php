@@ -131,7 +131,7 @@
                       <ul class="messages" style='list-style-type:none'>
                          <?php foreach($contest->submissions as $submission): ?>
                              <?php if($submission->winner): ?>
-                                 <li style="border-color:8px solid #ff5c00;border-radius:10px;padding-right:10px;">
+                                 <li style="border:8px solid #ff5c00;border-radius:10px;padding-right:10px;">
                             <?php else: ?>
                                  <li>
                             <?php endif; ?>
