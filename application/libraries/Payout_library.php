@@ -36,7 +36,6 @@ class Payout_library
         $this->registerPostSelectCallback(array(
             'user_callback'
         ));
-
     }
 
     public function processReportQueryString()

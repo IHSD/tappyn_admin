@@ -28,7 +28,28 @@ class Contests extends MY_Controller
         $this->contest->registerPostSelectCallback(array('format_callback'));
         if(is_null($cid)) redirect("contests/index", 'refresh');
         $contest = $this->contest_library->select('*')->where('id', $cid)->fetch()->row();
-        $contest->submissions = $this->submission_library->inContest($cid);
+        $submissions = $this->submission_library->inContest($cid);
+
+        $contest->payout = $this->payout_library->select('*')->from('payouts')->where('contest_id', $contest_id)->fetch()->row();
+        if($contest->payout)
+        {
+            $sub = FALSE;
+            foreach($submissions as $key => $sub)
+            {
+                $sub->winner = FALSE;
+                if($contest->payout->submission_id == $sub->id)
+                {
+                    $sub->winner = TRUE;
+                    $submish = $sub;
+                    unset($submissions[$key]);
+                }
+            }
+            if($sub)
+            {
+                $submissions = array_values(array($submish) + $submissions);
+            }
+        }
+        $contest->submissions = $submissions;
         $this->load->view('contests/show', array('contest' => $contest));
     }
 
