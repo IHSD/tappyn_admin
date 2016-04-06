@@ -50,7 +50,6 @@ class Contests extends MY_Controller
                 $contest->submissions = array_values(array($submish) + $contest->submissions);
             }
         }
-        $contest->submissions = $submissions;
         $this->load->view('contests/show', array('contest' => $contest));
     }
 
