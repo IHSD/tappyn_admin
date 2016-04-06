@@ -125,7 +125,7 @@
 
                       <h4>Submissions</h4>
                       <?php if(is_null($contest->payout)): ?>
-                          <div class='alert alert-info'>
+                          <div class='alert alert-info'>This contest does not have a winner yet!</div>
                       <?php endif; ?>
                       <!-- end of user messages -->
                       <ul class="messages" style='list-style-type:none'>

@@ -36,10 +36,10 @@ class Contests extends MY_Controller
             $sub = FALSE;
             foreach($submissions as $key => $sub)
             {
-                $sub->winner = FALSE;
+                $submisssions[$key]->winner = FALSE;
                 if($contest->payout->submission_id == $sub->id)
                 {
-                    $sub->winner = TRUE;
+                    $submission[$key]->winner = TRUE;
                     $submish = $sub;
                     unset($submissions[$key]);
                 }
