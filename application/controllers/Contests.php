@@ -33,18 +33,19 @@ class Contests extends MY_Controller
         $contest->payout = $this->payout_library->select('*')->from('payouts')->where('contest_id', $cid)->fetch()->row();
         if($contest->payout)
         {
-            $sub = FALSE;
+            $winning_sub = FALSE;
             foreach($submissions as $key => $sub)
             {
-                $submisssions[$key]->winner = FALSE;
+                $submissions[$key]->winner = FALSE;
                 if($contest->payout->submission_id == $sub->id)
                 {
+                    $winning_sub = TRUE;
                     $submission[$key]->winner = TRUE;
                     $submish = $sub;
                     unset($submissions[$key]);
                 }
             }
-            if($sub)
+            if($winning_sub)
             {
                 $submissions = array_values(array($submish) + $submissions);
             }
