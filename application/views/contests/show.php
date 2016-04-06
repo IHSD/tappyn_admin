@@ -124,11 +124,15 @@
                     <div>
 
                       <h4>Submissions</h4>
-
+                      <?php echo json_encode($contest->payout); ?>
                       <!-- end of user messages -->
                       <ul class="messages" style='list-style-type:none'>
                          <?php foreach($contest->submissions as $submission): ?>
-                             <li>
+                             <?php if($submission->winner): ?>
+                                 <li style="border-color:8px solid #ff5c00;border-radius:10px;padding-right:10px;">
+                            <?php else: ?>
+                                 <li>
+                            <?php endif; ?>
                                <div class="message_date">
                                  <h3 class="date text-info"><?php echo date('d', strtotime($submission->created_at)); ?></h3>
                                  <p class="month"><?php echo date('M', strtotime($submission->created_at)); ?></p>
