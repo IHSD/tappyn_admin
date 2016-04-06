@@ -124,7 +124,7 @@
                     <div>
 
                       <h4>Submissions</h4>
-                      <?php echo json_encode($contest->payout); ?>
+                      <?php var_dump($contest->payout); ?>
                       <!-- end of user messages -->
                       <ul class="messages" style='list-style-type:none'>
                          <?php foreach($contest->submissions as $submission): ?>
