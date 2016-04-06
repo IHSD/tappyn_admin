@@ -30,7 +30,7 @@ class Contests extends MY_Controller
         $contest = $this->contest_library->select('*')->where('id', $cid)->fetch()->row();
         $submissions = $this->submission_library->inContest($cid);
 
-        $contest->payout = $this->payout_library->select('*')->from('payouts')->where('contest_id', $contest_id)->fetch()->row();
+        $contest->payout = $this->payout_library->select('*')->from('payouts')->where('contest_id', $cid)->fetch()->row();
         if($contest->payout)
         {
             $sub = FALSE;
