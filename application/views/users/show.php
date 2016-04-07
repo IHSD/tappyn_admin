@@ -44,11 +44,12 @@
           <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
 
             <h3><?php echo $user->first_name.' '.$user->last_name; ?></h3>
-            <?php if($user->active == 1): ?>
+        <?php if(@$user->active): ?>
                     <i class='fa fa-warning'></i> This user's email has not been verified yet!
             <?php endif; ?>
             <div class='clearfix'></div>
             <ul class="list-unstyled user_data">
+              <li><i class='fa fa-map-marker user-profile-icon'></i> <?php echo $user->email; ?></li>
               <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
               </li>
 

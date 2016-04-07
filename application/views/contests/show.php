@@ -142,7 +142,7 @@
                                <div class="message_wrapper">
                                  <h4 class="heading"><?php echo $submission->owner->first_name.' '.$submission->owner->last_name; ?>
                                      <small>
-                                         <a href="<?php echo base_url('users/show'.$submission->owner->id); ?>">
+                                         <a href="<?php echo base_url('users/show/'.$submission->owner->id); ?>">
                                              <?php echo $submission->owner->email; ?>
                                          </a>
                                      </small>
