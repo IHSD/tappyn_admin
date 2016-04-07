@@ -140,7 +140,7 @@
                                  <p class="month"><?php echo date('M', strtotime($submission->created_at)); ?></p>
                                </div>
                                <div class="message_wrapper">
-                                 <h4 class="heading"><?php echo $submission->owner->first_name.' '.$submission->owner->last_name; ?></h4>
+                                 <h4 class="heading"><?php echo $submission->owner->first_name.' '.$submission->owner->last_name; ?><small><a href="<?php echo base_url('users/show'.$submission->owner->id')'; ?>"><?php echo $submission->owner->email) ?></a></small></h4>
                                  <blockquote class="message" style='font-size:0.9em'>
                                      <?php if(!is_null($submission->headline)): ?>
                                          <p class='title'><strong>Headline</strong></p>
