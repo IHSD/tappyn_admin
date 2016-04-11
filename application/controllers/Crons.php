@@ -12,11 +12,12 @@ class Crons extends CI_Controller
         $this->db = $this->load->database('master', TRUE);
     }
 
-    public function unique_submitters_from_yesterday()
+    public function unique_submitters_from_yesterday($date = NULL)
     {
+        if(is_null($date)) $date = date('Y-m-d', strtotime('-1 day'));
         $uniques = 0;
         $totals = 0;
-        $users = $this->db->select('users.id, users_groups.group_id')->from('users')->join('users_groups', 'users.id = users_groups.user_id', 'left')->where(array('DATE(FROM_UNIXTIME(users.created_on))' => date('Y-m-d', strtotime('-1 day')), 'users_groups.group_id' => '2'))->get()->result();
+        $users = $this->db->select('users.id, users_groups.group_id')->from('users')->join('users_groups', 'users.id = users_groups.user_id', 'left')->where(array('DATE(FROM_UNIXTIME(users.created_on))' => $date, 'users_groups.group_id' => '2'))->get()->result();
         error_log($this->db->last_query());
         echo json_encode($users);
         echo "----------------------------------\n";

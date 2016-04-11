@@ -30,7 +30,11 @@ $(function () {
         $dataWidth = $('#dataWidth'),
         $dataRotate = $('#dataRotate'),
         options = {
+          dragMode: 'none',
           aspectRatio: 16 / 9,
+          guides : false,
+          cropBoxMovable: false,
+          cropBoxResizable: false,
           preview: '.img-preview',
           crop: function (data) {
             $dataX.val(Math.round(data.x));
