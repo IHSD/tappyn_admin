@@ -1,6 +1,6 @@
-<?php var_dump($balance); ?>
-<?php var_dump($disputes); ?>
-<?php var_dump($balance_transactions); ?>
+<?php echo json_encode($balance); ?>
+<?php echo json_encode($disputes); ?>
+<?php echo json_encode($balance_transactions); ?>
 <div class="page-title">
   <div class="title_left">
     <h3>
