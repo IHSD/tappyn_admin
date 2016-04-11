@@ -39,6 +39,10 @@ class Home extends MY_Controller
         for($i = 0; $i < 24; $i++) $this->hours[$i] = 0;
     }
 
+    public function cropper()
+    {
+        $this->load->view('cropper.php');
+    }
     public function dashboard()
     {
         $date = date('Y-m-d H:i:s');
