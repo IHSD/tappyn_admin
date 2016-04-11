@@ -17,14 +17,14 @@
               <div class="left"></div>
               <div class="right_test">
                 <span class="count_top"><i class="fa fa-user"></i> Balance</span>
-                <div class="count">$<?php echo round(($balance->available->amount / 100), 2); ?></div>
+                <div class="count">$<?php echo round(($balance->available[0]->amount / 100), 2); ?></div>
               </div>
             </div>
             <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
               <div class="left"></div>
               <div class="right_test">
                 <span class="count_top"><i class="fa fa-clock-o"></i> Pending</span>
-                <div class="count">$<?php echo round(($balance->pending->amount / 100), 2); ?></div>
+                <div class="count">$<?php echo round(($balance->pending[0]->amount / 100), 2); ?></div>
               </div>
             </div>
             <!-- <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
