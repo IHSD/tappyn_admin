@@ -58,7 +58,7 @@
                 <?php foreach($balance_transactions->data as $transaction): ?>
                     <tr>
                         <td><?php echo $transaction->id; ?></td>
-                        <td><?php echo round(($transaction->amount \ 100), 2); ?></td>
+                        <td><?php echo round($transaction->amount) 2); ?></td>
                         <td><?php echo date('D M', $transaction->created); ?></td>
                         <td><?php echo date('D M', $transaction->available_on); ?></td>
                         <td><?php echo $transaction->net; ?></td>
