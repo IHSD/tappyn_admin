@@ -59,8 +59,8 @@
                     <tr>
                         <td><?php echo $transaction->id; ?></td>
                         <td><?php echo round(($transaction->amount / 100), 2); ?></td>
-                        <td><?php echo date('D M', $transaction->created); ?></td>
-                        <td><?php echo date('D M', $transaction->available_on); ?></td>
+                        <td><?php echo date('D M d', $transaction->created); ?></td>
+                        <td><?php echo date('D M d', $transaction->available_on); ?></td>
                         <td><?php echo round(($transaction->net / 100), 2); ?></td>
                         <td><?php echo $transaction->status; ?></td>
                     </tr>
