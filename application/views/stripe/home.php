@@ -54,7 +54,7 @@
             </thead>
 
             <tbody>
-                <?php foreach($balance_transactions as $transaction): ?>
+                <?php foreach($balance_transactions->data as $transaction): ?>
                     <tr>
                         <td><?php echo $transaction->id; ?></td>
                         <td><?php echo date('D M', $transaction->created); ?></td>
