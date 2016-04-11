@@ -40,7 +40,7 @@
         </div>
 
         <div class="x_content">
-          <!-- <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p> -->
+          <p>History of all transactions that affect our account balance</p>
 
           <table class="table table-striped responsive-utilities jambo_table">
             <thead>
@@ -81,7 +81,7 @@
         </div>
 
         <div class="x_content">
-          <!-- <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p> -->
+          <p>Recent Disputes, as well as evidence and due dates</p>
           <?php if(empty($disputes->data)): ?>
               <div class='alert alert-info'>There are currently no disputes to show</div>
           <?php else: ?>
@@ -106,6 +106,44 @@
                         <td><?php echo date('D M d', $dispute->evidence_details->due_by); ?></td>
                         <td><?php echo $dispute->reason; ?></td>
                         <td><?php echo $dispute->status; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        <?php endif; ?>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class='clearfix'></div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Recent Tranfsers</h2>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+           <p>These are transfers from our Stripe Account to the company bank account</p>
+          <?php if(empty($transfers->data)): ?>
+              <div class='alert alert-info'>There are currently no transfers to show</div>
+          <?php else: ?>
+          <table class="table table-striped responsive-utilities jambo_table">
+            <thead>
+              <tr class="headings">
+                <th class='column-title'>Transfer ID</th>
+                <th class="column-title">Amount </th>
+                <th class="column-title">Created </th>
+                <th class="column-title">Status </th>
+              </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach($transfers->data as $transfer): ?>
+                    <tr>
+                        <td><?php echo $transfer->id; ?></td>
+                        <td><?php echo round(($transfer->amount / 100), 2); ?></td>
+                        <td><?php echo date('D M d', $transfer->created); ?></td>
+                        <td><?php echo $transfer->status; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

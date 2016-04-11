@@ -20,6 +20,9 @@ class Stripe extends MY_Controller
         $data['balance_transactions'] = \Stripe\BalanceTransaction::all(array(
             "limit" => 10
         ));
+        $data['transfers'] = \Stripe\Transfer::all(array(
+            "limit" => 5
+        ));
         $this->load->view('stripe/home', $data);
     }
 
