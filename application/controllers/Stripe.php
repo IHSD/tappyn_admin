@@ -17,7 +17,7 @@ class Stripe extends MY_Controller
         $data = array();
         $data['balance'] = \Stripe\Balance::retrieve();
         $data['disputes'] = \Stripe\Dispute::all(array("limit" => 10));
-        $this->load->view('stipe/home', $data);
+        $this->load->view('stripe/home', $data);
     }
 
     public function balance()
