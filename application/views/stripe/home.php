@@ -123,7 +123,7 @@
         </div>
 
         <div class="x_content">
-           <p>These are transfers from our Stripe Account to the company bank account</p>
+           <p>These are transfers from our Stripe Account to other accounts</p>
           <?php if(empty($transfers->data)): ?>
               <div class='alert alert-info'>There are currently no transfers to show</div>
           <?php else: ?>
@@ -133,6 +133,7 @@
                 <th class='column-title'>Transfer ID</th>
                 <th class="column-title">Amount </th>
                 <th class="column-title">Created </th>
+                <th class="column-title">Destination</th>
                 <th class="column-title">Status </th>
               </tr>
             </thead>
@@ -143,6 +144,7 @@
                         <td><?php echo $transfer->id; ?></td>
                         <td><?php echo round(($transfer->amount / 100), 2); ?></td>
                         <td><?php echo date('D M d', $transfer->created); ?></td>
+                        <td><?php echo $transfer->destination; ?></td>
                         <td><?php echo $transfer->status; ?></td>
                     </tr>
                 <?php endforeach; ?>
