@@ -82,8 +82,9 @@
 
         <div class="x_content">
           <!-- <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p> -->
-          <?php if(!empty($disputes->data)): ?>
+          <?php if(empty($disputes->data)): ?>
               <div class='alert alert-info'>There are currently no disputes to show</div>
+          <?php else: ?>
           <table class="table table-striped responsive-utilities jambo_table">
             <thead>
               <tr class="headings">
@@ -108,7 +109,7 @@
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-
+        <?php endif; ?>
           </table>
         </div>
       </div>
