@@ -15,6 +15,8 @@ class Stripe extends MY_Controller
     public function index()
     {
         $data = array();
+        if($this->session->flashdata('message')) $data['message'] = $this->session->flashdata('message');
+        if($this->session->flashdata('error')) $data['error'] = $this->session->flashdata('error');
         $data['balance'] = \Stripe\Balance::retrieve();
         $data['disputes'] = \Stripe\Dispute::all(array("limit" => 10));
         $data['balance_transactions'] = \Stripe\BalanceTransaction::all(array(
@@ -39,11 +41,10 @@ class Stripe extends MY_Controller
                 'description' => "Adding ".$data['amount']." to Tappyn account balance"
             ));
         } catch(Exception $e) {
-            $data['error'] = $e->getMessage();
-            $this->load->view('stripe/payment', $data);
-            return;
+            $this->session->set_flashdata('error', $e->getMessage());    
+            redirect('stripe/index', 'refresh');
         }
         $this->session->set_flashdata('message', "$".$this->input->post('amount')." successfully added to the account");
-        redirect('stripe/home', 'refresh');
+        redirect('stripe/index', 'refresh');
     }
 }
