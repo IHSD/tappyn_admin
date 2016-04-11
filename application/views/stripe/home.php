@@ -27,32 +27,45 @@
                 <div class="count">$<?php echo round(($balance->pending[0]->amount / 100), 2); ?></div>
               </div>
             </div>
-            <!-- <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-              <div class="left"></div>
-              <div class="right_test">
-                <span class="count_top"><i class="fa fa-clock-o"></i> Ends</span>
-                <div class="count green"><?php echo date('M d', strtotime($contest->stop_time)); ?></div>
-              </div>
-            </div>
-            <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-              <div class="left"></div>
-              <div class="right_test">
-                <span class="count_top"><i class="fa fa-user"></i> Gender</span>
-                <div class="count"><?php echo $contest->gender == 0 ? 'All' : ($contest->gender == 1 ? 'Male' : 'Female'); ?></div>
-              </div>
-            </div>
-            <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-              <div class="left"></div>
-              <div class="right_test">
-                <span class="count_top"><i class="fa fa-user"></i> Min Age</span>
-                <div class="count"><?php echo $contest->min_age; ?></div>
-              </div>
-            </div>
-            <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-              <div class="left"></div>
-              <div class="right_test">
-                <span class="count_top"><i class="fa fa-user"></i> Max Age</span>
-                <div class="count"><?php echo $contest->max_age; ?></div>
-              </div>
-            </div> -->
         </div>
+
+
+    <div class="clearfix"></div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Recent Transactions</h2>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+          <!-- <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p> -->
+
+          <table class="table table-striped responsive-utilities jambo_table">
+            <thead>
+              <tr class="headings">
+                <th class="column-title">Amount </th>
+                <th class="column-title">Created </th>
+                <th class="column-title">Available </th>
+                <th class="column-title">Net </th>
+                <th class="column-title">Status </th>
+              </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach($balance_transactions as $transaction): ?>
+                    <tr>
+                        <td><?php echo $transaction->id; ?></td>
+                        <td><?php echo date('D M', $transaction->created); ?></td>
+                        <td><?php echo date('D M', $transaction->available_on); ?></td>
+                        <td><?php echo $transaction->net; ?></td>
+                        <td><?php echo $transaction->status; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
