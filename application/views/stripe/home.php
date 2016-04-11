@@ -1,6 +1,3 @@
-<?php echo json_encode($balance); ?>
-<?php echo json_encode($disputes); ?>
-<?php echo json_encode($balance_transactions); ?>
 <div class="page-title">
   <div class="title_left">
     <h3>
