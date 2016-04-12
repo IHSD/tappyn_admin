@@ -181,6 +181,7 @@ class MY_Model extends CI_Model
 
       if(!empty($this->like))
       {
+          error_log(json_encode($this->like));
           foreach($this->like as $like)
           {
               $this->db->like($like['like'], $like['value'], $like['position']);

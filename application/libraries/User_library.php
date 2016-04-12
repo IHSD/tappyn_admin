@@ -63,7 +63,10 @@ class User_library
         {
             $this->user_model->where('active', $this->input->get('active'));
         }
-        if($this->input->get('email')) $this->user_model->like('email', $this->input->get('email'), 'both');
+        if($this->input->get('email'))
+        {
+            $this->user_model->like('email', $this->input->get('email'), 'both');
+        }
         if($this->input->get('facebook')) $this->user_model->where('facebook_login', $this->input->get('facebook_login'));
     }
 }
