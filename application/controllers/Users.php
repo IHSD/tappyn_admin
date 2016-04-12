@@ -60,7 +60,6 @@ class Users extends MY_Controller
 
     public function submissions_by_date($uid)
     {
-
         $results = array();
         $this->submission_library->clearCallbacks();
         $temp_data = $this->submission_library->select('COUNT(*) as count, DATE(created_at) as created')->where('owner', $uid)->group_by('created')->order_by('created', 'desc')->fetch()->result();

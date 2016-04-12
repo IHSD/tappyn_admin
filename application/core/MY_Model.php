@@ -181,7 +181,11 @@ class MY_Model extends CI_Model
 
       if(!empty($this->like))
       {
-          $this->db->like($this->like);
+          foreach($this->like as $like)
+          {
+              $this->db->like($like['like'], $like['value'], $like['position']);
+          }
+          $this->like = array();
       }
 
       if(!empty($this->group_by))
