@@ -48,8 +48,7 @@ class Users extends MY_Controller
         }
         else
         {
-            $this->session->flashdata('error', 'We couldnt find any users with that search');
-            redirect('users/index');
+            redirect('users/index?email='.$string, 'refresh');
         }
     }
 
