@@ -281,6 +281,7 @@ class MY_Model extends CI_Model
       }
 
       $this->response = $this->db->get();
+      error_log($this->db->last_query());
       if(!$this->response)
       {
           die($this->db->error()['message']);
