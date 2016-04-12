@@ -40,9 +40,12 @@
                   <thead>
                     <tr class="headings">
                         <td></td>
-                        <?php foreach(get_object_vars($users[0]) as $key => $val): ?>
-                        <th><?php echo $key; ?>
-                        <?php endforeach; ?>
+                        <td>ID</td>
+                        <td>IP</td>
+                        <td>Email</td>
+                        <td>Created</td>
+                        <td>Last Login</td>
+                        <td>Name</td>
                     </tr>
                   </thead>
 
@@ -52,18 +55,12 @@
                                 <td>
                                     <a href="<?php echo base_url().'users/show/'.$user->id; ?>"><span class='fa fa-edit'></span></a>
                                 </td>
-                                <?php foreach(get_object_vars($user) as $key => $value): ?>
-                                    <td style='white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;'>
-                                    <?php
-                                    if($key == 'company')
-                                    {
-                                        echo $value->name;
-                                    } else {
-                                        echo $value;
-                                    }
-                                    ?>
-                                    </td>
-                                <?php endforeach; ?>
+                                <td><?php echo $user->id; ?></td>
+                                <td><?php echo $user->ip_address; ?></td>
+                                <td><?php echo $user->email; ?></td>
+                                <td><?php echo date('D M d', $user->created); ?></td>
+                                <td><?php echo date('D M d', $user->last_login); ?></td>
+                                <td><?php echo $user->first_name.' '.$user->last_name; ?></td>
                             </tr>
                         <?php endforeach; ?>
                   </tbody>
