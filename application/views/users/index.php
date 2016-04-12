@@ -58,7 +58,7 @@
                                 <td><?php echo $user->id; ?></td>
                                 <td><?php echo $user->ip_address; ?></td>
                                 <td><?php echo $user->email; ?></td>
-                                <td><?php echo date('D M d', $user->created); ?></td>
+                                <td><?php echo date('D M d', $user->created_on); ?></td>
                                 <td><?php echo date('D M d', $user->last_login); ?></td>
                                 <td><?php echo $user->first_name.' '.$user->last_name; ?></td>
                             </tr>
