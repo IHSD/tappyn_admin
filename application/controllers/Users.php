@@ -28,28 +28,25 @@ class Users extends MY_Controller
         $string = $this->input->post('search');
         if(is_numeric($string))
         {
-                // Let's search by UID
-                $user = $this->user_library->select('*')->where('id', $string)->limit(1)->fetch();
-                if($user && $user->num_rows() == 1)
-                {
-                    $uid= $user->row()->id;
-                }
+            // Let's search by UID
+            $user = $this->user_library->select('*')->where('id', $string)->limit(1)->fetch();
+            if($user && $user->num_rows() == 1)
+            {
+                $uid= $user->row()->id;
+            }
         } else {
-                // Let's search for the email
-                $user = $this->user_library->select('*')->like('email', $string)->limit(1)->fetch();
-                if($user && $user->num_rows() == 1)
-                {
-                    $uid = $user->row()->id;
-                }
+            // Let's search for the email
+            $users = $this->user_library->select('*')->like('email', $string)->limit(25)->fetch();
+            if($users->num_rows() == 1)
+            {
+                redirect('users/show/'.$users->result()[0]->id, 'refresh');
+            } else {
+                redirect('users/index?email='.$string, 'refresh');
+            }
         }
-        if(!is_null($uid))
-        {
-            redirect('users/show/'.$uid, 'refresh');
-        }
-        else
-        {
-            redirect('users/index?email='.$string, 'refresh');
-        }
+
+        $this->session->set_flashdata('error', "We couldnt find out what you were looking for");
+        redirect('users/index', 'refresh');
     }
 
     public function show($uid)
