@@ -185,7 +185,6 @@ class MY_Model extends CI_Model
           {
               $this->db->like($like['like'], $like['value'], $like['position']);
           }
-          $this->like = array();
       }
 
       if(!empty($this->group_by))
