@@ -171,7 +171,7 @@
                                      </blockquote>
                                  </div>
                                  <div class='col-sm-6'>
-                                     <img src="<?php echo $submssion->thumbnail_url; ?>">
+                                     <img src="<?php echo $submission->thumbnail_url; ?>">
                                  </div>
                                  <br />
 
