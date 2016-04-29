@@ -39,7 +39,7 @@ class Submissions extends MY_Controller
             redirect("contests/show/{$cid}", 'refresh');
             return;
         }
-        if($this->db->where('id', $sid)->delete('submissions'))
+        if($this->submission_library->delete($sid))
         {
             $this->session->set_flashdata('message', "Submission successfully deleted");
         } else {

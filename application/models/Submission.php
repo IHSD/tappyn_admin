@@ -27,6 +27,10 @@ class Submission extends BaseModel
         return $contest->row();
     }
 
+    public function delete($sid)
+    {
+        return $this->db->where('id', $sid)->delete('submissions');
+    }
     /*==================================
       Callbacks that can be registered
     ==================================*/
