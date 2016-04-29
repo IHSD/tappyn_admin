@@ -43,6 +43,7 @@ class Submissions extends MY_Controller
         {
             $this->session->set_flashdata('message', "Submission successfully deleted");
         } else {
+            error_log($this->db->last_query());
             error_log(json_encode($this->db->error()));
             $this->session->set_flashdata('error', "There was an error deleting the submission");
         }
