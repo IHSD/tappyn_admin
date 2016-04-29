@@ -27,7 +27,7 @@ class Submission_library
     public function getAll()
     {
         $this->registerPostSelectCallback('contest_callback');
-        $this->submission->select('id,created_at,owner,attachment,headline,description,text,link_explanation,contest_id');
+        $this->submission->select('id,created_at,owner,attachment,headline,description,text,link_explanation,contest_id,thumbnail_url');
         $this->processReportQueryString();
         $count = $this->submission->count();
         $submissions = $this->submission->fetch()->result();
