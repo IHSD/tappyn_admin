@@ -151,7 +151,7 @@
                                          <a href="<?php echo base_url('users/show/'.$submission->owner->id); ?>">
                                              <?php echo $submission->owner->email; ?>
                                          </a>
-                                        <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "POST", 'id' => 'delete_submission')); ?>
+                                        <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "POST", 'class' => 'delete_submission')); ?>
                                             <button class='btn btn-danger' type='submit'>DELETE</button>
                                         <?php echo form_close(); ?>
                                      </small>
@@ -252,7 +252,8 @@
 </div>
 
 <script>
-    $('#delete_submission').click(function() {
+    $('.delete_submission').click(function() {
+        console.log("Form submission found");
         var res = confirm("Are you sure you want to delete this submission?");
         if(!res)
         {
