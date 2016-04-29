@@ -150,28 +150,30 @@
                                         <?php echo form_close(); ?>
                                      </small>
                                  </h4>
-                                 <div class='col-sm-6'>
-                                     <blockquote class="message" style='font-size:0.9em'>
-                                         <?php if(!is_null($submission->headline)): ?>
-                                             <p class='title'><strong>Headline</strong></p>
-                                             <p><?php echo $submission->headline; ?></p>
-                                         <?php endif; ?>
-                                         <?php if(!is_null($submission->text)): ?>
-                                             <p class='title'><strong>Text</strong></p>
-                                             <p><?php echo $submission->text; ?></p>
-                                         <?php endif; ?>
-                                         <?php if(!is_null($submission->description)): ?>
-                                             <p class='title'><strong>Description</strong></p>
-                                             <p><?php echo $submission->description; ?></p>
-                                         <?php endif; ?>
-                                         <?php if(!is_null($submission->link_explanation)): ?>
-                                             <p class='title'><strong>Link Explanation</strong></p>
-                                             <p><?php echo $submission->link_explanation; ?></p>
-                                         <?php endif; ?>
-                                     </blockquote>
-                                 </div>
-                                 <div class='col-sm-6'>
-                                     <img src="<?php echo $submission->thumbnail_url; ?>">
+                                 <div class='row'>
+                                     <div class='col-sm-6'>
+                                         <blockquote class="message" style='font-size:0.9em'>
+                                             <?php if(!is_null($submission->headline)): ?>
+                                                 <p class='title'><strong>Headline</strong></p>
+                                                 <p><?php echo $submission->headline; ?></p>
+                                             <?php endif; ?>
+                                             <?php if(!is_null($submission->text)): ?>
+                                                 <p class='title'><strong>Text</strong></p>
+                                                 <p><?php echo $submission->text; ?></p>
+                                             <?php endif; ?>
+                                             <?php if(!is_null($submission->description)): ?>
+                                                 <p class='title'><strong>Description</strong></p>
+                                                 <p><?php echo $submission->description; ?></p>
+                                             <?php endif; ?>
+                                             <?php if(!is_null($submission->link_explanation)): ?>
+                                                 <p class='title'><strong>Link Explanation</strong></p>
+                                                 <p><?php echo $submission->link_explanation; ?></p>
+                                             <?php endif; ?>
+                                         </blockquote>
+                                     </div>
+                                     <div class='col-sm-6'>
+                                         <img src="<?php echo $submission->thumbnail_url; ?>">
+                                     </div>
                                  </div>
                                  <br />
 
