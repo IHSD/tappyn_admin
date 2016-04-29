@@ -145,6 +145,9 @@
                                          <a href="<?php echo base_url('users/show/'.$submission->owner->id); ?>">
                                              <?php echo $submission->owner->email; ?>
                                          </a>
+                                        <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "DELETE")); ?>
+                                            <button class='btn btn-danger' type='submit'>DELETE</button>
+                                        <?php echo form_close(); ?>
                                      </small>
                                  </h4>
                                  <blockquote class="message" style='font-size:0.9em'>

@@ -26,13 +26,26 @@ class Submissions extends MY_Controller
     public function show($sid)
     {
         $submission = $this->submission_library->get($sid);
-    
+
         $this->load->view('submissions/show', array('submission' => $submission));
     }
 
-    public function delete()
+    public function delete($cid, $sid)
     {
-
+        $submission = $this->submission_library->get($id);
+        if(!$submission)
+        {
+            $this->session->set_flashdata('error', "That submission does not exist");
+            redirect("contests/{$cid}", 'refresh');
+            return;
+        }
+        if($this->db->where('id', $sid)->delete('submissions'))
+        {
+            $this->session->set_flashdata('message', "Submission successfully deleted");
+        } else {
+            $this->session->set_flashdata('error', "There was an error deleting the submission");
+        }
+        redirect("contests/{$cid}", 'refresh');
     }
 
     public function edit()
