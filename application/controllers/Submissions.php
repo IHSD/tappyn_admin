@@ -36,7 +36,7 @@ class Submissions extends MY_Controller
         if(!$submission)
         {
             $this->session->set_flashdata('error', "That submission does not exist");
-            redirect("contests/{$cid}", 'refresh');
+            redirect("contests/show/{$cid}", 'refresh');
             return;
         }
         if($this->db->where('id', $sid)->delete('submissions'))
@@ -45,7 +45,7 @@ class Submissions extends MY_Controller
         } else {
             $this->session->set_flashdata('error', "There was an error deleting the submission");
         }
-        redirect("contests/{$cid}", 'refresh');
+        redirect("contests/show/{$cid}", 'refresh');
     }
 
     public function edit()
