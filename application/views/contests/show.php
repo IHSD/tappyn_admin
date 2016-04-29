@@ -145,7 +145,7 @@
                                          <a href="<?php echo base_url('users/show/'.$submission->owner->id); ?>">
                                              <?php echo $submission->owner->email; ?>
                                          </a>
-                                        <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "DELETE")); ?>
+                                        <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "POST")); ?>
                                             <button class='btn btn-danger' type='submit'>DELETE</button>
                                         <?php echo form_close(); ?>
                                      </small>
