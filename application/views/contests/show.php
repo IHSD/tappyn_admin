@@ -151,7 +151,7 @@
                                          <a href="<?php echo base_url('users/show/'.$submission->owner->id); ?>">
                                              <?php echo $submission->owner->email; ?>
                                          </a>
-                                        <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "POST")); ?>
+                                        <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "POST", 'id' => 'delete_submission')); ?>
                                             <button class='btn btn-danger' type='submit'>DELETE</button>
                                         <?php echo form_close(); ?>
                                      </small>
@@ -251,6 +251,15 @@
 
 </div>
 
+<script>
+    $('#delete_submission').click(function() {
+        var res = confirm("Are you sure you want to delete this submission?");
+        if(!res)
+        {
+            return FALSE;
+        }
+    })
+</script>
 <script>
   var myChart9 = echarts.init(document.getElementById('mainb'), theme);
   var chart_data = {
