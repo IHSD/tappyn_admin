@@ -32,7 +32,7 @@ class Submissions extends MY_Controller
 
     public function delete($cid, $sid)
     {
-        $submission = $this->submission_library->get($id);
+        $submission = $this->submission_library->get($sid);
         if(!$submission)
         {
             $this->session->set_flashdata('error', "That submission does not exist");
