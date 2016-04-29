@@ -7,7 +7,7 @@
     <?php if($this->session->flashdata('error')): ?>
         <div class='alert alert-error'><?php echo $this->session->flashdata('error'); ?></div>
     <?php elseif($this->session->flashdata('message')): ?>
-        <div class='alert alert-info'><?php echo $this->session->flashdata('message'): ?></div>
+        <div class='alert alert-info'><?php echo $this->session->flashdata('message'); ?></div>
     <?php endif; ?>
   </div>
 </div>
