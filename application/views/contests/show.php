@@ -178,7 +178,11 @@
                                          </blockquote>
                                      </div>
                                      <div class='col-sm-6'>
-                                         <img src="<?php echo $submission->thumbnail_url; ?>">
+                                         <?php if($contest->platform == 'instagram'): ?>
+                                             <img src="<?php echo $submission->attachment; ?>">
+                                         <?php else: ?>
+                                             <img src="<?php echo $submission->thumbnail_url; ?>">
+                                         <?php endif; ?>
                                      </div>
                                  </div>
                                  <br />
