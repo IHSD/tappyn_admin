@@ -67,12 +67,12 @@
                                 <td>
                                     <?php if($email->processing == 0): ?>
                                         Pending
-                                    <?php elseif(is_null($email->errors)): ?>
+                                    <?php elseif(is_null($email->failure_reason)): ?>
                                         Sent
                                     <?php else: ?>
                                         <?php
-                                            $errors = json_decode($email->errors);
-                                            foreach($errors as $error): ?>
+                                            $failure_reason = json_decode($email->failure_reason);
+                                            foreach($failure_reason as $error): ?>
                                             <div class='alert alert-danger'><?php echo $error; ?></div>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
