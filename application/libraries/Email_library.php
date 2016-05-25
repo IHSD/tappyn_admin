@@ -49,6 +49,13 @@ class Email_library
     public function processReportQueryString()
     {
         if($this->input->get('fields')) $this->email_model->select($this->input->get('fields'));
+        if($this->input->get('email_type')) $this->email_model->where('email_type', $this->input->get('email_type'));
+        if($this->input->get('recipient_id')) $this->email_model->where('recipient_id', $this->input->get('recipient_id'));
+        if($this->input->get('recipient')) $this->email_model->where('recipient', $this->input->get('recipient'));
+        if($this->input->get('object_id')) $this->email_model->where('object_id', $this->input->get('object_id'));
+        if($this->input->get('object_type')) $this->email_model->where('recipient_id', $this->input->get('recipient_id'));
+        if($this->input->get('processing')) $this->email_model->where('processing', $this->input->get('processing'));
+
         $limit = 25;
         $offset = 0;
         if($this->input->get('limit')) $limit = $this->input->get('limit');
