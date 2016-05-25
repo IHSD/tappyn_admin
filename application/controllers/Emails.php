@@ -56,7 +56,7 @@ class Emails extends MY_Controller
             $data = [
                 'queued_at' => time(),
                 'sent_at' => null,
-                'status' => null,
+                'failure_reason' => null,
                 'recipient' => $user_email,
                 'recipient_id' => 1,
                 'type' => $email->email_type,
