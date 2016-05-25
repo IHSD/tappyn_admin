@@ -46,9 +46,24 @@
                   <tbody>
                         <?php foreach($emails as $email): ?>
                             <tr class="even pointer">
+                                <td>
+                                    <div class="btn-group">
+                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       Actions <span class="caret"></span>
+                                     </button>
+                                     <ul class="dropdown-menu">
+                                       <li><a href="#">View</a></li>
+                                       <li><a href="#">Edit</a></li>
+                                       <li><a href="#">Select as Winner</a></li>
+                                       <li>
+                                               <a href="<?php echo base_url('submissions/'.$submission->id.'/confirm_delete'); ?>" class='dropdown-danger' type='submit'>Delete</a>
+                                       </li>
+                                     </ul>
+                                   </div>
+                                </td>
                                 <td><?php echo $email->id; ?></td>
-                                <td><?php echo $email->queued_at; ?></td>
-                                <td><?php echo $email->sent_at; ?></td>
+                                <td><?php echo date('Y-n-j H:i', $email->queued_at); ?></td>
+                                <td><?php echo date('Y-n-j H:i', $email->sent_at); ?></td>
                                 <td></td>
                                 <td><?php echo $email->recipient; ?></td>
                                 <td><?php echo $email->recipient_id; ?></td>
