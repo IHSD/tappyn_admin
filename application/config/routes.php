@@ -54,3 +54,4 @@ $route['404_override'] = 'errors/show_404';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['contests/(:num)/submissions/(:num)']['post'] = 'submissions/delete/$1/$2';
+$route['submissions/(:num)/confirm_delete']['get'] = 'submissions/confirm_delete/$1';
