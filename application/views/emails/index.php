@@ -111,6 +111,6 @@ $(document).ready(function() {
                 }
             }
         })
-    }
+    })
 })
 </script>
