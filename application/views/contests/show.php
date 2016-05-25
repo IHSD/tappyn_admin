@@ -151,13 +151,28 @@
                                          <a href="<?php echo base_url('users/show/'.$submission->owner->id); ?>">
                                              <?php echo $submission->owner->email; ?>
                                          </a>
-                                        <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "POST", 'class' => 'delete_submission')); ?>
-                                            <button class='btn btn-danger' type='submit'>DELETE</button>
-                                        <?php echo form_close(); ?>
                                      </small>
                                  </h4>
                                  <div class='row'>
-                                     <div class='col-sm-6'>
+                                     <div class='col-sm-2'>
+                                         <div class="btn-group">
+                                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Actions <span class="caret"></span>
+                                          </button>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">View</a></li>
+                                            <li><a href="#">Edit</a></li>
+                                            <li><a href="#">Select as Winner</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "POST", 'class' => 'delete_submission')); ?>
+                                                    <button class='dropdown-danger' type='submit'>Delete</button>
+                                                <?php echo form_close(); ?>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                     </div>
+                                     <div class='col-sm-4'>
                                          <blockquote class="message" style='font-size:0.9em'>
                                              <?php if(!is_null($submission->headline)): ?>
                                                  <p class='title'><strong>Headline</strong></p>
@@ -177,7 +192,7 @@
                                              <?php endif; ?>
                                          </blockquote>
                                      </div>
-                                     <div class='col-sm-6'>
+                                     <div class='col-sm-4'>
                                          <?php if($contest->platform == 'instagram'): ?>
                                              <img src="<?php echo $submission->attachment; ?>">
                                          <?php else: ?>
