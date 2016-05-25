@@ -45,9 +45,7 @@
                       </blockquote>
                   </div>
                   <div class='col-sm-6'>
-                      <?php if($contest->platform == 'instagram'): ?>
-                          <img src="<?php echo $submission->attachment; ?>">
-                      <?php else: ?>
+                      <?php if(!is_null($submission->thumbnail_url)): ?>
                           <img src="<?php echo $submission->thumbnail_url; ?>">
                       <?php endif; ?>
                   </div>
