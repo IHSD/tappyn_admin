@@ -163,10 +163,9 @@
                                             <li><a href="#">View</a></li>
                                             <li><a href="#">Edit</a></li>
                                             <li><a href="#">Select as Winner</a></li>
-                                            <li role="separator" class="divider"></li>
                                             <li>
                                                 <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "POST", 'class' => 'delete_submission')); ?>
-                                                    <button class='dropdown-danger' type='submit'>Delete</button>
+                                                    <a class='dropdown-danger' type='submit'>Delete</a>
                                                 <?php echo form_close(); ?>
                                             </li>
                                           </ul>
