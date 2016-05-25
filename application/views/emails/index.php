@@ -52,7 +52,7 @@
                                        Actions <span class="caret"></span>
                                      </button>
                                      <ul class="dropdown-menu">
-                                       <li><a href="#">Resend</a></li>
+                                       <li><a href="#" onclick='resend_email("<?php echo $email->id; ?>")'>Resend</a></li>
                                        <li><a href="#">View</a></li>
                                        <li><a href="#">Send To</a></li>
                                        <!-- <li>
@@ -90,3 +90,26 @@
     </div>
 
   </div>
+
+<script>
+$(document).ready(function() {
+    console.log("Email loaded");
+    function resend_email(id) {
+        $.ajax({
+            type: "POST",
+            url : "<?php echo base_url('emails/resend/'.$email->id); ?>",
+            dataType: "json",
+            success: function(response){
+                if(response.success)
+                {
+                    alert("Email successfully resent");
+                }
+                else
+                {
+                    alert("We were unable to resend that email");
+                }
+            }
+        })
+    }
+})
+</script>
