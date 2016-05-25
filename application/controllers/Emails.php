@@ -59,13 +59,13 @@ class Emails extends MY_Controller
                 'status' => null,
                 'recipient' => $user_email,
                 'recipient_id' => 1,
-                'type' => $email->type,
+                'type' => $email->email_type,
                 'object_type' => $email->object_type,
                 'object_id' => $email->object_id,
                 'opened' => 0,
                 'clicks' => 0
             ];
-            
+
             if($this->email_library->create($data))
             {
                 $res['success'] = TRUE;
