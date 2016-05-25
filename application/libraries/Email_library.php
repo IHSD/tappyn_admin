@@ -4,7 +4,6 @@ class Email_library
 {
     public function __construct()
     {
-        parent::__construct();
         $this->load->model('email');
     }
 
