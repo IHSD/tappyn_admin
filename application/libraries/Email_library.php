@@ -7,6 +7,11 @@ class Email_library
         $this->load->model('email');
     }
 
+    public function __get($var)
+    {
+        return get_instance()->$var;
+    }
+
     public function getAll()
     {
         $this->processReportQueryString();
