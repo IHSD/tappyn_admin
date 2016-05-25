@@ -4,7 +4,7 @@ class Email_model extends BaseModel
 {
     protected $select = 'id,queued_at,sent_at,failure_reason,recipient,recipient_id,email_type,processing,object_type,object_id,opened,clicks';
 
-    protected $table = 'emails';
+    protected $table = 'mailing_queue';
 
     public function __construct()
     {
