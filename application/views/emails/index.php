@@ -52,12 +52,12 @@
                                        Actions <span class="caret"></span>
                                      </button>
                                      <ul class="dropdown-menu">
+                                       <li><a href="#">Resend</a></li>
                                        <li><a href="#">View</a></li>
-                                       <li><a href="#">Edit</a></li>
-                                       <li><a href="#">Select as Winner</a></li>
-                                       <li>
-                                               <a href="<?php echo base_url('submissions/'.$submission->id.'/confirm_delete'); ?>" class='dropdown-danger' type='submit'>Delete</a>
-                                       </li>
+                                       <li><a href="#">Send To</a></li>
+                                       <!-- <li>
+                                               <a href="<?php echo base_url('emails/'.$email->id.'/confirm_delete'); ?>" class='dropdown-danger' type='submit'>Delete</a>
+                                       </li> -->
                                      </ul>
                                    </div>
                                 </td>
