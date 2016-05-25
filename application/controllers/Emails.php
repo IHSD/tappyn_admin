@@ -5,7 +5,7 @@ class Emails extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('email_library');
+        $this->load->library(array('email_library', 'pagination'));
     }
 
     public function index()
