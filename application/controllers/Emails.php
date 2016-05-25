@@ -28,9 +28,19 @@ class Emails extends MY_Controller
 
     }
 
-    public function resend()
+    public function resend($eid)
     {
-
+        $res = array();
+        if($this->email_library->resend($eid))
+        {
+            $res['success'] = TRUE;
+        }
+        else
+        {
+            $res['success'] = FALSE;
+            $res['error'] = $this->email_library->errors();
+        }
+        echo json_encode($res);
     }
 
     public function test()

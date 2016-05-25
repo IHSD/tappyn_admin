@@ -10,4 +10,14 @@ class Email_model extends BaseModel
     {
         parent::__construct();
     }
+
+    public function update($id, $data)
+    {
+        if($this->db->where('id', $id)->update($this->table, $data))
+        {
+            return TRUE;
+        }
+        $this->errors = $this->db->error()['message'];
+        return FALSE;
+    }
 }

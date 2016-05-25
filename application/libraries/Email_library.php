@@ -12,6 +12,15 @@ class Email_library
         return get_instance()->$var;
     }
 
+    public function __call($method, $args)
+    {
+        if(! method_exists($this->contest, $method))
+        {
+            throw new Exception("Undefined method Contest_library::{$method}()");
+        }
+        return call_user_func_array(array($this->contest, $method), $args);
+    }
+
     public function getAll()
     {
         $this->processReportQueryString();
@@ -21,6 +30,15 @@ class Email_library
             'count' => $count,
             'emails' => $emails
         );
+    }
+
+    public function resend($eid)
+    {
+        if($this->email_model->update($eid, ['processing' => 0]))
+        {
+            return TRUE;
+        }
+        return FALSE;
     }
 
     public function get()
