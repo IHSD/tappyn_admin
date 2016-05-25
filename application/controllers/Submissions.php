@@ -50,6 +50,17 @@ class Submissions extends MY_Controller
         redirect("contests/show/{$cid}", 'refresh');
     }
 
+    public function confirm_delete($sid)
+    {
+        $submission = $this->submission_library->get($sid);
+        if(!$submission)
+        {
+            $this->session->set_flashdata('error', "That submission does not exist");
+            redirect("contests/show/{$cid}", 'refresh');
+            return;
+        }
+        $this->load->view('submissions/confirm_delete', ['submission' => $submission]);
+    }
     public function edit()
     {
 
