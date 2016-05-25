@@ -145,7 +145,7 @@
               <h3>Admin</h3>
               <ul class="nav side-menu">
                 <li><a href="<?php echo base_url('auth/index'); ?>"><i class="fa fa-cog"></i> Admins</a></li>
-                <li><a href="#"><i class="fa fa-bug"></i> Emails <span class="label label-success pull-right">Coming Soon</span></a></li>
+                <li><a href="<?php echo base_url('emails/index'); ?>"><i class="fa fa-bug"></i> Emails</a></li>
                 <li><a href="<?php echo base_url('query'); ?>"><i class='fa fa-database'></i> Query Sandbox</a></li>
                 <li><a href="<?php echo base_url('munin'); ?>"><i class="fa fa-dashboard"></i> Munin monitoring</a></li>
                 </li>
