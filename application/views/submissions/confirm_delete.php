@@ -15,7 +15,7 @@
 
       <div class="clearfix"></div>
 
-      <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4 col-sm-offset-4">
+      <div class="col-sm-12">
         <div class="x_panel">
           <div class="x_title">
             <div class="clearfix"></div>
