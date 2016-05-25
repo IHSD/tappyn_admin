@@ -34,7 +34,7 @@ class Email_library
 
     public function resend($eid)
     {
-        if($this->email_model->update($eid, ['processing' => 0]))
+        if($this->email_model->update($eid, ['processing' => 0, 'sent_at' => NULL, 'opened' => 0, 'clicks' => 0]))
         {
             return TRUE;
         }

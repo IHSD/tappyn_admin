@@ -64,7 +64,19 @@
                                 <td><?php echo $email->id; ?></td>
                                 <td><?php echo date('Y-n-j H:i', $email->queued_at); ?></td>
                                 <td><?php echo date('Y-n-j H:i', $email->sent_at); ?></td>
-                                <td></td>
+                                <td>
+                                    <?php if($email->processing == 0): ?>
+                                        Pending
+                                    <?php elseif(is_null($email->errors)): ?>
+                                        Sent
+                                    <?php else: ?>
+                                        <?php
+                                            $errors = json_decode($email->errors);
+                                            foreach($errors as $error): ?>
+                                            <div class='alert alert-danger'><?php echo $error; ?></div>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </td>
                                 <td><?php echo $email->recipient; ?></td>
                                 <td><?php echo $email->recipient_id; ?></td>
                                 <td><?php echo $email->email_type; ?></td>
