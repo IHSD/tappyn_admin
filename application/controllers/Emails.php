@@ -10,8 +10,8 @@ class Emails extends MY_Controller
 
     public function index()
     {
-        $data = $this->contest_library->getAll();
-        
+        $data = $this->email_library->getAll();
+
         $config['base_url'] = base_url('emails/index');
         $config['total_rows'] = $data['count'];
         $config['per_page'] = $this->input->get('limit') ? $this->input->get('limit') : 25;
