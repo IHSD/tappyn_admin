@@ -22,7 +22,7 @@
             <span class='pull-right'><?php echo $pagination; ?></span>
           </div>
           <div class="x_content" style='overflow:auto'>
-            <?php if(empty($contests)): ?>
+            <?php if(empty($emails)): ?>
                 <div class='text-center alert alert-warning col-sm-12'><strong>Sorry, there are no emails to show! </strong><a href="<?php echo base_url(); ?>emails/index" ?>Try clearing your filters?</a></div>
             <?php else: ?>
                 <table class="table table-striped responsive-utilities jambo_table bulk_action">
