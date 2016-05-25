@@ -2787,6 +2787,13 @@ textarea:focus {
   }
 }
 
+.glyphicon-red {
+    color:red;
+}
+
+.glyphicon-green {
+    color: green;
+}
 /* *********  /glyphicons  **************************** */
 
 

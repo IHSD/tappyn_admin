@@ -38,7 +38,7 @@
                         <td>Type</td>
                         <td>Object Type</td>
                         <td>Object ID</td>
-                        <td>Opens</td>
+                        <td>Opened</td>
                         <td>Clicks</td>
                     </tr>
                   </thead>
@@ -70,7 +70,13 @@
                                 <td><?php echo $email->email_type; ?></td>
                                 <td><?php echo $email->object_type; ?></td>
                                 <td><?php echo $email->object_id; ?></td>
-                                <td><?php echo $email->opened; ?></td>
+                                <td>
+                                    <?php if($email->opened == 0): ?>
+                                        <span class='glyphicon glyphicon-remove glyphicon-red'></span>
+                                    <?php else: ?>
+                                        <span class='glyphicon glyphicon-ok glyphicon-green'></span>
+                                    <?php endif; ?>
+                                </td>
                                 <td><?php echo $email->clicks; ?></td>
                             </tr>
                         <?php endforeach; ?>
