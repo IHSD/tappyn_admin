@@ -20,7 +20,7 @@ class Emails extends MY_Controller
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
 
-        $this->load->view('emails/index', $emails);
+        $this->load->view('emails/index', $data);
     }
 
     public function show()
