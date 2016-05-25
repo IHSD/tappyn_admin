@@ -14,11 +14,11 @@ class Email_library
 
     public function __call($method, $args)
     {
-        if(! method_exists($this->contest, $method))
+        if(! method_exists($this->email_model, $method))
         {
-            throw new Exception("Undefined method Contest_library::{$method}()");
+            throw new Exception("Undefined method Email_library::{$method}()");
         }
-        return call_user_func_array(array($this->contest, $method), $args);
+        return call_user_func_array(array($this->email_model, $method), $args);
     }
 
     public function getAll()

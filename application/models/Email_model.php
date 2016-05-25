@@ -20,4 +20,14 @@ class Email_model extends BaseModel
         $this->errors = $this->db->error()['message'];
         return FALSE;
     }
+
+    public function create($data)
+    {
+        if($this->db->insert($this->table, $data))
+        {
+            return TRUE;
+        }
+        $this->errors = $this->db->error()['message'];
+        return FALSE;
+    }
 }

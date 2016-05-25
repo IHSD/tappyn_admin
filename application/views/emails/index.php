@@ -54,7 +54,7 @@
                                      <ul class="dropdown-menu">
                                        <li><a class="email_resend" data-id="<?php echo $email->id; ?>">Resend</a></li>
                                        <li><a href="#">View</a></li>
-                                       <li><a href="#">Send To</a></li>
+                                       <li><a class="email_send_to" data-id="<?php echo $email->id; ?>" href="#">Send To Me</a></li>
                                        <!-- <li>
                                                <a href="<?php echo base_url('emails/'.$email->id.'/confirm_delete'); ?>" class='dropdown-danger' type='submit'>Delete</a>
                                        </li> -->
@@ -120,6 +120,25 @@ $(document).ready(function() {
                 else
                 {
                     alert("We were unable to resend that email");
+                }
+            }
+        })
+    })
+    console.log("Email loaded");
+    $(".email_send_to").on('click', function() {
+        id = $(this).attr('data-id');
+        $.ajax({
+            type: "POST",
+            url : "<?php echo base_url(); ?>emails/send_to_me/"+id,
+            dataType: "json",
+            success: function(response){
+                if(response.success)
+                {
+                    alert("Email successfully resent");
+                }
+                else
+                {
+                    alert("We were unable to send that email to you");
                 }
             }
         })

@@ -43,6 +43,39 @@ class Emails extends MY_Controller
         echo json_encode($res);
     }
 
+    public function send_to_me($id)
+    {
+        $res = array();
+        $user_email = $this->ion_auth->user()->row()->email;
+        $email = $this->email_library->get($id);
+        if(!$email)
+        {
+             $res['success'] = FALSE;
+             $res['error'] = "That email does not exist";
+        } else {
+            $data = [
+                'queued_at' => time(),
+                'sent_at' => null,
+                'status' => null,
+                'recipient' => $user_email,
+                'recipient_id' => 1,
+                'type' => $email->type,
+                'object_type' => $email->object_type,
+                'object_id' => $email->object_id,
+                'opened' => 0,
+                'clicks' => 0
+            ];
+            
+            if($this->email_library->create($data))
+            {
+                $res['success'] = TRUE;
+            } else {
+                $res['success'] = FALSE;
+                $res['error'] = $this->email_library->errors();
+            }
+        }
+        echo json_encode($res);
+    }
     public function test()
     {
 
