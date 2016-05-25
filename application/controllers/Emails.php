@@ -59,7 +59,7 @@ class Emails extends MY_Controller
                 'failure_reason' => null,
                 'recipient' => $user_email,
                 'recipient_id' => 1,
-                'type' => $email->email_type,
+                'email_type' => $email->email_type,
                 'object_type' => $email->object_type,
                 'object_id' => $email->object_id,
                 'opened' => 0,
