@@ -25,7 +25,7 @@
               <h4>Are you sure you would like to delete this submission?</h4>
               <?php echo form_open('contests/'.$submission->contest_id.'/submission/'.$submission->id); ?>
                   <button type='submit' class='btn btn-danger'>Confirm</button>
-                  <a href="<?php echo base_url('contests/'.$submission->contest_id; ); ?>" class='btn btn-default'>Cancel</a>
+                  <a href="<?php echo base_url('contests/'.$submission->contest_id); ?>" class='btn btn-default'>Cancel</a>
               <?php echo form_close(); ?>
           </div>
         </div>
