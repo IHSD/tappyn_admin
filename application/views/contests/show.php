@@ -165,7 +165,7 @@
                                             <li><a href="#">Select as Winner</a></li>
                                             <li>
                                                 <?php echo form_open("contests/{$contest->id}/submissions/{$submission->id}", array('method' => "POST", 'class' => 'delete_submission')); ?>
-                                                    <a class='dropdown-danger' type='submit'>Delete</a>
+                                                    <a href="#" class='dropdown-danger' type='submit'>Delete</a>
                                                 <?php echo form_close(); ?>
                                             </li>
                                           </ul>
