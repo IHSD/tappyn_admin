@@ -11,6 +11,17 @@ class Email_model extends BaseModel
         parent::__construct();
     }
 
+    public function get($id)
+    {
+        $email = $this->db->select('*')->from($this->table)->where('id', $id)->limit(1)->get();
+        if(!$email || $email->num_rows() == 0)
+        {
+            $this->errors = "That email does not exist";
+            return FALSE;
+        }
+        return $email->row();
+    }
+
     public function update($id, $data)
     {
         if($this->db->where('id', $id)->update($this->table, $data))

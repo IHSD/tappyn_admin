@@ -41,11 +41,6 @@ class Email_library
         return FALSE;
     }
 
-    public function get()
-    {
-
-    }
-
     public function processReportQueryString()
     {
         if($this->input->get('fields')) $this->email_model->select($this->input->get('fields'));
