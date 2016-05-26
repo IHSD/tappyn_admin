@@ -50,7 +50,7 @@
                       <?php endif; ?>
                   </div>
               </div>
-              <?php echo form_open('contests/'.$submission->contest_id.'/submissions/'.$submission->id); ?>
+              <?php echo form_open('contests/'.$submission->contest_id.'/submissions/'.$submission->id.'/delete'); ?>
                   <button type='submit' class='btn btn-danger'>Confirm</button>
                   <a href="<?php echo base_url('contests/show/'.$submission->contest_id); ?>" class='btn btn-default'>Cancel</a>
               <?php echo form_close(); ?>

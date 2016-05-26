@@ -7,4 +7,15 @@ class Payout extends BaseModel
     {
         parent::__construct();
     }
+
+    public function create($data)
+    {
+        if($this->db->insert($this->table, $data))
+        {
+            return $this->db->insert_id();
+        }
+        $this->errors = "There was an error creating the payout";
+        error_log($this->db->error()['message']);
+        return FALSE;
+    }
 }

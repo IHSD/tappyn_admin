@@ -31,11 +31,15 @@ class Payout_library
         );
     }
 
-    public function get($pid)
+    public function get($params)
     {
-        $this->registerPostSelectCallback(array(
-            'user_callback'
-        ));
+        $payout = $this->payout->where($params)->fetch();
+        if(!$payout || $payout->num_rows() == 0)
+        {
+            $this->errors = "That payout does not exist";
+            return FALSE;
+        }
+        return $payout->row();
     }
 
     public function processReportQueryString()

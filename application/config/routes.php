@@ -53,5 +53,6 @@ $route['default_controller'] = 'home/dashboard';
 $route['404_override'] = 'errors/show_404';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['contests/(:num)/submissions/(:num)']['post'] = 'submissions/delete/$1/$2';
+$route['contests/(:num)/submissions/(:num)/select_as_winner']['post'] = 'submissions/set_as_winner/$1/$2';
+$route['contests/(:num)/submissions/(:num)/delete']['post'] = 'submissions/delete/$1/$2';
 $route['submissions/(:num)/confirm_delete']['get'] = 'submissions/confirm_delete/$1';

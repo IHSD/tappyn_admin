@@ -162,7 +162,7 @@
                                           <ul class="dropdown-menu">
                                             <li><a href="#">View</a></li>
                                             <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Select as Winner</a></li>
+                                            <li><a href="#" class='select_as_winner' data-id="<?php echo $submission->id; ?>">Select as Winner</a></li>
                                             <li>
                                                     <a href="<?php echo base_url('submissions/'.$submission->id.'/confirm_delete'); ?>" class='dropdown-danger' type='submit'>Delete</a>
                                             </li>
@@ -333,4 +333,28 @@
       }
   })
 
+</script>
+
+<script>
+$(document).ready(function() {
+    $(".select_as_winner").on('click', function() {
+        console.log("Select winner clicked");
+        var id = $(this).attr('data-id');
+        $.ajax({
+            type: "POST",
+            url : "<?php echo base_url('contests/'.$contest->id); ?>/submissions/"+id+"/select_as_winner",
+            dataType: "json",
+            data : {
+                "<?php echo $this->security->get_csrf_token_name(); ?>" : "<?php echo $this->security->get_csrf_hash(); ?>"
+            },
+            success: function(response){
+                if(!response.success)
+                {
+                    alert(response.error);
+                }
+                location.reload();
+            }
+        })
+    })
+})
 </script>

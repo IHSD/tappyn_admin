@@ -37,6 +37,15 @@ class Submission_library
         );
     }
 
+    public function get_in_contest($cid)
+    {
+        $subs = $this->submission->select('id,owner,contest_id')->where('contest_id', $cid)->limit(1000)->fetch();
+
+        $subs = $subs->result();
+        
+        return $subs;
+    }
+
     public function get($id)
     {
         $this->registerPostSelectCallback('contest_callback');

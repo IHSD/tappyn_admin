@@ -36,7 +36,7 @@ class Email_model extends BaseModel
     {
         if($this->db->insert($this->table, $data))
         {
-            return TRUE;
+            return $this->db->insert_id();
         }
         $this->errors = $this->db->error()['message'];
         return FALSE;

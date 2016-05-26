@@ -37,9 +37,9 @@ class User_library
         );
     }
 
-    public function get($id)
+    public function get($id, $register_callback = TRUE)
     {
-        $this->registerPostSelectCallback('account_callback');
+        if($register_callback) $this->registerPostSelectCallback('account_callback');
         return $this->user_model->where('users.id', $id)->join('profiles', 'users.id = profiles.id', 'left')->limit(1)->fetch()->row();
     }
 
