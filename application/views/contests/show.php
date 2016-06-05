@@ -188,11 +188,11 @@
                                              <?php endif;?>
                                          </blockquote>
                                      </div>
-                                     <div class='col-sm-4'>
+                                     <div class='col-sm-6'>
                                          <?php if ($contest->platform == 'instagram'): ?>
-                                             <img src="<?php echo $submission->attachment; ?>">
+                                             <img class="img-responsive" src="<?php echo $submission->attachment; ?>">
                                          <?php else: ?>
-                                             <img src="<?php echo $submission->thumbnail_url; ?>">
+                                             <img class="img-responsive" src="<?php echo $submission->thumbnail_url; ?>">
                                          <?php endif;?>
                                      </div>
                                  </div>
