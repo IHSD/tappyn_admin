@@ -1,14 +1,14 @@
 
 <div class="clearfix"></div>
 
-<!-- <?php var_dump($contest); ?> -->
+<!-- <?php var_dump($contest);?> -->
 <div class="row">
 
   <div class="clearfix"></div>
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>Update Submission</h3>
+              <h3>Update Submission2</h3>
             </div>
           </div>
           <div class="clearfix"></div>
@@ -18,12 +18,12 @@
               <div class="x_panel">
                   <div class="x_content">
                     <br />
-                    <?php echo form_open('submissions/update/'.$submission->id, array('id' => 'demo-form2', 'data-parsley-validate' => NULL, 'class' => 'form-horizontal form-label-left')); ?>
+                    <?php echo form_open('submissions/update/' . $submission->id, array('id' => 'demo-form2', 'data-parsley-validate' => null, 'class' => 'form-horizontal form-label-left')); ?>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Headline<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            
+
                           <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
@@ -86,7 +86,7 @@
       amounts : []
   };
   $.ajax({
-      url : "<?php echo base_url('contests/submissions_by_time_range/'.$contest->id)?>",
+      url : "<?php echo base_url('contests/submissions_by_time_range/' . $contest->id) ?>",
       dataType: 'json',
       success: function(response)
       {
