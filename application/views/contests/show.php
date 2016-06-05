@@ -4,16 +4,16 @@
         <?php echo "Contest " . $contest->id; ?>
     </h3>
 
-    <?php if($this->session->flashdata('error')): ?>
+    <?php if ($this->session->flashdata('error')): ?>
         <div class='alert alert-error'><?php echo $this->session->flashdata('error'); ?></div>
-    <?php elseif($this->session->flashdata('message')): ?>
+    <?php elseif ($this->session->flashdata('message')): ?>
         <div class='alert alert-info'><?php echo $this->session->flashdata('message'); ?></div>
-    <?php endif; ?>
+    <?php endif;?>
   </div>
 </div>
 <div class="clearfix"></div>
 
-<!-- <?php var_dump($contest); ?> -->
+<!-- <?php var_dump($contest);?> -->
 <div class="row">
 
   <div class="clearfix"></div>
@@ -130,25 +130,25 @@
                     <div>
 
                       <h4>Submissions</h4>
-                      <?php if(is_null($contest->payout)): ?>
+                      <?php if (is_null($contest->payout)): ?>
                           <div class='alert alert-info'>This contest does not have a winner yet!</div>
-                      <?php endif; ?>
+                      <?php endif;?>
                       <!-- end of user messages -->
                       <ul class="messages" style='list-style-type:none'>
-                         <?php foreach($contest->submissions as $submission): ?>
-                             <?php if(isset($submission->winner) && $submission->winner == TRUE): ?>
+                         <?php foreach ($contest->submissions as $submission): ?>
+                             <?php if (isset($submission->winner) && $submission->winner == true): ?>
                                  <li style="border:8px solid #ff5c00;border-radius:10px;padding-right:10px;">
                             <?php else: ?>
                                  <li>
-                            <?php endif; ?>
+                            <?php endif;?>
                                <div class="message_date">
                                  <h3 class="date text-info"><?php echo date('d', strtotime($submission->created_at)); ?></h3>
                                  <p class="month"><?php echo date('M', strtotime($submission->created_at)); ?></p>
                                </div>
                                <div class="message_wrapper">
-                                 <h4 class="heading"><?php echo $submission->owner->first_name.' '.$submission->owner->last_name; ?>
+                                 <h4 class="heading"><?php echo $submission->owner->first_name . ' ' . $submission->owner->last_name; ?>
                                      <small>
-                                         <a href="<?php echo base_url('users/show/'.$submission->owner->id); ?>">
+                                         <a href="<?php echo base_url('users/show/' . $submission->owner->id); ?>">
                                              <?php echo $submission->owner->email; ?>
                                          </a>
                                      </small>
@@ -161,47 +161,46 @@
                                           </button>
                                           <ul class="dropdown-menu">
                                             <li><a href="#">View</a></li>
-                                            <li><a href="#">Edit</a></li>
+                                            <li><a href="<?php echo base_url('submissions/show/' . $submission->id . ''); ?>">Edit</a></li>
                                             <li><a href="#" class='select_as_winner' data-id="<?php echo $submission->id; ?>">Select as Winner</a></li>
-                                            <li>
-                                                    <a href="<?php echo base_url('submissions/'.$submission->id.'/confirm_delete'); ?>" class='dropdown-danger' type='submit'>Delete</a>
+                                            <li><a href="<?php echo base_url('submissions/' . $submission->id . '/confirm_delete'); ?>" class='dropdown-danger' type='submit'>Delete</a>
                                             </li>
                                           </ul>
                                         </div>
                                      </div>
                                      <div class='col-sm-4'>
                                          <blockquote class="message" style='font-size:0.9em'>
-                                             <?php if(!is_null($submission->headline)): ?>
+                                             <?php if (!is_null($submission->headline)): ?>
                                                  <p class='title'><strong>Headline</strong></p>
                                                  <p><?php echo $submission->headline; ?></p>
-                                             <?php endif; ?>
-                                             <?php if(!is_null($submission->text)): ?>
+                                             <?php endif;?>
+                                             <?php if (!is_null($submission->text)): ?>
                                                  <p class='title'><strong>Text</strong></p>
                                                  <p><?php echo $submission->text; ?></p>
-                                             <?php endif; ?>
-                                             <?php if(!is_null($submission->description)): ?>
+                                             <?php endif;?>
+                                             <?php if (!is_null($submission->description)): ?>
                                                  <p class='title'><strong>Description</strong></p>
                                                  <p><?php echo $submission->description; ?></p>
-                                             <?php endif; ?>
-                                             <?php if(!is_null($submission->link_explanation)): ?>
+                                             <?php endif;?>
+                                             <?php if (!is_null($submission->link_explanation)): ?>
                                                  <p class='title'><strong>Link Explanation</strong></p>
                                                  <p><?php echo $submission->link_explanation; ?></p>
-                                             <?php endif; ?>
+                                             <?php endif;?>
                                          </blockquote>
                                      </div>
                                      <div class='col-sm-4'>
-                                         <?php if($contest->platform == 'instagram'): ?>
+                                         <?php if ($contest->platform == 'instagram'): ?>
                                              <img src="<?php echo $submission->attachment; ?>">
                                          <?php else: ?>
                                              <img src="<?php echo $submission->thumbnail_url; ?>">
-                                         <?php endif; ?>
+                                         <?php endif;?>
                                      </div>
                                  </div>
                                  <br />
 
                                </div>
                              </li>
-                         <?php endforeach; ?>
+                         <?php endforeach;?>
                       </ul>
                       <!-- end of user messages -->
 
@@ -242,13 +241,13 @@
                         <br />
                         <h5>Additional Images</h5>
                         <ul class="list-unstyled project_files">
-                            <?php if(empty($contest->additional_images)): ?>
+                            <?php if (empty($contest->additional_images)): ?>
                                 <div class='alert alert-info'>No Images Provided</div>
                             <?php else: ?>
-                                <?php foreach($contest->additional_images as $image): ?>
+                                <?php foreach ($contest->additional_images as $image): ?>
 
-                                <?php endforeach; ?>
-                            <?php endif; ?>
+                                <?php endforeach;?>
+                            <?php endif;?>
                         </ul>
                         <br />
                       </div>
@@ -284,7 +283,7 @@
       amounts : []
   };
   $.ajax({
-      url : "<?php echo base_url('contests/submissions_by_time_range/'.$contest->id)?>",
+      url : "<?php echo base_url('contests/submissions_by_time_range/' . $contest->id) ?>",
       dataType: 'json',
       success: function(response)
       {
@@ -342,7 +341,7 @@ $(document).ready(function() {
         var id = $(this).attr('data-id');
         $.ajax({
             type: "POST",
-            url : "<?php echo base_url('contests/'.$contest->id); ?>/submissions/"+id+"/select_as_winner",
+            url : "<?php echo base_url('contests/' . $contest->id); ?>/submissions/"+id+"/select_as_winner",
             dataType: "json",
             data : {
                 "<?php echo $this->security->get_csrf_token_name(); ?>" : "<?php echo $this->security->get_csrf_hash(); ?>"

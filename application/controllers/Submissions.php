@@ -187,5 +187,6 @@ class Submissions extends MY_Controller
     {
         $ctr = round($this->input->post('ctr'), 2);
         $this->submission->update($sid, array('ctr' => $ctr));
+        redirect("submissions/show/{$sid}", 'refresh');
     }
 }
