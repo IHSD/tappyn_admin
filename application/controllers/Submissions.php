@@ -26,7 +26,7 @@ class Submissions extends MY_Controller
     public function show($sid)
     {
         $submission = $this->submission_library->get($sid);
-        var_dump($submission);
+        //var_dump($submission);
         $this->load->view('submissions/show', array('submission' => $submission));
     }
 
@@ -183,8 +183,9 @@ class Submissions extends MY_Controller
 
     }
 
-    public function update()
+    public function update($sid)
     {
-
+        $ctr = round($this->input->post('ctr'), 2);
+        $this->submission->update($sid, array('ctr' => $ctr));
     }
 }

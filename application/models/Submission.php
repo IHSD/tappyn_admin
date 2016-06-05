@@ -31,8 +31,13 @@ class Submission extends BaseModel
     {
         return $this->db->where('id', $sid)->delete('submissions');
     }
+
+    public function update($id, $data)
+    {
+        return $this->db->where('id', $id)->update('submissions', $data);
+    }
     /*==================================
-      Callbacks that can be registered
+    Callbacks that can be registered
     ==================================*/
     public function votes_callback($row)
     {

@@ -8,7 +8,7 @@
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>Update Submission2</h3>
+              <h3>Update Submission3</h3>
             </div>
           </div>
           <div class="clearfix"></div>
@@ -19,45 +19,12 @@
                   <div class="x_content">
                     <br />
                     <?php echo form_open('submissions/update/' . $submission->id, array('id' => 'demo-form2', 'data-parsley-validate' => null, 'class' => 'form-horizontal form-label-left')); ?>
+                    <div><img src="<?php echo $submission->thumbnail_url; ?>"></div>
+                    <div><h4><?php echo $submission->text ?></h4></div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Headline<span class="required">*</span>
-                        </label>
+                        <label for="ctr" class="control-label col-md-3 col-sm-3 col-xs-12">CTR</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-
-                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div id="gender" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                            </label>
-                            <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="female" checked=""> Female
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                          <input id="ctr" class="form-control col-md-7 col-xs-12" type="text" name="ctr" value="<?php echo $submission->ctr; ?>">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
