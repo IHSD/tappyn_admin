@@ -26,19 +26,21 @@ class Submissions extends MY_Controller
     public function show($sid)
     {
         $submission = $this->submission_library->get($sid);
-        //var_dump($submission);
+
         $this->load->view('submissions/show', array('submission' => $submission));
     }
 
     public function delete($cid, $sid)
     {
         $submission = $this->submission_library->get($sid);
-        if (!$submission) {
+        if(!$submission)
+        {
             $this->session->set_flashdata('error', "That submission does not exist");
             redirect("contests/show/{$cid}", 'refresh');
             return;
         }
-        if ($this->submission_library->delete($sid)) {
+        if($this->submission_library->delete($sid))
+        {
             $this->session->set_flashdata('message', "Submission successfully deleted");
         } else {
             error_log($this->db->last_query());
@@ -51,7 +53,8 @@ class Submissions extends MY_Controller
     public function confirm_delete($sid)
     {
         $submission = $this->submission_library->get($sid);
-        if (!$submission) {
+        if(!$submission)
+        {
             $this->session->set_flashdata('error', "That submission does not exist");
             redirect("contests/show/{$cid}", 'refresh');
             return;
@@ -65,8 +68,9 @@ class Submissions extends MY_Controller
         $res = array();
         // Check the contest exists
         $contest = $this->contest_library->select('*')->where('id', $cid)->fetch();
-        if (!$contest || $contest->num_rows() == 0) {
-            $res['success'] = false;
+        if(!$contest || $contest->num_rows() == 0)
+        {
+            $res['success'] = FALSE;
             $res['error'] = "That contest does not exist";
             echo json_encode($res);
             return;
@@ -74,24 +78,27 @@ class Submissions extends MY_Controller
         $contest = $contest->row();
         // Check the submission exists
         $submission = $this->submission_library->get($sid);
-        if (!$submission) {
-            $res['success'] = false;
+        if(!$submission)
+        {
+            $res['success'] = FALSE;
             $res['error'] = "That submission does not exist";
             echo json_encode($res);
             return;
         }
         // Check that the contest is over
-        if ($contest->stop_time > date('Y-m-d H:i:s')) {
-            $res['success'] = false;
+        if($contest->stop_time > date('Y-m-d H:i:s'))
+        {
+            $res['success'] = FALSE;
             $res['error'] = "This contest has not ended yet";
             echo json_encode($res);
             return;
         }
         // Chech that a pyout doesnt already exist
         $payout = $this->payout_library->get(['contest_id' => $contest->id]);
-        if ($payout) {
+        if($payout)
+        {
             $res['error'] = "There is already a payout for this contest";
-            $res['success'] = false;
+            $res['success'] = FALSE;
             echo json_encode($res);
             return;
         }
@@ -102,12 +109,13 @@ class Submissions extends MY_Controller
             'claimed' => 0,
             'pending' => 1,
             'user_id' => $submission->owner->id,
-            'amount' => $contest->prize,
+            'amount' => $contest->prize * 100
         ];
-        if ($pid = $this->payout_library->create($data)) {
-            $res['success'] = true;
+        if($pid = $this->payout_library->create($data))
+        {
+            $res['success'] = TRUE;
             // Send post contest package to the winner
-            $user = $this->user_library->get($contest->owner, false);
+            $user = $this->user_library->get($contest->owner, FALSE);
             $this->session->set_flashdata('message', 'Winner successfully selected');
             $data = [
                 'queued_at' => time(),
@@ -119,17 +127,20 @@ class Submissions extends MY_Controller
                 'object_type' => 'contest',
                 'object_id' => $contest->id,
                 'opened' => 0,
-                'clicks' => 0,
+                'clicks' => 0
             ];
-            if (!$this->email_library->create($data)) {
+            if(!$this->email_library->create($data))
+            {
                 error_log($this->db->error()['message']);
             }
             $submissions = $this->submission_library->get_in_contest($contest->id);
 
-            foreach ($submissions as $entry) {
-                $user = $this->user_library->get($entry->owner->id, false);
+            foreach($submissions as $entry)
+            {
+                $user = $this->user_library->get($entry->owner->id, FALSE);
 
-                if ($entry->id == $sid) {
+                if($entry->id == $sid)
+                {
                     $data = [
                         'queued_at' => time(),
                         'sent_at' => null,
@@ -140,10 +151,11 @@ class Submissions extends MY_Controller
                         'object_type' => 'contest',
                         'object_id' => $contest->id,
                         'opened' => 0,
-                        'clicks' => 0,
+                        'clicks' => 0
                     ];
 
-                    if (!$this->email_library->create($data)) {
+                    if(!$this->email_library->create($data))
+                    {
                         error_log($this->db->error()['message']);
                         error_log("Error sending some emails");
                     }
@@ -159,20 +171,23 @@ class Submissions extends MY_Controller
                         'object_type' => 'contest',
                         'object_id' => $contest->id,
                         'opened' => 0,
-                        'clicks' => 0,
+                        'clicks' => 0
                     ];
 
-                    if (!$this->email_library->create($data)) {
+                    if(!$this->email_library->create($data))
+                    {
                         error_log($this->db->error()['message']);
                         error_log("Error sending some emails");
                     }
                 }
 
-                $user = null;
+                $user = NULL;
             }
             echo json_encode($res);
-        } else {
-            $res['success'] = false;
+        }
+        else
+        {
+            $res['success'] = FALSE;
             $res['error'] = 'There was an error selecting winners';
             echo json_encode($res);
         }
@@ -183,10 +198,8 @@ class Submissions extends MY_Controller
 
     }
 
-    public function update($sid)
+    public function update()
     {
-        $ctr = round($this->input->post('ctr'), 2);
-        $this->submission->update($sid, array('ctr' => $ctr));
-        redirect("submissions/show/{$sid}", 'refresh');
+
     }
 }
