@@ -188,7 +188,7 @@ class Submissions extends MY_Controller
         $this->load->model('ad_model');
         $ctr = round($this->input->post('ctr'), 2);
         $this->submission->update($sid, array('ctr' => $ctr));
-        $this->ad_model->where('submission_id', $sid)->by_company()->update('submissions', array('done' => 1));
+        $this->ad_model->update_by_submission($sid, array('done' => 1));
         redirect("submissions/show/{$sid}", 'refresh');
     }
 }

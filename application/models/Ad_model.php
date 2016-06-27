@@ -14,9 +14,9 @@ class Ad_model extends BaseModel
         return $this->where('get_id', 'by_company');
     }
 
-    public function update($data)
+    public function update_by_submission($sid, $data)
     {
-        return $this->db->update($this->table, $data);
+        return $this->db->where('submission_id', $sid)->update($this->table, $data);
 
     }
 
