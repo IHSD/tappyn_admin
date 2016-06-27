@@ -43,7 +43,7 @@
     $ad->content = unserialize($ad->content);
     echo '<tr class="even pointer">
               <td>
-                  <a href="' . base_url() . 'ads/show/' . $ad->id . '"><span class="fa fa-edit"></span></a>
+                  <a href="' . base_url() . 'submissions/show/' . $ad->submission_id . '"><span class="fa fa-edit"></span></a>
                   <a href="https://tappyn.com/#/contest/' . $ad->contest_id . '" target="_blank"><span class="fa fa-eye"></span></a>
               </td>
               <td>' . $ad->id . '</td>
