@@ -6,41 +6,27 @@ class Ads extends MY_Controller
     {
         parent::__construct();
         $this->load->model('ad_model');
+        $this->load->library(array('pagination'));
     }
 
     public function index()
     {
-        $ads = $this->ad_model->by_company()->fetch()->result();
+        $data        = array();
+        $data['ads'] = $this->ad_model->by_company()->fetch()->result();
+
+        $config['base_url']    = base_url('ads/index');
+        $config['total_rows']  = count($data['ads']);
+        $config['per_page']    = $this->input->get('limit') ? $this->input->get('limit') : 25;
+        $config['uri_segment'] = 3;
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+
         $this->load->view('ads/index', $data);
     }
 
-    public function show($cid = null)
+    public function show()
     {
-        $this->contest->registerPostSelectCallback(array('format_callback'));
-        if (is_null($cid)) {
-            redirect("contests/index", 'refresh');
-        }
 
-        $contest              = $this->contest_library->select('*')->where('id', $cid)->fetch()->row();
-        $contest->submissions = $this->submission_library->inContest($cid);
-
-        $contest->payout = $this->payout_library->select('*')->from('payouts')->where('contest_id', $cid)->fetch()->row();
-        if ($contest->payout) {
-            $winning_sub = false;
-            foreach ($contest->submissions as $key => $sub) {
-                $contest->submissions[$key]->winner = false;
-                if ($contest->payout->submission_id == $sub->id) {
-                    $winning_sub                        = true;
-                    $contest->submissions[$key]->winner = true;
-                    $submish                            = $sub;
-                    unset($contest->submissions[$key]);
-                }
-            }
-            if ($winning_sub) {
-                $contest->submissions = array_values(array($submish) + $contest->submissions);
-            }
-        }
-        $this->load->view('contests/show', array('contest' => $contest));
     }
 
     public function create()

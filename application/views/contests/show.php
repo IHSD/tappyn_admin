@@ -137,9 +137,9 @@
                       <ul class="messages" style='list-style-type:none'>
                          <?php foreach ($contest->submissions as $submission): ?>
                              <?php if (isset($submission->winner) && $submission->winner == true): ?>
-                                 <li style="border:8px solid #ff5c00;border-radius:10px;padding-right:10px;">
+                                 <li id="<?php echo $submission->id ?>" style="border:8px solid #ff5c00;border-radius:10px;padding-right:10px;">
                             <?php else: ?>
-                                 <li>
+                                 <li id="<?php echo $submission->id ?>">
                             <?php endif;?>
                                <div class="message_date">
                                  <h3 class="date text-info"><?php echo date('d', strtotime($submission->created_at)); ?></h3>

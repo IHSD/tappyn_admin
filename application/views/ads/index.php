@@ -30,33 +30,26 @@
                     <tr class="headings">
                         <td></td>
                         <td>ID</td>
-                        <td>Company</td>
-                        <td>Start</td>
-                        <td>End</td>
-                        <td>Submissons</td>
-                        <td>Platform</td>
-                        <td>Objective</td>
+                        <td>contest ID</td>
+                        <td>submission ID</td>
+                        <td>info</td>
                     </tr>
                   </thead>
 
                   <tbody>
-                        <?php foreach ($ads as $ad): ?>
-                            <tr class="even pointer">
-                                <td>
-                                    <a href="<?php echo base_url() . 'contests/show/' . $contest->id; ?>"><span class='fa fa-edit'></span></a>
-                                    <a href="https://tappyn.com/#/contest/<?php echo $contest->id; ?>" target="_blank"><span class='fa fa-eye'></span></a>
-                                </td>
-                                <td><?php echo $contest->id; ?></td>
-                                <td><?php echo $contest->company->name; ?></td>
-                                <td><?php echo date('M d', strtotime($contest->start_time)); ?></td>
-                                <td><?php echo date('M d', strtotime($contest->stop_time)); ?></td>
-                                <td><?php echo $contest->submission_count; ?></td>
-                                <td><?php echo $contest->platform; ?></td>
-                                <td><?php echo snake_to_string($contest->objective); ?></td>
-                            </tr>
-                        <?php endforeach;?>
+                        <?php foreach ($ads as $ad): $ad->content = unserialize($ad->content);?>
+	                            <tr class="even pointer">
+	                                <td>
+	                                    <a href="<?php echo base_url() . 'ads/show/' . $ad->id; ?>"><span class='fa fa-edit'></span></a>
+	                                    <a href="https://tappyn.com/#/contest/<?php echo $ad->contest_id; ?>" target="_blank"><span class='fa fa-eye'></span></a>
+	                                </td>
+	                                <td><?php echo $ad->id; ?></td>
+	                                <td><?php echo $ad->contest_id; ?></td>
+	                                <td><a href="<?php echo base_url() . 'contests/show/' . $ad->contest_id . '#' . $ad->submission_id; ?>"><?php echo $ad->submission_id; ?></td>
+	                                <td><?php echo $ad->content['info'] ?></td>
+	                            </tr>
+	                        <?php endforeach;?>
                   </tbody>
-
                 </table>
             <?php endif;?>
           </div>
