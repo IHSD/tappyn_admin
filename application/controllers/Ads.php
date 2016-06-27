@@ -10,7 +10,7 @@ class Ads extends MY_Controller
 
     public function index()
     {
-        $ads = $this->ad_model->by_company()->get()->result();
+        $ads = $this->ad_model->by_company()->fetch()->result();
         $this->load->view('ads/index', $data);
     }
 
