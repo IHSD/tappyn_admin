@@ -14,4 +14,10 @@ class Ad_model extends BaseModel
         return $this->where('get_id', 'by_company');
     }
 
+    public function update($data)
+    {
+        return $this->db->update($this->table, $data);
+
+    }
+
 }
