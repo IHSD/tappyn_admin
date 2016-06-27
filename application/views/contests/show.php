@@ -191,7 +191,7 @@
                                      <div class='col-sm-6'>
                                          <?php if ($contest->use_attachment == 1): ?>
                                              <img class="img-responsive" src="<?php echo $contest->attachment; ?>">
-                                         <?php else if ($contest->platform == 'instagram'): ?>
+                                         <?php elseif ($contest->platform == 'instagram'): ?>
                                              <img class="img-responsive" src="<?php echo $submission->attachment; ?>">
                                          <?php else: ?>
                                              <img class="img-responsive" src="<?php echo $submission->thumbnail_url; ?>">

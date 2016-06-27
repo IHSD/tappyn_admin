@@ -1,6 +1,6 @@
 <?php defined("BASEPATH") or exit('No direct script access allowed');
 
-class Contest extends BaseModel
+class Ad_model extends BaseModel
 {
     protected $table = 'ads';
 
