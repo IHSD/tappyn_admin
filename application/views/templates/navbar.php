@@ -71,7 +71,7 @@
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2><?php echo $user->first_name.' '.$user->last_name; ?></h2>
+              <h2><?php echo $user->first_name . ' ' . $user->last_name; ?></h2>
             </div>
           </div>
           <!-- /menu prile quick info -->
@@ -139,6 +139,11 @@
                     <li><a href="<?php echo base_url('vouchers/create'); ?>">Create</a></li>
                   </ul>
                 </li>
+                <li><a><i class="fa fa-bank"></i> A/B test <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="<?php echo base_url('ads/index'); ?>">View All</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
             <div class="menu_section">
@@ -158,7 +163,7 @@
           <!-- /menu footer buttons -->
           <div class="sidebar-footer hidden-small">
             <a data-toggle="tooltip" data-placement="top" title="Settings">
-              <span class="glyphicon glyphicon-cog" aria-hidden="<?php echo base_url('auth/edit_user/'.$user->id); ?>"></span>
+              <span class="glyphicon glyphicon-cog" aria-hidden="<?php echo base_url('auth/edit_user/' . $user->id); ?>"></span>
             </a>
             <a data-toggle="tooltip" data-placement="top" title="FullScreen">
               <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
@@ -186,11 +191,11 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <?php echo $user->first_name.' '.$user->last_name; ?>
+                  <?php echo $user->first_name . ' ' . $user->last_name; ?>
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                  <li><a href="<?php echo base_url('auth/edit_user/'.$user->id); ?>">  Settings</a>
+                  <li><a href="<?php echo base_url('auth/edit_user/' . $user->id); ?>">  Settings</a>
                   </li>
                   <li><a href="<?php echo base_url('auth/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </li>
