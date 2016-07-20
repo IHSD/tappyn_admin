@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<!-- test git 7/20 -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
