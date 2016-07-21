@@ -143,6 +143,7 @@
                 <li><a><i class="fa fa-bank"></i> A/B test <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     <li><a href="<?php echo base_url('ads/index'); ?>">View All</a></li>
+                    <li><a href="<?php echo base_url('ads/import'); ?>">Import result</a></li>
                   </ul>
                 </li>
               </ul>

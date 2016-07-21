@@ -24,6 +24,28 @@ class Ads extends MY_Controller
         $this->load->view('ads/index', $data);
     }
 
+    public function import()
+    {
+        $data = array();
+        $post = $this->input->post();
+
+        try {
+            if ($post['csv_data']) {
+                $post['csv_data'] = json_decode($post['csv_data'], true);
+                if (!$post['csv_data']) {
+                    throw new Exception("no csv data");
+                }
+
+                var_dump($post);
+            }
+
+        } catch (Exception $e) {
+            $data['msg'] = $e->getMessage();
+        }
+
+        $this->load->view('ads/index', $data);
+    }
+
     public function show()
     {
 
