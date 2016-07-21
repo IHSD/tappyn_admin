@@ -55,11 +55,11 @@ class Ads extends MY_Controller
                     }
                 }
 
-                if ($post['import'] == 'go') {
+                if ($post['import_act'] == 'go') {
                     $sids = array();
                     foreach ($data['found'] as $row) {
                         $sid = $row['sid'];
-                        $this->submission->update($sid, array('ctr' => $row['ctr'], 'test_result' => serialize($row)));
+                        $this->submission->update($sid, array('test_result' => serialize($row)));
                         $sids[] = $sid;
                     }
                     $data['found'] = $data['not_found'] = array();
