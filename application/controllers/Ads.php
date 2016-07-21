@@ -26,11 +26,13 @@ class Ads extends MY_Controller
 
     public function import()
     {
-        $data         = array('not_found' => array(), 'found' => array(), 'msg' => '');
-        $data['post'] = $post = $this->input->post();
+        $data             = array('not_found' => array(), 'found' => array(), 'msg' => '');
+        $post             = $this->input->post();
+        $post['csv_data'] = isset($post['csv_data']) ? $post['csv_data'] : '';
+        $data['post']     = $post;
 
         try {
-            if (isset($post['csv_data'])) {
+            if ($post['csv_data']) {
                 $post['csv_data_array'] = json_decode($post['csv_data'], true);
                 if (!$post['csv_data_array']) {
                     throw new Exception("no csv data");
