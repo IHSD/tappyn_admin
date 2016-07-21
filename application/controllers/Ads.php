@@ -30,12 +30,11 @@ class Ads extends MY_Controller
         $post = $this->input->post();
 
         try {
-            if ($post['csv_data']) {
+            if (isset($post['csv_data'])) {
                 $post['csv_data'] = json_decode($post['csv_data'], true);
                 if (!$post['csv_data']) {
                     throw new Exception("no csv data");
                 }
-
                 var_dump($post);
             }
 
@@ -43,7 +42,7 @@ class Ads extends MY_Controller
             $data['msg'] = $e->getMessage();
         }
 
-        $this->load->view('ads/index', $data);
+        $this->load->view('ads/import', $data);
     }
 
     public function show()
