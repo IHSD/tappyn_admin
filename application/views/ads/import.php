@@ -7,11 +7,11 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
-            <div class="x_title"><?php echo $msg?></div>
+            <div class="x_title"><?php echo $msg ?></div>
             <div class="x_content">
                 Chose a csv file: <input type="file" id="files">
                 <form id="csv_form" method="post">
-                    <input id="csv_data" type="hidden" name="csv_data" value="<?php echo $post['csv_data']?>">
+                    <input id="csv_data" type="hidden" name="csv_data" value="<?php echo $post['csv_data'] ?>">
                     <input id="import_act" type="hidden" name="import_act" value="">
                 </form>
                 <?php
@@ -19,7 +19,7 @@ foreach ($not_found as $temp) {
     echo '"' . $temp . '" not found in submissions<br>';
 }
 
-<?php if (count($found) > 0): ?>
+if (count($found) > 0): ?>
 <table>
   <thead>
     <tr>
@@ -27,15 +27,15 @@ foreach ($not_found as $temp) {
     </tr>
   </thead>
   <tbody>
-<?php foreach ($found as $row): array_map('htmlentities', $row); ?>
-    <tr>
-      <td><?php echo implode('</td><td>', $row); ?></td>
-    </tr>
-<?php endforeach; ?>
+<?php foreach ($found as $row): array_map('htmlentities', $row);?>
+	    <tr>
+	      <td><?php echo implode('</td><td>', $row); ?></td>
+	    </tr>
+	<?php endforeach;?>
   </tbody>
 </table>
 <button id="button_import" class="btn btn-primary">Import</button>
-<?php endif; ?>
+<?php endif;?>
             </div>
         </div>
     </div>
