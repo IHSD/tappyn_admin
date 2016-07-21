@@ -11,7 +11,7 @@
             <div class="x_content">
                 Chose a csv file: <input type="file" id="files">
                 <form id="csv_form" method="post">
-                    <input id="csv_data" type="hidden" name="csv_data" value="<?php echo $post['csv_data']">
+                    <input id="csv_data" type="hidden" name="csv_data" value="<?php echo $post['csv_data']?>">
                     <input id="import_act" type="hidden" name="import_act" value="">
                 </form>
                 <?php
