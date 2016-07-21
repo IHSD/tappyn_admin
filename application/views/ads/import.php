@@ -1,3 +1,4 @@
+<?php ?>
 <div class="page-title">
     <div class="title_left">
         <h3>Ads import</h3>
@@ -6,12 +7,35 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
-            <div class="x_title"></div>
+            <div class="x_title"><?php echo $msg?></div>
             <div class="x_content">
-                <input type="file" id="files">
+                Chose a csv file: <input type="file" id="files">
                 <form id="csv_form" method="post">
-                    <input id="csv_data" type="hidden" name="csv_data">
+                    <input id="csv_data" type="hidden" name="csv_data" value="<?php echo $post['csv_data']">
+                    <input id="import_act" type="hidden" name="import_act" value="">
                 </form>
+                <?php
+foreach ($not_found as $temp) {
+    echo '"' . $temp . '" not found in submissions<br>';
+}
+
+<?php if (count($found) > 0): ?>
+<table>
+  <thead>
+    <tr>
+      <th><?php echo implode('</th><th>', array_keys(current($found))); ?></th>
+    </tr>
+  </thead>
+  <tbody>
+<?php foreach ($found as $row): array_map('htmlentities', $row); ?>
+    <tr>
+      <td><?php echo implode('</td><td>', $row); ?></td>
+    </tr>
+<?php endforeach; ?>
+  </tbody>
+</table>
+<button id="button_import" class="btn btn-primary">Import</button>
+<?php endif; ?>
             </div>
         </div>
     </div>
@@ -20,6 +44,10 @@
 <script>
 $(document).ready(function() {
     $('#files').bind('change', handleFileSelect);
+    $("#button_import").click(function(){
+      $("#import_act").val('import');
+      $("#csv_form").submit();
+    });
 });
 
 function handleFileSelect(evt) {

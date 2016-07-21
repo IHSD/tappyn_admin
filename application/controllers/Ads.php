@@ -6,7 +6,7 @@ class Ads extends MY_Controller
     {
         parent::__construct();
         $this->load->model('ad_model');
-        $this->load->library(array('pagination'));
+        $this->load->library(array('pagination', 'submission_library'));
     }
 
     public function index()
@@ -26,16 +26,45 @@ class Ads extends MY_Controller
 
     public function import()
     {
-        $data = array();
-        $post = $this->input->post();
+        $data         = array('not_found' => array(), 'found' => array(), 'msg' => '');
+        $data['post'] = $post = $this->input->post();
 
         try {
             if (isset($post['csv_data'])) {
-                $post['csv_data'] = json_decode($post['csv_data'], true);
-                if (!$post['csv_data']) {
+                $post['csv_data_array'] = json_decode($post['csv_data'], true);
+                if (!$post['csv_data_array']) {
                     throw new Exception("no csv data");
                 }
-                var_dump($post);
+                foreach ($post['csv_data_array'] as $row) {
+                    if ($row['Title'] && $row['CTR (All)']) {
+                        $submission = $this->submission_library->get_by_headline($row['Title']);
+                        if (!$submission) {
+                            $data['not_found'][] = $row['Title'];
+                        } else {
+                            $temp = array(
+                                'sid'             => $submission->id,
+                                'ctr'             => round($row['CTR (All)'], 2),
+                                'impressions'     => $row['Impressions'],
+                                'cost_per_result' => $row['Cost per Result (USD)'],
+                                'results'         => $row['Results'],
+                            );
+                            $data['found'][] = $temp;
+                        }
+                    }
+                }
+
+                if ($post['import'] == 'go') {
+                    $sids = array();
+                    foreach ($data['found'] as $row) {
+                        $sid = $row['sid'];
+                        $this->submission->update($sid, array('ctr' => $row['ctr'], 'test_result' => serialize($row)));
+                        $sids[] = $sid;
+                    }
+                    $data['found'] = $data['not_found'] = array();
+                    $this->ad_model->update_by_submission($sids, array('done' => 1));
+                    throw new Exception("submission " . implode(',', $sids) . " updated");
+                }
+                //var_dump($post);
             }
 
         } catch (Exception $e) {
