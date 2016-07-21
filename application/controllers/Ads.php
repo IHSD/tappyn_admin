@@ -55,7 +55,7 @@ class Ads extends MY_Controller
                     }
                 }
 
-                if ($post['import_act'] == 'go') {
+                if ($post['import_act'] == 'import') {
                     $sids = array();
                     foreach ($data['found'] as $row) {
                         $sid = $row['sid'];
