@@ -44,7 +44,7 @@ class Ads extends MY_Controller
                             $data['not_found'][] = $row['Title'];
                         } else {
                             $temp = array(
-                                'sid'             => $submission['id'],
+                                'sid'             => $submission[0]['id'],
                                 'ctr'             => number_format(round($row['CTR (All)'], 2), 2),
                                 'impressions'     => $row['Impressions'],
                                 'cost_per_result' => number_format(round($row['Cost per Result (USD)'], 2), 2),
