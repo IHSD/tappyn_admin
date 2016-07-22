@@ -40,12 +40,11 @@ class Ads extends MY_Controller
                 foreach ($post['csv_data_array'] as $row) {
                     if ($row['Title'] && $row['CTR (All)']) {
                         $submission = $this->submission_library->get_by_headline($row['Title']);
-                        var_dump($submission);
                         if (!$submission) {
                             $data['not_found'][] = $row['Title'];
                         } else {
                             $temp = array(
-                                'sid'             => $submission->id,
+                                'sid'             => $submission['id'],
                                 'ctr'             => number_format(round($row['CTR (All)'], 2), 2),
                                 'impressions'     => $row['Impressions'],
                                 'cost_per_result' => number_format(round($row['Cost per Result (USD)'], 2), 2),

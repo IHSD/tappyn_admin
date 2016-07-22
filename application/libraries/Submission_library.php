@@ -53,9 +53,8 @@ class Submission_library
 
     public function get_by_headline($headline)
     {
-        $submission = $this->submission->where('headline', $headline)->limit(1)->order_by("id", "desc")->fetch();
-        var_dump($submission->row(), $submission->result());
-        return $submission->row();
+        $submission = $this->submission->where('headline', $headline)->limit(1)->order_by("id", "desc")->fetch()->result();
+        return $submission;
     }
 
     public function inContest($cid)
