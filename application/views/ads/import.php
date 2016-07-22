@@ -10,6 +10,8 @@
             <div class="x_title"><?php echo $msg ?></div>
             <div class="x_content">
                 Chose a csv file: <input type="file" id="files">
+                <p>csv file must have columns:Title,CTR (All),Impressions,Results,Cost per Result (USD)</p>
+                <p>Title should same as submission headline</p>
                 <form id="csv_form" method="post">
                     <input id="csv_data" type="hidden" name="csv_data" value="">
                     <input id="import_act" type="hidden" name="import_act" value="">
@@ -28,10 +30,10 @@ if (count($found) > 0): ?>
   </thead>
   <tbody>
 <?php foreach ($found as $row): array_map('htmlentities', $row);?>
-				    <tr>
-				      <td><?php echo implode('</td><td>', $row); ?></td>
-				    </tr>
-				<?php endforeach;?>
+						    <tr>
+						      <td><?php echo implode('</td><td>', $row); ?></td>
+						    </tr>
+						<?php endforeach;?>
   </tbody>
 </table>
 <button id="button_import" class="btn btn-primary">Import</button>
