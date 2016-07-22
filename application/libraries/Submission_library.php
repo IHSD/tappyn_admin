@@ -53,7 +53,9 @@ class Submission_library
 
     public function get_by_headline($headline)
     {
-        $submission = $this->submission->where('headline', $headline)->limit(1)->order_by("id", "desc")->fetch()->row();
+        $submission = $this->submission->where('headline', $headline)->limit(1)->order_by("id", "desc")->get();
+        var_dump($subminssion, $subminssion->row());
+        return false;
         return $submission;
     }
 
