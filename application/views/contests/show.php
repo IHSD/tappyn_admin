@@ -372,17 +372,29 @@ $(document).ready(function() {
         var tmp = [sub.id,sub.headline,sub.text];
         subs.push(tmp);
       }
-      var csvContent = "data:text/csv;charset=utf-8,";
-      subs.forEach(function(infoArray, index){
-         dataString = infoArray.join(",");
-         csvContent += index < subs.length ? dataString+ "\n" : dataString;
-      });
-      var encodedUri = encodeURI(csvContent);
-      var link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", "contest"+contest.id+"-submissions.csv");
-      document.body.appendChild(link); // Required for FF
-      link.click();
+
+      var finalVal = '';
+
+      for (var i = 0; i < content.length; i++) {
+          var value = content[i];
+
+          for (var j = 0; j < value.length; j++) {
+              var innerValue = value[j];
+              var result = innerValue.replace(/"/g, '""');
+              if (result.search(/("|,|\n)/g) >= 0)
+                  result = '"' + result + '"';
+              if (j > 0)
+                  finalVal += ',';
+              finalVal += result;
+          }
+
+          finalVal += '\n';
+      }
+
+      var pom = document.createElement('a');
+      pom.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(finalVal));
+      pom.setAttribute("download", "contest"+contest.id+"-submissions.csv");
+      pom.click();
       //console.log(contest);
     });
 })
