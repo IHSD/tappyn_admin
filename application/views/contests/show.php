@@ -130,6 +130,7 @@
                     <div>
 
                       <h4>Submissions</h4>
+                      <div><button id="export_submissions">export submissions as csv</button></div>
                       <?php if (is_null($contest->payout)): ?>
                           <div class='alert alert-info'>This contest does not have a winner yet!</div>
                       <?php endif;?>
@@ -335,7 +336,7 @@
   })
 
 </script>
-
+<script src="<?php echo base_url('assets/js/jquery-csv/jquery.csv-0.71.min.js'); ?>"></script>
 <script>
 $(document).ready(function() {
     $(".select_as_winner").on('click', function() {
@@ -356,6 +357,11 @@ $(document).ready(function() {
                 location.reload();
             }
         })
-    })
+    });
+
+    $("#export_submissions").click(function(){
+      var contest = <?php echo json_encode($contest) ?>;
+      console.log(contest);
+    });
 })
 </script>
