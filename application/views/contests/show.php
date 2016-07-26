@@ -375,8 +375,8 @@ $(document).ready(function() {
 
       var finalVal = '';
 
-      for (var i = 0; i < content.length; i++) {
-          var value = content[i];
+      for (var i = 0; i < subs.length; i++) {
+          var value = subs[i];
 
           for (var j = 0; j < value.length; j++) {
               var innerValue = value[j];
