@@ -361,6 +361,28 @@ $(document).ready(function() {
 
     $("#export_submissions").click(function(){
       var contest = <?php echo json_encode($contest) ?>;
+      if(contest.submissions.length == 0){
+        alert('no submission in this contest');
+        return;
+      }
+
+      var subs = [['submission id','headline','text']];
+      for (var i = 0; i < contest.submissions.length; i++) {
+        var sub = contest.submissions[i];
+        var tmp = [sub.id,sub.headline,sub.text];
+        subs.push(tmp);
+      }
+      var csvContent = "data:text/csv;charset=utf-8,";
+      subs.forEach(function(infoArray, index){
+         dataString = infoArray.join(",");
+         csvContent += index < subs.length ? dataString+ "\n" : dataString;
+      });
+      var encodedUri = encodeURI(csvContent);
+      var link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "contest"+contest.id+"-submissions.csv");
+      document.body.appendChild(link); // Required for FF
+      link.click();
       console.log(contest);
     });
 })
