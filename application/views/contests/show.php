@@ -130,7 +130,7 @@
                     <div>
 
                       <h4>Submissions</h4>
-                      <div><button id="export_submissions">export submissions as csv</button></div>
+                      <div><button class="btn btn-primary" id="export_submissions">export submissions as csv</button></div>
                       <?php if (is_null($contest->payout)): ?>
                           <div class='alert alert-info'>This contest does not have a winner yet!</div>
                       <?php endif;?>
@@ -383,7 +383,7 @@ $(document).ready(function() {
       link.setAttribute("download", "contest"+contest.id+"-submissions.csv");
       document.body.appendChild(link); // Required for FF
       link.click();
-      console.log(contest);
+      //console.log(contest);
     });
 })
 </script>
