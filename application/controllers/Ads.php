@@ -43,9 +43,8 @@ class Ads extends MY_Controller
                         if (!$submission) {
                             $data['not_found'][] = $row['Title'];
                         } else {
-                            $s    = $submission[0];
                             $temp = array(
-                                'sid'             => $s->id,
+                                'sid'             => $submission->id,
                                 'ctr'             => number_format(round($row['CTR (All)'], 2), 2),
                                 'impressions'     => $row['Impressions'],
                                 'cost_per_result' => number_format(round($row['Cost per Result (USD)'], 2), 2),
