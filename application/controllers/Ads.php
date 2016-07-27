@@ -41,7 +41,7 @@ class Ads extends MY_Controller
                     if ($row['submission id'] && $row['CTR (All)']) {
                         $submission = $this->submission_library->get($row['submission id']);
                         if (!$submission) {
-                            $data['not_found'][] = $row['Title'];
+                            $data['not_found'][] = $row['submission id'];
                         } else {
                             $temp = array(
                                 'sid'             => $submission->id,
