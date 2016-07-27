@@ -38,8 +38,8 @@ class Ads extends MY_Controller
                     throw new Exception("no csv data");
                 }
                 foreach ($post['csv_data_array'] as $row) {
-                    if ($row['Title'] && $row['CTR (All)']) {
-                        $submission = $this->submission_library->get_by_headline($row['Title']);
+                    if ($row['submission id'] && $row['CTR (All)']) {
+                        $submission = $this->submission_library->get($row['submission id']);
                         if (!$submission) {
                             $data['not_found'][] = $row['Title'];
                         } else {
