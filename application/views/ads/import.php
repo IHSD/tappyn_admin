@@ -10,8 +10,7 @@
             <div class="x_title"><?php echo $msg ?></div>
             <div class="x_content">
                 Chose a csv file: <input type="file" id="files">
-                <p>csv file must have columns:Title,CTR (All),Impressions,Results,Cost per Result (USD)</p>
-                <p>Title should same as submission headline</p>
+                <p>csv file must have columns:submission id,CTR (All),Impressions,Results,Cost per Result (USD)</p>
                 <form id="csv_form" method="post">
                     <input id="csv_data" type="hidden" name="csv_data" value="">
                     <input id="import_act" type="hidden" name="import_act" value="">
@@ -22,7 +21,7 @@ foreach ($not_found as $temp) {
 }
 
 if (count($found) > 0): ?>
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th><?php echo implode('</th><th>', array_keys(current($found))); ?></th>
@@ -30,10 +29,10 @@ if (count($found) > 0): ?>
   </thead>
   <tbody>
 <?php foreach ($found as $row): array_map('htmlentities', $row);?>
-						    <tr>
-						      <td><?php echo implode('</td><td>', $row); ?></td>
-						    </tr>
-						<?php endforeach;?>
+	    <tr>
+	      <td><?php echo implode('</td><td>', $row); ?></td>
+	    </tr>
+	<?php endforeach;?>
   </tbody>
 </table>
 <button id="button_import" class="btn btn-primary">Import</button>
