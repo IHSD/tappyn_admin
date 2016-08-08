@@ -14,6 +14,16 @@ class Ad_model extends BaseModel
         return $this->where('get_id', 'by_company');
     }
 
+    public function by_done($done = '0')
+    {
+        return $this->where('done', $done)->group_by('contest_id');
+    }
+
+    public function by_contest_id($contest_id)
+    {
+        return $this->where('contest_id', $contest_id);
+    }
+
     public function update_by_submission($sid, $data)
     {
         $sid = is_array($sid) ? $sid : array($sid);
