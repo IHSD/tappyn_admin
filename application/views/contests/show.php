@@ -379,7 +379,7 @@ $(document).ready(function() {
           var value = subs[i];
 
           for (var j = 0; j < value.length; j++) {
-              var innerValue = value[j];
+              var innerValue = (value[j]) ? value[j]  : '' ;
               var result = innerValue.replace(/"/g, '""');
               if (result.search(/("|,|\n)/g) >= 0)
                   result = '"' + result + '"';
