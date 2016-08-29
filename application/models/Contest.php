@@ -3,7 +3,7 @@
 class Contest extends BaseModel
 {
     protected $select = 'id,owner,title,start_time,stop_time,objective,platform,gender,audience,min_age,max_age';
-    protected $table = 'contests';
+    protected $table  = 'contests';
 
     public function __construct()
     {
@@ -25,10 +25,10 @@ class Contest extends BaseModel
     public function owner($owner)
     {
         $owner = $this->db->select('users.email, users.id, profiles.logo_url, profiles.name, profiles.company_url, profiles.facebook_url, profiles.twitter_handle')
-                      ->from('users')
-                      ->join('profiles', 'users.id = profiles.id', 'LEFT')
-                      ->where('users.id', $owner)
-                      ->get();
+            ->from('users')
+            ->join('profiles', 'users.id = profiles.id', 'LEFT')
+            ->where('users.id', $owner)
+            ->get();
         return $owner->row();
     }
 
@@ -49,8 +49,13 @@ class Contest extends BaseModel
         $views = $this->db->select('COUNT(*) as count')->from('impressions')->where('contest_id', $contest_id)->get();
         return $views->row()->count;
     }
+
+    public function update($id, $data)
+    {
+        return $this->db->where('id', $id)->update('contests', $data);
+    }
     /*==================================
-      Callbacks that can be registered
+    Callbacks that can be registered
     ==================================*/
 
     public function submission_count_callback($row)
@@ -73,7 +78,7 @@ class Contest extends BaseModel
 
     public function share_callback($row)
     {
-        $row->shares = $this->shares($row->id);
+        $row->shares       = $this->shares($row->id);
         $row->share_clicks = $this->share_clicks($row->id);
         return $row;
     }

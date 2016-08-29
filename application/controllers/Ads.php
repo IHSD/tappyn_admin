@@ -78,7 +78,7 @@ class Ads extends MY_Controller
                     foreach ($before as $ad) {
                         $contest_id = $ad->contest_id;
                         if (in_array($contest_id, $after_cids)) {
-                            continue;
+                            // continue;
                         }
                         $contest    = $this->contest_library->select('*')->where('id', $contest_id)->fetch()->row();
                         $user       = $this->user_library->get($contest->owner, false);
@@ -95,6 +95,7 @@ class Ads extends MY_Controller
                             'clicks'         => 0,
                         ];
                         $this->email_library->create($data_email);
+                        $this->contest_library->update($ad->contest_id, array('test_upload_time' => date('Y-m-d H:i:s')));
                         $add_msg .= ' contest #' . $contest_id . ' pending_purchase, ';
                     }
                     throw new Exception("submission " . implode(',', $sids) . " updated. " . $add_msg);
