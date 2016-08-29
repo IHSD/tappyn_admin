@@ -26,7 +26,7 @@ class Ads extends MY_Controller
 
     public function import()
     {
-        $data             = array('not_found' => array(), 'found' => array(), 'msg' => '', 'cids' => array());
+        $data             = array('not_found' => array(), 'found' => array(), 'msg' => '', 'cids' => array(), 'cids' => array());
         $post             = $this->input->post();
         $post['csv_data'] = isset($post['csv_data']) ? $post['csv_data'] : '';
         $data['post']     = $post;
@@ -50,7 +50,8 @@ class Ads extends MY_Controller
                                 'cost_per_result' => number_format(round($row['Cost per Result (USD)'], 2), 2),
                                 'results'         => $row['Results'],
                             );
-                            $data['found'][] = $temp;
+                            $data['found'][]                       = $temp;
+                            $data['cids'][$submission->contest_id] = $submission->contest_id;
                         }
                     }
                 }
@@ -62,24 +63,9 @@ class Ads extends MY_Controller
                         $this->submission->update($sid, array('test_result' => serialize($row)));
                         $sids[] = $sid;
                     }
-                    $data['found'] = $data['not_found'] = array();
-
-                    $before = $this->ad_model->by_done('0')->fetch()->result();
-
-                    $this->ad_model->update_by_submission($sids, array('done' => 1));
-
-                    $after_cids = array();
-                    $after      = $this->ad_model->by_done('0')->fetch()->result();
-                    foreach ($after as $ad) {
-                        $after_cids[] = $ad->contest_id;
-                    }
 
                     $add_msg = '';
-                    foreach ($before as $ad) {
-                        $contest_id = $ad->contest_id;
-                        if (in_array($contest_id, $after_cids)) {
-                            continue;
-                        }
+                    foreach ($data['cids'] as $contest_id) {
                         $contest    = $this->contest_library->select('*')->where('id', $contest_id)->fetch()->row();
                         $user       = $this->user_library->get($contest->owner, false);
                         $data_email = [
