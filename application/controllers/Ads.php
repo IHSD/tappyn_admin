@@ -100,6 +100,7 @@ class Ads extends MY_Controller
         } catch (Exception $e) {
             $data['msg'] = $e->getMessage();
         }
+        $data['for_dump'] = $data;
 
         $this->load->view('ads/import', $data);
     }
