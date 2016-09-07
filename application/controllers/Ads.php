@@ -71,7 +71,11 @@ class Ads extends MY_Controller
                             continue;
                         }
                         $contest = $this->contest_library->select('*')->where('id', $contest_id)->fetch()->row();
-                        $user    = $this->user_library->get($contest->owner, false);
+                        if (!$contest) {
+                            $add_msg .= ' <span style="color:red">contest #' . $contest_id . ' not found</span>, ';
+                            continue;
+                        }
+                        $user = $this->user_library->get($contest->owner, false);
                         if ($user && $user->email) {
                             $data_email = [
                                 'queued_at'      => time(),
