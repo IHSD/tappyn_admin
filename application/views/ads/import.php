@@ -1,4 +1,7 @@
-<?php ?>
+<!--
+<?php
+var_dump($data);
+?>-->
 <div class="page-title">
     <div class="title_left">
         <h3>Ads import</h3>
@@ -29,10 +32,10 @@ if (count($found) > 0): ?>
   </thead>
   <tbody>
 <?php foreach ($found as $row): array_map('htmlentities', $row);?>
-	    <tr>
-	      <td><?php echo implode('</td><td>', $row); ?></td>
-	    </tr>
-	<?php endforeach;?>
+		    <tr>
+		      <td><?php echo implode('</td><td>', $row); ?></td>
+		    </tr>
+		<?php endforeach;?>
   </tbody>
 </table>
 <button id="button_import" class="btn btn-primary">Import</button>
