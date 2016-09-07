@@ -38,6 +38,7 @@ class Ads extends MY_Controller
                     throw new Exception("no csv data");
                 }
                 foreach ($post['csv_data_array'] as $row) {
+                    $row['submission id'] = (int) $row['submission id'];
                     if ($row['submission id'] && $row['CTR (All)']) {
                         $submission = $this->submission_library->get($row['submission id']);
                         if (!$submission) {
@@ -66,6 +67,9 @@ class Ads extends MY_Controller
 
                     $add_msg = '';
                     foreach ($data['cids'] as $contest_id) {
+                        if (!$contest_id) {
+                            continue;
+                        }
                         $contest = $this->contest_library->select('*')->where('id', $contest_id)->fetch()->row();
                         $user    = $this->user_library->get($contest->owner, false);
                         if ($user && $user->email) {
