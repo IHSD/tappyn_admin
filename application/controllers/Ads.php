@@ -66,21 +66,25 @@ class Ads extends MY_Controller
 
                     $add_msg = '';
                     foreach ($data['cids'] as $contest_id) {
-                        $contest    = $this->contest_library->select('*')->where('id', $contest_id)->fetch()->row();
-                        $user       = $this->user_library->get($contest->owner, false);
-                        $data_email = [
-                            'queued_at'      => time(),
-                            'sent_at'        => null,
-                            'failure_reason' => null,
-                            'recipient'      => $user->email,
-                            'recipient_id'   => $contest->owner,
-                            'email_type'     => 'pending_purchase',
-                            'object_type'    => 'contest',
-                            'object_id'      => $contest->id,
-                            'opened'         => 0,
-                            'clicks'         => 0,
-                        ];
-                        $this->email_library->create($data_email);
+                        $contest = $this->contest_library->select('*')->where('id', $contest_id)->fetch()->row();
+                        $user    = $this->user_library->get($contest->owner, false);
+                        if ($user && $user->email) {
+                            $data_email = [
+                                'queued_at'      => time(),
+                                'sent_at'        => null,
+                                'failure_reason' => null,
+                                'recipient'      => $user->email,
+                                'recipient_id'   => $contest->owner,
+                                'email_type'     => 'pending_purchase',
+                                'object_type'    => 'contest',
+                                'object_id'      => $contest->id,
+                                'opened'         => 0,
+                                'clicks'         => 0,
+                            ];
+                            $this->email_library->create($data_email);
+                        } else {
+                            $add_msg .= ' <span style="color:red">contest #' . $contest_id . ' cant find owner(id:' . $contest->owner . ')</span>, ';
+                        }
                         $this->contest_library->update($contest_id, array('test_upload_time' => date('Y-m-d H:i:s')));
                         $add_msg .= ' contest #' . $contest_id . ' pending_purchase, ';
                     }
